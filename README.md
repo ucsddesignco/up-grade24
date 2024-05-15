@@ -1,8 +1,6 @@
-# UCSD Design Co Website Revamp
+# UP-GRADE 2024: UCSD Design Co
 
-**Old Website:** https://ucsddesign.co/
-
-**New Website:**
+UP-Grade is a 10-week online summer program where students will get the opportunity to work closely alongside a local, nonprofit organization to amplify and boost their exposure.
 
 ## Getting Started
 
