@@ -1,0 +1,59 @@
+.hamburger {
+  $hamburger-height: 18px;
+  $hamburger-width: 30px;
+  $line-height: 4px;
+
+  position: absolute;
+  margin: $main-padding-mobile-block;
+  right: 0;
+  background: none;
+  outline-offset: 3px;
+  border: none;
+  width: $hamburger-width;
+  height: $hamburger-height;
+  padding-inline: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 3;
+
+  @media (min-width: $mobile-breakpoint) {
+    margin: $main-padding-desktop-block;
+  }
+
+  .line {
+    position: relative;
+
+    &,
+    &:before {
+      background: black;
+      width: 100%;
+      height: $line-height;
+      transition:
+        transform 0.12s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+        top 0.12s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc($hamburger-height - $line-height);
+    }
+  }
+
+  &.is-active {
+    .line {
+      transform: translateY(7px) rotate(135deg);
+    }
+
+    .line::before {
+      top: 0;
+      transform: rotate(-90deg);
+    }
+  }
+
+  @media screen and (min-width: $tablet-breakpoint) {
+    display: none;
+  }
+}

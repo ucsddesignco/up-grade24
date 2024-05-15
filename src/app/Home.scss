@@ -1,0 +1,48 @@
+.home_page {
+  display: flex;
+  height: 100dvh;
+  overflow: hidden;
+
+  .main-content {
+    overflow-y: scroll;
+    scroll-snap-type: none;
+    width: 100%;
+
+    //For extremely large screen sizes
+    max-width: 1600px;
+    display: grid;
+    margin-inline: auto;
+
+    @media (min-width: $tablet-breakpoint) {
+      scroll-snap-type: y mandatory;
+    }
+
+    .breadcrumb {
+      text-transform: uppercase;
+      color: #212121;
+      font-size: 20px;
+      letter-spacing: 0.6px;
+      margin-bottom: 0.2em;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    section {
+      scroll-snap-align: center;
+      padding-block: $main-padding-mobile-block;
+      padding-inline: $main-padding-mobile-inline;
+
+      @media (min-width: $mobile-breakpoint) {
+        padding-block: $main-padding-desktop-block;
+        padding-inline: $main-padding-desktop-inline;
+        height: 100vh;
+
+        h2 {
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+}

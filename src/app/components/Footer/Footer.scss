@@ -1,0 +1,40 @@
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-inline: $main-padding-mobile-inline;
+  padding-bottom: 1rem;
+
+  @media (min-width: $tablet-breakpoint) {
+    padding-inline: $main-padding-desktop-inline;
+  }
+
+  span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    p {
+      font-size: $footer-font-size;
+    }
+
+    svg {
+      height: $footer-font-size;
+      color: rgba(184, 0, 66, 1);
+    }
+
+    #heart {
+      margin-inline-start: calc($footer-font-size / 2);
+      margin-inline-end: calc($footer-font-size / 3);
+    }
+  }
+  a {
+    font-size: $footer-font-size;
+    font-family: $p-font;
+  }
+}
