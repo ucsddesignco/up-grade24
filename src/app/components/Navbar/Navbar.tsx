@@ -58,8 +58,13 @@ export default function Navbar() {
           className={`nav-container ${isHamburgerOpen ? 'panel-open is-active' : 'panel-close'}`}
         >
           <Link href="/">
-            <h1>UP-GRADE 2024</h1>
+            <h1 className="nav-title">UP-GRADE 2024</h1>
+            <h3>
+              UCSD Design Co <br /> San Diego, CA
+            </h3>
+            <h2 className="nav-date">JUNE 1ST TO AUGUST 13TH</h2>
           </Link>
+          <h3 className="asterisk">****************************</h3>
           <ul>
             {links.map(link => (
               <li key={link.href}>
@@ -69,12 +74,16 @@ export default function Navbar() {
                       isHamburgerOpen ? toggleHamburger() : null;
                     }}
                   >
-                    {link.text}
+                    <div className="nav-link-list">
+                      <h3>{link.text.toUpperCase()}</h3>{' '}
+                      <h3 className="nav-index"> {links.indexOf(link) + 1} </h3>
+                    </div>
                   </a>
                 </Link>
               </li>
             ))}
           </ul>
+          <h3 className="asterisk">****************************</h3>
         </div>
         <div
           className={`dark_overlay ${isHamburgerOpen ? 'is-active' : ''}`}
