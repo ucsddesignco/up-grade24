@@ -2,3 +2,34 @@
   position: relative;
   width: 100%;
 }
+
+.line {
+  width: 100%;
+  size: 1.5;
+  margin: 1% 0;
+}
+
+h3 {
+  text-transform: uppercase;
+}
+
+.grid {
+  width: 100%;
+  height: 38%;
+  overflow: hidden;
+}
+.grid-item {
+  box-sizing: border-box;
+  padding: 10px;
+  float: left;
+  width: 50%;
+  height: 18vh;
+
+  h3 {
+    margin-bottom: 2%;
+  }
+
+  p {
+    width: 32vw;
+  }
+}
