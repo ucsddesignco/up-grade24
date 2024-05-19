@@ -1,0 +1,68 @@
+.AccordionRoot {
+  /* reset */
+  button,
+  h3 {
+    all: unset;
+  }
+
+  /* variables */
+  $trigger-border-color: rgba(33, 33, 33, 0.3);
+  $trigger-padding: calc($h3-size * 0.75);
+
+  width: 100%;
+
+  .AccordionItem {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .AccordionTrigger {
+    font-family: $subheading-font;
+    font-size: $h3-size;
+    padding: $trigger-padding;
+    color: $primary-black;
+    border: 1px solid $trigger-border-color;
+    // border-top: none;
+    width: calc(100% - 2 * ($trigger-padding + 1px));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .AccordionContent {
+    overflow: hidden;
+    padding: $trigger-padding;
+
+    &[data-state='open'] {
+      animation: slideDown 300ms;
+    }
+    &[data-state='closed'] {
+      animation: slideUp 300ms;
+    }
+  }
+
+  .AccordionIcon {
+    transition: transform 300ms;
+  }
+  .AccordionTrigger[data-state='open'] > .AccordionIcon {
+    transform: rotate(225deg);
+  }
+
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
