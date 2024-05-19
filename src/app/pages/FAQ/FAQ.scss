@@ -1,2 +1,11 @@
 #faq {
+  h2 {
+    margin-bottom: $main-padding-mobile-block;
+  }
+
+  @media (min-width: $mobile-breakpoint) {
+    h2 {
+      margin-bottom: $main-padding-desktop-block;
+    }
+  }
 }

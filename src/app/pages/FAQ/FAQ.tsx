@@ -6,8 +6,7 @@ export default function FAQ() {
   return (
     <section id="faq">
       <p className="breadcrumb">.04 / FAQ</p>
-      <h2 style={{ marginBlockEnd: '40px' }}>Commonly Asked Questions</h2>
-
+      <h2>Commonly Asked Questions</h2>
       <MyAccordion accordionData={FAQContent} />
     </section>
   );

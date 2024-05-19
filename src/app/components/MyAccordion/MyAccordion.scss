@@ -1,10 +1,4 @@
 .AccordionRoot {
-  /* reset */
-  button,
-  h3 {
-    all: unset;
-  }
-
   /* variables */
   $trigger-border-color: rgba(33, 33, 33, 0.3);
   $trigger-padding: calc($h3-size * 0.75);
@@ -13,7 +7,6 @@
 
   .AccordionItem {
     width: 100%;
-    overflow: hidden;
   }
 
   .AccordionTrigger {
@@ -21,23 +14,26 @@
     font-size: $h3-size;
     padding: $trigger-padding;
     color: $primary-black;
+    background-color: transparent;
     border: 1px solid $trigger-border-color;
-    // border-top: none;
-    width: calc(100% - 2 * ($trigger-padding + 1px));
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
   }
 
   .AccordionContent {
     overflow: hidden;
-    padding: $trigger-padding;
 
     &[data-state='open'] {
       animation: slideDown 300ms;
     }
     &[data-state='closed'] {
       animation: slideUp 300ms;
+    }
+
+    p {
+      padding: $trigger-padding;
     }
   }
 
@@ -63,6 +59,14 @@
     }
     to {
       height: 0;
+    }
+  }
+
+  // breakpoint should be a little bigger since text still wraps a little at this size
+  @media (min-width: $mobile-breakpoint) {
+    & {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
