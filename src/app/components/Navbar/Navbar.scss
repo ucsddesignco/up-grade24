@@ -7,7 +7,7 @@ nav {
     padding-block: $main-padding-mobile-block;
     width: 100vw;
     max-width: 500px;
-    background: rgb(165, 237, 255);
+    background: rgb(255, 255, 255);
     height: 100dvh;
     display: flex;
     flex-direction: column;
@@ -22,6 +22,11 @@ nav {
 
     &.panel-close {
       transform: translateX(-100%);
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      padding-inline: clamp(41.5px, 12px + 1.2vw, 40px);
+      padding-block: clamp(108px, 30px + 1.2vw, 40px);
     }
 
     @media (min-width: $mobile-breakpoint) {
@@ -63,26 +68,23 @@ nav {
     }
   }
 
-  .nav-title {
-    padding-bottom: 7.5px;
-  }
-
-  .nav-date {
-    padding-top: 7.5px;
-  }
-
   .nav-link-list {
     display: flex;
     flex-direction: row;
-  }
-
-  .nav-index {
-    align-items: end;
+    padding-bottom: 14px;
+    max-width: 310px;
   }
 
   .asterisk {
+    display: flex;
+    justify-content: space-between;
     color: #212121;
     opacity: 0.45;
+    max-width: 310px;
+  }
+
+  h1 {
+    font-size: 32px;
   }
 
   h2 {
