@@ -1,7 +1,8 @@
 .AccordionRoot {
   /* variables */
   $trigger-border-color: rgba(33, 33, 33, 0.3);
-  $trigger-padding: calc($h3-size * 0.75);
+  $trigger-padding-mobile: calc($p-size * 1.25);
+  $trigger-padding-desktop: calc($h3-size * 1.25);
 
   width: 100%;
 
@@ -11,8 +12,8 @@
 
   .AccordionTrigger {
     font-family: $subheading-font;
-    font-size: $h3-size;
-    padding: $trigger-padding;
+    font-size: $p-size;
+    padding: $trigger-padding-mobile;
     color: $primary-black;
     background-color: transparent;
     border: 1px solid $trigger-border-color;
@@ -21,6 +22,14 @@
     justify-content: space-between;
     width: 100%;
     text-align: left;
+    text-transform: uppercase;
+
+    @media (min-width: $tablet-breakpoint) {
+      & {
+        font-size: $h3-size;
+        padding: $trigger-padding-desktop;
+      }
+    }
   }
 
   .AccordionContent {
@@ -34,12 +43,24 @@
     }
 
     p {
-      padding: $trigger-padding;
+      padding: $trigger-padding-mobile;
+
+      @media (min-width: $tablet-breakpoint) {
+        padding: $trigger-padding-desktop;
+      }
     }
   }
 
   .AccordionIcon {
     transition: transform 300ms;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+
+    @media (min-width: $tablet-breakpoint) {
+      width: 28px;
+      height: 28px;
+    }
   }
   .AccordionTrigger[data-state='open'] > .AccordionIcon {
     transform: rotate(225deg);

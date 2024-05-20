@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import './MyAccordion.scss';
 import * as Accordion from '@radix-ui/react-accordion';
+import PlusIcon from '@/assets/icons/PlusIcon.svg';
 
 type AccordionDataItem = {
   id: string;
@@ -17,8 +17,12 @@ type AccordionTabProps = {
 export default function MyAccordion({ accordionData }: AccordionTabProps) {
   return (
     <Accordion.Root className="AccordionRoot" type="single" collapsible={true}>
-      {[...Array(2)].map((column, columnIndex) => (
-        <div className="AccordionColumn" key={columnIndex} tabIndex={-1}>
+      {[...Array(2)].map((_column, columnIndex) => (
+        <div
+          className="AccordionColumn"
+          key={`accordion-${columnIndex}`}
+          tabIndex={-1}
+        >
           {accordionData
             .slice(
               (columnIndex * accordionData.length) / 2,
@@ -34,14 +38,7 @@ export default function MyAccordion({ accordionData }: AccordionTabProps) {
                 <Accordion.Header>
                   <Accordion.Trigger className="AccordionTrigger">
                     <span>{item.header}</span>
-                    {/* TODO: maybe consider just inserting svg directly */}
-                    <Image
-                      className="AccordionIcon"
-                      src="./icons/plus.svg"
-                      alt=""
-                      width={18}
-                      height={18}
-                    />
+                    <PlusIcon className="AccordionIcon" />
                   </Accordion.Trigger>
                 </Accordion.Header>
                 <Accordion.Content className="AccordionContent">
