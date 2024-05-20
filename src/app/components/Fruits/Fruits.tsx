@@ -2,11 +2,8 @@
 
 import './Fruits.scss';
 import { useEffect, useRef } from 'react'
-import Matter, { Constraint, Common, Svg, Events, Mouse, MouseConstraint, Vertices } from 'matter-js';
-import createEllipseVertices from './createEllipseVertices';
-import WatermelonSvg from './Images/Svg/watermelon.svg';
-import { SVGProps } from 'react';
-import { LegacyRef } from 'react';
+import Matter, { Constraint, Common, Mouse, MouseConstraint } from 'matter-js';
+
 import 'pathseg';
 
 
@@ -14,9 +11,9 @@ export default function Fruits() {
   const scene = useRef<HTMLDivElement>(null);
   const watermelonSVG = useRef<SVGPathElement>(null);
 
-  const svgWidthInPx = 100;
-  const svgWidthPercent = 0.8;
-  Common.setDecomp(require('poly-decomp'));
+  // const svgWidthInPx = 100;
+  // const svgWidthPercent = 0.8;
+  // Common.setDecomp(require('poly-decomp'));
 
 
   
@@ -48,8 +45,8 @@ export default function Fruits() {
 
 
   
-    var decomp = require('poly-decomp');
-    var svgpath = require('svgpath');
+    // var decomp = require('poly-decomp');
+    // var svgpath = require('svgpath');
     // console.log(watermelonBody);
     // const watermelonPath = document.querySelector('matter-path') as SVGPathElement;
     // const water = watermelonSVG.current ? Svg.pathToVertices(watermelonSVG.current, 30) : null;
@@ -120,7 +117,7 @@ export default function Fruits() {
         length: 0
       });
 
-      let group = Composite.create({label: `group`});
+      // let group = Composite.create({label: `group`});
       Composite.add(engine.world, [body, spriteHolder, constraint, constraint2])
 
     }
