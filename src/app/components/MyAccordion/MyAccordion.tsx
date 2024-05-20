@@ -2,7 +2,7 @@
 
 import './MyAccordion.scss';
 import * as Accordion from '@radix-ui/react-accordion';
-import PlusIcon from '@/assets/icons/PlusIcon.svg';
+import PlusIcon from '@/assets/icons/plus-icon.svg';
 
 type AccordionDataItem = {
   id: string;
