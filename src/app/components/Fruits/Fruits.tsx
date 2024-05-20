@@ -10,10 +10,7 @@ import 'pathseg';
 export default function Fruits() {
   const scene = useRef<HTMLDivElement>(null);
   const watermelonSVG = useRef<SVGPathElement>(null);
-
-  // const svgWidthInPx = 100;
-  // const svgWidthPercent = 0.8;
-  // Common.setDecomp(require('poly-decomp'));
+  Common.setDecomp(require('poly-decomp'));
 
 
   
@@ -44,9 +41,6 @@ export default function Fruits() {
     });
 
 
-  
-    // var decomp = require('poly-decomp');
-    // var svgpath = require('svgpath');
     // console.log(watermelonBody);
     // const watermelonPath = document.querySelector('matter-path') as SVGPathElement;
     // const water = watermelonSVG.current ? Svg.pathToVertices(watermelonSVG.current, 30) : null;
@@ -117,7 +111,6 @@ export default function Fruits() {
         length: 0
       });
 
-      // let group = Composite.create({label: `group`});
       Composite.add(engine.world, [body, spriteHolder, constraint, constraint2])
 
     }
