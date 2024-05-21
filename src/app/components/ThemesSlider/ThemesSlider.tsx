@@ -3,7 +3,7 @@ import { useKeenSlider } from 'keen-slider/react';
 import ThemeSlide from './ThemeSlide/ThemeSlide';
 import './ThemesSlider.scss';
 
-type slideContent = {
+export type slideContent = {
   theme: string;
   description: string;
   nonProfits: Array<string>;

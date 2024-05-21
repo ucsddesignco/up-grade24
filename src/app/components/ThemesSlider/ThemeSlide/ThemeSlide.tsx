@@ -6,7 +6,11 @@ type slideContent = {
   nonProfits: Array<string>;
 };
 
-export default function ThemeSlide({ content }: slideContent) {
+type content = {
+  content: slideContent;
+};
+
+export default function ThemeSlide({ content }: content) {
   return (
     <div>
       <h3>{content.theme}</h3>
