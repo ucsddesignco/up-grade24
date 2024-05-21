@@ -1,5 +1,3 @@
-'use client';
-
 import './Themes.scss';
 import ThemesSlider from '@/components/ThemesSlider/ThemesSlider';
 import { ThemesContent } from './constants';

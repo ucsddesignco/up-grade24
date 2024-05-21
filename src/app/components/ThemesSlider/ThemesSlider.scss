@@ -1,0 +1,29 @@
+.nav-wrapper {
+  /* variables */
+  $dot-size: 3px;
+  $dot-gap: 5px;
+
+  border: 1px solid $primary-black;
+  border-radius: 5px;
+  width: calc(100vw - 2 * $main-padding-mobile-inline);
+
+  .dots {
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+    justify-content: center;
+  }
+
+  .dot {
+    background: transparent;
+    border: 1px solid $primary-black;
+    border-radius: 50%;
+    margin: 0 $dot-gap;
+    padding: $dot-size;
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background: $primary-black;
+  }
+}
