@@ -1,0 +1,33 @@
+.theme-slide {
+  /* variables */
+  $slide-margin: 20px;
+
+  margin: $slide-margin;
+
+  h3 {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 10px;
+    line-height: 1;
+  }
+
+  p {
+    margin-block-start: $slide-margin;
+  }
+
+  h4 {
+    margin-block: calc(2 * $slide-margin) $slide-margin;
+  }
+
+  .non-profit {
+    text-transform: uppercase;
+    /* TODO: ask if we shoule make this rgba(33, 33, 33, 0.3); for consistency's sake */
+    color: #bababa;
+    display: inline-block;
+    padding: 10px;
+    line-height: 1;
+    border-radius: 5px;
+    border: 1px solid #bababa;
+    margin-block-start: 0;
+  }
+}

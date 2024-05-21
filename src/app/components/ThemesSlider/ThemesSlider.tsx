@@ -10,6 +10,7 @@ import { useState } from 'react';
 
 export type slideContent = {
   theme: string;
+  themeColor?: string;
   description: string;
   nonProfits: Array<string>;
 };

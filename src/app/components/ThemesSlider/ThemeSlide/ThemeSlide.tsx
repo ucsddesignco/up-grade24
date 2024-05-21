@@ -1,10 +1,5 @@
 import './ThemeSlide.scss';
-
-type slideContent = {
-  theme: string;
-  description: string;
-  nonProfits: Array<string>;
-};
+import type { slideContent } from '../ThemesSlider';
 
 type content = {
   content: slideContent;
@@ -12,12 +7,14 @@ type content = {
 
 export default function ThemeSlide({ content }: content) {
   return (
-    <div>
-      <h3>{content.theme}</h3>
+    <div className="theme-slide">
+      <h3 style={{ backgroundColor: content.themeColor }}>{content.theme}</h3>
       <p>{content.description}</p>
       <h4>Non-profits</h4>
-      {content.nonProfits.map(nonProfit => (
-        <p key={nonProfit}></p>
+      {content.nonProfits.map((nonProfit, idx) => (
+        <p key={idx} className="non-profit">
+          {nonProfit}
+        </p>
       ))}
     </div>
   );
