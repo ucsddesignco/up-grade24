@@ -333,8 +333,8 @@ export default function Fruits() {
           }
         }
       );
-      const scaleTranslateX = cherryScaling * .4;
-      const scaleTranslateY = cherryScaling * .4 + 1;
+      // const scaleTranslateX = cherryScaling * .4;
+      // const scaleTranslateY = cherryScaling * .4 + 1;
       const constraint = Constraint.create({
         render: {
           visible: true
