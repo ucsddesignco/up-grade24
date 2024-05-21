@@ -1,6 +1,8 @@
 #apply {
   position: relative;
-  width: 100%;
+  //width: 100%;
+
+  width: calc(100vw - 2 * $main-padding-mobile-inline);
 
   h2 {
     margin-bottom: 1rem;
@@ -24,11 +26,11 @@
     padding-left: 0;
     display: grid;
     gap: 1rem;
-    padding-block: 1rem;
-    padding-bottom: 0;
+    padding-block: 0;
 
     @media (min-width: $tablet-breakpoint) {
       grid-template-columns: repeat(2, 1fr);
+      padding-block: 1rem;
 
       li:not-nth-child() {
         margin-right: 60px;
@@ -41,8 +43,32 @@
   }
 }
 
+@media (max-width: $tablet-breakpoint) {
+  button {
+    display: none;
+  }
+}
+
 .testimonials {
+  * {
+    margin-top: 0.5rem;
+  }
+
   h3 {
-    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-slide {
+    padding: 0;
+    margin-inline: 0;
+
+    p {
+      margin-block-start: 20px;
+      margin: 0 2.5rem;
+    }
+
+    p.testimonial-text {
+      margin-bottom: 1rem;
+    }
   }
 }
