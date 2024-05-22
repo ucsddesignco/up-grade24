@@ -35,26 +35,26 @@
       }
     }
   }
-}
 
-@media (max-width: $tablet-breakpoint) {
-  button {
-    display: none;
-  }
-}
-
-.testimonials {
-  * {
-    margin-top: 0.5rem;
-  }
-
-  .testimonial-slide {
-    p.reviewer {
-      float: right;
+  @media (max-width: $tablet-breakpoint) {
+    button {
+      display: none;
     }
   }
 
-  .buttons {
-    float: right;
+  .testimonials {
+    * {
+      margin-top: 0.5rem;
+    }
+
+    .testimonial-slide {
+      p.reviewer {
+        float: right;
+      }
+    }
+
+    .buttons {
+      float: right;
+    }
   }
 }
