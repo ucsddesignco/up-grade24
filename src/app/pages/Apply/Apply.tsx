@@ -14,8 +14,12 @@ export default function Apply() {
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
+    defaultAnimation: {
+      duration: 1500
+    },
     initial: currentSlide,
     slides: {
+      origin: 'center',
       perView: 1
     },
     slideChanged(slider) {
@@ -44,7 +48,11 @@ export default function Apply() {
       <div className="testimonials">
         <h3>See some testimonials from previous participants:</h3>
         <div className="navigation-wrapper">
-          <div ref={sliderRef} className="keen-slider">
+          <div
+            ref={sliderRef}
+            className="keen-slider"
+            style={{ maxWidth: 700, minWidth: 700 }}
+          >
             {testimonialInfo.map(item => (
               <div
                 className="keen-slider__slide testimonial-slide"
