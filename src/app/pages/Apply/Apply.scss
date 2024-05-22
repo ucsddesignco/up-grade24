@@ -1,11 +1,9 @@
 #apply {
   position: relative;
-  //width: 100%;
-
-  width: calc(100vw - 2 * $main-padding-mobile-inline);
+  width: 100%;
 
   h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   h3 {
@@ -61,7 +59,6 @@
   .testimonial-slide {
     padding: 0;
     margin-inline: 0;
-    width: 2%;
 
     p {
       margin-block-start: 20px;
