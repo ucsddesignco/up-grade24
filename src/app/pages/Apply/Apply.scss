@@ -28,14 +28,10 @@
 
     @media (min-width: $tablet-breakpoint) {
       grid-template-columns: repeat(2, 1fr);
-      padding-block: 1rem;
+      padding-top: 1rem;
 
       li:not-nth-child() {
         margin-right: 60px;
-      }
-
-      li > h3 {
-        margin-bottom: 1rem;
       }
     }
   }
@@ -52,21 +48,13 @@
     margin-top: 0.5rem;
   }
 
-  h3 {
-    margin-bottom: 1rem;
+  .testimonial-slide {
+    p.reviewer {
+      float: right;
+    }
   }
 
-  .testimonial-slide {
-    padding: 0;
-    margin-inline: 0;
-
-    p {
-      margin-block-start: 20px;
-      margin: 0 3rem;
-    }
-
-    p.testimonial-text {
-      margin-bottom: 1rem;
-    }
+  .buttons {
+    float: right;
   }
 }

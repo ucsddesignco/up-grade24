@@ -15,12 +15,12 @@ export default function Apply() {
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     defaultAnimation: {
-      duration: 1500
+      duration: 2000
     },
     initial: currentSlide,
     slides: {
-      origin: 'center',
-      perView: 1
+      perView: 1,
+      origin: 'center'
     },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
@@ -59,12 +59,12 @@ export default function Apply() {
                 key={item.id}
               >
                 <p className="testimonial-text">{item.testimonial}</p>
-                <p>- {item.reviewer}</p>
+                <p className="reviewer">- {item.reviewer}</p>
               </div>
             ))}
           </div>
           {loaded && instanceRef.current && (
-            <>
+            <div className="buttons">
               <button
                 onClick={(e: any) =>
                   e.stopPropagation() || instanceRef.current?.prev()
@@ -79,7 +79,7 @@ export default function Apply() {
               >
                 &gt;
               </button>
-            </>
+            </div>
           )}
         </div>
       </div>
