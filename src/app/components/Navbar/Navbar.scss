@@ -83,6 +83,22 @@ nav {
     max-width: 310px;
   }
 
+  .nav-footer {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 86px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .add-me-to-cart {
+    color: #fcfcfc;
+    background-color: #212121;
+    height: 61.75px;
+    margin-bottom: 40px;
+  }
+
   h1 {
     font-size: 32px;
   }
@@ -94,5 +110,14 @@ nav {
 
   h3 {
     font-size: 18px;
+  }
+
+  button {
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #fcfcfc;
+      color: #212121;
+    }
   }
 }

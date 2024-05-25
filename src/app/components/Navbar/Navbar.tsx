@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import './Navbar.scss';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Hamburger from './Hamburger/Hamburger';
 import FocusTrap from 'focus-trap-react';
 
@@ -45,6 +45,29 @@ export default function Navbar() {
     }
   };
 
+  const [numAstericks, setNumAsterisks] = useState(0);
+  const navContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    //Dynamically set the # of astricks
+    //Get the width of the div and % by 20
+    //that will be the # of asticks
+    const updateAsterisks = () => {
+      if (navContainerRef.current) {
+        const width = navContainerRef.current.offsetWidth;
+        const calcNumAstericks = Math.ceil(width / 10);
+        console.log(width);
+        console.log(calcNumAstericks);
+        setNumAsterisks(calcNumAstericks);
+      }
+    };
+
+    updateAsterisks();
+    window.addEventListener('resize', updateAsterisks);
+
+    return () => window.removeEventListener('resize', updateAsterisks);
+  }, []);
+
   return (
     <FocusTrap active={isHamburgerOpen}>
       <nav>
@@ -64,7 +87,9 @@ export default function Navbar() {
             </h3>
             <h2 style={{ paddingTop: '7px' }}>JUNE 1ST TO AUGUST 13TH</h2>
           </Link>
-          <h2 className="asterisk">*********************</h2>
+          <h2 ref={navContainerRef} className="asterisk">
+            {'*'.repeat(numAstericks)}
+          </h2>
           <ul>
             {links.map(link => (
               <li key={link.href}>
@@ -78,7 +103,7 @@ export default function Navbar() {
                       <h3>{link.text.toUpperCase()}</h3>{' '}
                       <h3 style={{ marginLeft: 'auto' }}>
                         {' '}
-                        0.{links.indexOf(link) + 1}{' '}
+                        .0{links.indexOf(link) + 1}{' '}
                       </h3>
                     </div>
                   </a>
@@ -86,7 +111,30 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <h2 className="asterisk">*********************</h2>
+          <h2 ref={navContainerRef} className="asterisk">
+            {'*'.repeat(numAstericks)}
+          </h2>
+
+          <div className="nav-footer">
+            <div style={{ marginBottom: '40px' }}>
+              <h1>Apply Now</h1>
+            </div>
+
+            <button className="add-me-to-cart">
+              <p>ADD ME TO CART</p>
+            </button>
+
+            <div>
+              <p>
+                THANK YOU FOR CHECKING OUT <br /> UCSD DESIGN CO’S UP-GRADE
+              </p>
+              <a href="mailto:hello@ucsddesign.co">
+                <p style={{ textDecoration: 'underline' }}>
+                  hello@ucsddesign.co
+                </p>
+              </a>
+            </div>
+          </div>
         </div>
         <div
           className={`dark_overlay ${isHamburgerOpen ? 'is-active' : ''}`}
