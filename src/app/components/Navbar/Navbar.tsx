@@ -49,9 +49,9 @@ export default function Navbar() {
   const navContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    //Dynamically set the # of astricks
-    //Get the width of the div and % by 20
-    //that will be the # of asticks
+    /**
+     * Dynamically set the number of astricks
+     */
     const updateAsterisks = () => {
       if (navContainerRef.current) {
         const width = navContainerRef.current.offsetWidth;
@@ -100,7 +100,7 @@ export default function Navbar() {
                     }}
                   >
                     <div className="nav-link-list">
-                      <h3>{link.text.toUpperCase()}</h3>{' '}
+                      <h3 className="nav-link">{link.text.toUpperCase()}</h3>{' '}
                       <h3 style={{ marginLeft: 'auto' }}>
                         {' '}
                         .0{links.indexOf(link) + 1}{' '}

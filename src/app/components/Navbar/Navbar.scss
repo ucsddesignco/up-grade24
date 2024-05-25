@@ -75,6 +75,26 @@ nav {
     max-width: 310px;
   }
 
+  .nav-link {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #212121;
+      transition: width 0.3s ease-in;
+    }
+
+    &:hover:before {
+      width: 100%;
+      left: 0;
+    }
+  }
+
   .asterisk {
     display: flex;
     justify-content: space-between;
