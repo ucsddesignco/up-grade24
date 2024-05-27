@@ -4,6 +4,8 @@
   $trigger-padding-mobile: calc($p-size * 1.25);
   $trigger-padding-desktop: calc($h3-size * 1.25);
   $border-thickness: 1px;
+  // Used to reduce space between accordion trigger and content by ignoring trigger's padding-bottom
+  $content-top-offset: calc(0.75 * $trigger-padding-desktop);
 
   .AccordionItem {
     width: 100%;
@@ -61,7 +63,7 @@
     overflow: hidden;
 
     &[data-state='open'] {
-      animation: slideDown 300ms;
+      animation: slideDown 300ms forwards;
     }
     &[data-state='closed'] {
       animation: slideUp 300ms;
@@ -98,13 +100,15 @@
       height: 0;
     }
     to {
-      height: var(--radix-accordion-content-height);
+      height: calc(var(--radix-accordion-content-height) - $content-top-offset);
+      transform: translateY(calc(-1 * $content-top-offset));
     }
   }
 
   @keyframes slideUp {
     from {
-      height: var(--radix-accordion-content-height);
+      height: calc(var(--radix-accordion-content-height) - $content-top-offset);
+      transform: translateY(calc(-1 * $content-top-offset));
     }
     to {
       height: 0;
