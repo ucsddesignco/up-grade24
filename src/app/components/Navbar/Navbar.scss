@@ -34,6 +34,10 @@ nav {
       padding-block: $main-padding-desktop-block;
     }
 
+    @media (max-height: 800px) {
+      overflow-y: scroll;
+    }
+
     @media (min-width: $tablet-breakpoint) {
       width: $nav-width;
       visibility: visible;
@@ -110,15 +114,27 @@ nav {
   }
 
   .nav-footer {
-    position: fixed;
-    bottom: 0;
-    margin-bottom: 86px;
+    margin-top: auto;
+    //margin-bottom: 86px;
     display: flex;
     justify-content: center;
     flex-direction: column;
+
+    @media (max-width: $tablet-breakpoint) {
+      margin-top: auto;
+    }
+  }
+
+  .apply-now {
+    margin-bottom: 40px;
+
+    @media (max-width: $tablet-breakpoint) {
+      display: none;
+    }
   }
 
   .add-me-to-cart {
+    max-width: 310px;
     color: #fcfcfc;
     background-color: #212121;
     height: 61.75px;

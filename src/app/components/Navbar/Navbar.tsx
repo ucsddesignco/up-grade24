@@ -163,7 +163,7 @@ export default function Navbar() {
           </h2>
 
           <div className="nav-footer">
-            <div style={{ marginBottom: '40px' }}>
+            <div className={'apply-now'}>
               <h1>Apply Now</h1>
             </div>
 
@@ -198,7 +198,7 @@ export default function Navbar() {
                   stroke-width="2"
                 />
               </svg>
-              <p style={{ marginLeft: '20px' }}>ADD ME TO CART</p>
+              <h3 style={{ marginLeft: '20px' }}>ADD ME TO CART</h3>
             </button>
 
             <div>
