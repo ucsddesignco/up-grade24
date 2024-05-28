@@ -2,66 +2,18 @@
   h2 {
     margin-block: 10px $h1-size;
   }
-  .slides-container {
-    display: block;
-  }
 
-  table {
-    display: none;
-    border-collapse: collapse;
+  .non-profit {
+    font-size: calc($p-size * 0.8);
+    text-transform: uppercase;
+    text-wrap: nowrap;
+    line-height: 1;
 
-    tr {
-      border-block-start: 1px solid #bababa;
-      border-block-end: 1px solid #bababa;
-    }
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid $outline-gray;
+    border-radius: 5px;
 
-    td {
-      vertical-align: top;
-      // TODO: refactor to make more responsive
-      padding-block: 20px;
-      padding-inline-end: 40px;
-    }
-
-    th {
-      text-align: left;
-    }
-
-    h3 {
-      padding-block: 10px;
-    }
-
-    tbody {
-      h3 {
-        font-size: calc($p-size * 1.1);
-        line-height: 1;
-
-        display: inline-block;
-        padding: 10px;
-        border-radius: 5px;
-      }
-    }
-
-    .non-profit {
-      font-size: calc($p-size * 0.8);
-      text-transform: uppercase;
-      text-wrap: nowrap;
-      line-height: 1;
-
-      display: inline-block;
-      padding: 10px;
-      border: 2px solid #bababa;
-      border-radius: 5px;
-
-      color: #bababa;
-    }
-  }
-
-  @media (min-width: $tablet-breakpoint) {
-    table {
-      display: block;
-    }
-    .slides-container {
-      display: none;
-    }
+    color: $outline-gray;
   }
 }

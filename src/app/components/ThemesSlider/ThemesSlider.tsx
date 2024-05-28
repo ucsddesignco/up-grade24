@@ -3,8 +3,9 @@
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
-import ThemeSlide from './ThemeSlide/ThemeSlide';
 import './ThemesSlider.scss';
+import ThemeSlide from './ThemeSlide/ThemeSlide';
+import SliderArrow from './SliderArrow/SliderArrow';
 
 import { useState } from 'react';
 
@@ -15,14 +16,27 @@ export type slideContent = {
   nonProfits: Array<string>;
 };
 
-type ThemesSliderProps = { slidesContent: Array<slideContent> };
-
-export default function ThemesSlider({ slidesContent }: ThemesSliderProps) {
+export default function ThemesSlider({
+  slidesContent
+}: {
+  slidesContent: Array<slideContent>;
+}) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
+    breakpoints: {
+      '(min-width: 550px)': {
+        slides: { origin: 'center', perView: 1.5, spacing: 10 }
+      },
+      '(min-width: 979px)': {
+        slides: { perView: 3, spacing: 20 }
+      }
+    },
+    slides: {
+      perView: 1
+    },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
     },
@@ -31,8 +45,10 @@ export default function ThemesSlider({ slidesContent }: ThemesSliderProps) {
     }
   });
 
+  //TODO: add aria controls and labels to slide navigation
+
   return (
-    <div className="nav-wrapper">
+    <div className="theme-slider-container">
       <div ref={sliderRef} className="keen-slider">
         {slidesContent.map(slide => (
           <div className="keen-slider__slide" key={slide.theme}>
@@ -40,16 +56,40 @@ export default function ThemesSlider({ slidesContent }: ThemesSliderProps) {
           </div>
         ))}
       </div>
-      <span className="dots">
-        {loaded &&
-          [...Array(instanceRef.current?.slides.length)].map((_, slideIdx) => (
-            <button
-              key={slideIdx}
-              className={'dot' + (currentSlide === slideIdx ? ' active' : '')}
-              onClick={() => instanceRef.current?.moveToIdx(slideIdx)}
-            ></button>
-          ))}
-      </span>
+
+      <div className="theme-slider-nav">
+        <span className="dots">
+          {loaded &&
+            [...Array(instanceRef.current?.slides.length)].map(
+              (_, slideIdx) => (
+                <button
+                  key={slideIdx}
+                  className={
+                    'dot' + (currentSlide === slideIdx ? ' active' : '')
+                  }
+                  onClick={() => instanceRef.current?.moveToIdx(slideIdx)}
+                ></button>
+              )
+            )}
+        </span>
+        <span className="arrows">
+          <SliderArrow
+            left
+            onClick={e => {
+              e.stopPropagation();
+              instanceRef.current?.prev();
+            }}
+            disabled={currentSlide === 0}
+          />
+          <SliderArrow
+            onClick={e => {
+              e.stopPropagation();
+              instanceRef.current?.next();
+            }}
+            disabled={currentSlide === 2}
+          />
+        </span>
+      </div>
     </div>
   );
 }

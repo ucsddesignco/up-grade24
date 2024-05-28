@@ -3,12 +3,23 @@
   $slide-margin: 20px;
 
   margin: $slide-margin;
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 420px;
+  height: calc(100% - 2 * $slide-margin);
 
   h3 {
     display: inline-block;
     border-radius: 5px;
     padding: 10px;
     line-height: 1;
+  }
+
+  h4 {
+    text-transform: uppercase;
   }
 
   p {
@@ -21,13 +32,23 @@
 
   .non-profit {
     text-transform: uppercase;
-    /* TODO: ask if we shoule make this rgba(33, 33, 33, 0.3); for consistency's sake */
-    color: #bababa;
+    color: $outline-gray;
     display: inline-block;
     padding: 10px;
     line-height: 1;
     border-radius: 5px;
-    border: 1px solid #bababa;
+    border: 1px solid $outline-gray;
     margin-block-start: 0;
+  }
+
+  @media (min-width: $mobile-breakpoint) {
+    padding: $slide-margin;
+    border: 1px solid $outline-gray;
+  }
+
+  @media (min-width: $tablet-breakpoint) {
+    margin: 0;
+    min-height: auto;
+    height: 100%;
   }
 }
