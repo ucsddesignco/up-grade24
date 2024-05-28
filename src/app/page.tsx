@@ -7,6 +7,10 @@ import FAQ from './pages/FAQ/FAQ';
 import Apply from './pages/Apply/Apply';
 import Navbar from './components/Navbar/Navbar';
 
+{
+  /* Scroll Refs */
+}
+
 export default async function Home() {
   return (
     <main className="home_page">

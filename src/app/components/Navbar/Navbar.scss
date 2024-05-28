@@ -95,6 +95,12 @@ nav {
     }
   }
 
+  .highlight {
+    position: absolute;
+    left: 10;
+    background-color: #f5ff85;
+  }
+
   .asterisk {
     display: flex;
     justify-content: space-between;
@@ -132,12 +138,21 @@ nav {
     font-size: 18px;
   }
 
-  button {
+  .add-me-to-cart {
     border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 
-    &:hover {
-      background-color: #fcfcfc;
-      color: #212121;
-    }
+  .add-me-to-cart:hover {
+    background-color: #fcfcfc;
+    color: #212121;
+  }
+
+  .add-me-to-cart:hover .svg-cart path {
+    stroke: #212121;
+    stroke-width: 2.25px;
   }
 }

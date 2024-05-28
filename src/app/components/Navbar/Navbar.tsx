@@ -4,6 +4,10 @@ import './Navbar.scss';
 import React, { useState, useEffect, useRef } from 'react';
 import Hamburger from './Hamburger/Hamburger';
 import FocusTrap from 'focus-trap-react';
+//import { link } from 'fs';
+
+//type NavbarProps = {}
+//type Pages = 'Home' | 'Overview' | 'Themes' | 'FAQ' | 'Apply'
 
 export default function Navbar() {
   const hamburgerInnerRef = React.useRef<HTMLSpanElement>(null);
@@ -45,8 +49,19 @@ export default function Navbar() {
     }
   };
 
+  /* Vars for setting Astricks */
   const [numAstericks, setNumAsterisks] = useState(0);
   const navContainerRef = useRef<HTMLDivElement | null>(null);
+
+  /* Vars for Setting Current Page */
+  //const pageList = ['Home', 'Overview', 'Themes', 'FAQ', 'Apply']
+  const [currPage, setCurrPage] = useState('Home');
+
+  /* Vars for Setting the Highlights Width and Hight */
+  const [highlightWidth, setHighlightWidth] = useState(0);
+  const [highlightHeight, setHighlightHeight] = useState(0);
+  const highlight = useRef<HTMLDivElement | null>(null);
+  const navLink = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
     /**
@@ -55,13 +70,30 @@ export default function Navbar() {
     const updateAsterisks = () => {
       if (navContainerRef.current) {
         const width = navContainerRef.current.offsetWidth;
-        const calcNumAstericks = Math.ceil(width / 10);
-        console.log(width);
-        console.log(calcNumAstericks);
+        const calcNumAstericks = Math.floor(width / 10);
         setNumAsterisks(calcNumAstericks);
       }
     };
 
+    /**
+     * If a page is seleted; then update the highlight
+     */
+    const updateHighlightSize = () => {
+      if (highlight.current && navLink.current) {
+        const linkWidth = navLink.current?.offsetWidth;
+        const linkHight = navLink.current?.offsetHeight;
+        setHighlightWidth(linkWidth || 0);
+        setHighlightHeight(linkHight || 0);
+      }
+    };
+
+    /**
+     * Sets the current page
+     * Current page is based on what part of scroll we are at
+     */
+    setCurrPage('Home');
+
+    updateHighlightSize();
     updateAsterisks();
     window.addEventListener('resize', updateAsterisks);
 
@@ -92,7 +124,10 @@ export default function Navbar() {
           </h2>
           <ul>
             {links.map(link => (
-              <li key={link.href}>
+              <li
+                key={link.href}
+                className={`nav-link-container ${currPage === link.text ? 'active' : ''}`}
+              >
                 <Link href={link.href} passHref legacyBehavior>
                   <a
                     onClick={() => {
@@ -100,7 +135,19 @@ export default function Navbar() {
                     }}
                   >
                     <div className="nav-link-list">
-                      <h3 className="nav-link">{link.text.toUpperCase()}</h3>{' '}
+                      {link.text === currPage ? (
+                        <div
+                          className="highlight"
+                          ref={highlight}
+                          style={{
+                            width: highlightWidth + 5,
+                            height: highlightHeight + 2
+                          }}
+                        ></div>
+                      ) : null}
+                      <h3 className="nav-link" ref={navLink}>
+                        {link.text.toUpperCase()}
+                      </h3>{' '}
                       <h3 style={{ marginLeft: 'auto' }}>
                         {' '}
                         .0{links.indexOf(link) + 1}{' '}
@@ -121,7 +168,37 @@ export default function Navbar() {
             </div>
 
             <button className="add-me-to-cart">
-              <p>ADD ME TO CART</p>
+              <svg
+                className="svg-cart"
+                xmlns="http://www.w3.org/2000/svg"
+                width="44"
+                height="25"
+                viewBox="0 0 44 25"
+                fill="none"
+              >
+                <path
+                  d="M1.5 1.57288H42L37.4949 23.3151H6.08701L1.5 1.57288Z"
+                  stroke="#FCFCFC"
+                  stroke-width="2"
+                />
+                <path
+                  d="M4.5 15.5729L39.5 15.5729"
+                  stroke="#FCFCFC"
+                  stroke-width="2"
+                />
+                <path d="M3.5 8.57288H40.5" stroke="#FCFCFC" stroke-width="2" />
+                <path
+                  d="M28.5 1.57288L27.5 23.0729"
+                  stroke="#FCFCFC"
+                  stroke-width="2"
+                />
+                <path
+                  d="M15.5 1.57288L16.5 23.0729"
+                  stroke="#FCFCFC"
+                  stroke-width="2"
+                />
+              </svg>
+              <p style={{ marginLeft: '20px' }}>ADD ME TO CART</p>
             </button>
 
             <div>
