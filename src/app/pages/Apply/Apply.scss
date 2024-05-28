@@ -1,6 +1,7 @@
 #apply {
   position: relative;
   width: 100%;
+  overflow: hidden;
 
   h2 {
     margin-bottom: 0.5rem;
@@ -11,7 +12,7 @@
   }
 
   hr {
-    background-color: lightgray;
+    border: 1px solid lightgray;
     display: none;
 
     @media (min-width: $tablet-breakpoint) {
@@ -23,15 +24,17 @@
     list-style-type: none;
     padding-left: 0;
     display: grid;
-    gap: 1rem;
+    gap: 2.5rem;
     padding-block: 0;
 
     @media (min-width: $tablet-breakpoint) {
       grid-template-columns: repeat(2, 1fr);
-      padding-top: 1rem;
+      padding-block: 1rem;
+    }
 
-      li:not-nth-child() {
-        margin-right: 60px;
+    li {
+      h3 {
+        margin-bottom: 1rem;
       }
     }
   }
@@ -39,22 +42,6 @@
   @media (max-width: $tablet-breakpoint) {
     button {
       display: none;
-    }
-  }
-
-  .testimonials {
-    * {
-      margin-top: 0.5rem;
-    }
-
-    .testimonial-slide {
-      p.reviewer {
-        float: right;
-      }
-    }
-
-    .buttons {
-      float: right;
     }
   }
 }
