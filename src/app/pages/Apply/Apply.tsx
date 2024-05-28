@@ -15,7 +15,7 @@ export default function Apply() {
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     defaultAnimation: {
-      duration: 2000
+      duration: 3000
     },
     initial: currentSlide,
     slides: {

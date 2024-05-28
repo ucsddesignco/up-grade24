@@ -47,6 +47,10 @@
       margin-top: 0.5rem;
     }
 
+    .navigation-wrapper {
+      border: 2px solid lightgray;
+    }
+
     .testimonial-slide {
       p.reviewer {
         float: right;
@@ -55,6 +59,11 @@
 
     .buttons {
       float: right;
+
+      button {
+        background-color: black;
+        color: white;
+      }
     }
   }
 }
