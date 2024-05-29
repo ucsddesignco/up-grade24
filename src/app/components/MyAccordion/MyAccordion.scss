@@ -14,7 +14,7 @@
     border-bottom: none;
 
     &:last-child {
-      @media (min-width: $mobile-breakpoint) {
+      @media (min-width: $desktop-breakpoint) {
         border-bottom: $border-thickness solid $trigger-border-color;
       }
     }
@@ -23,7 +23,7 @@
   .AccordionColumn {
     // Avoid double border on right side when there are 2 columns
     &:not(:first-child) {
-      @media (min-width: $mobile-breakpoint) {
+      @media (min-width: $desktop-breakpoint) {
         transform: translateX(-$border-thickness);
       }
     }
@@ -115,8 +115,7 @@
     }
   }
 
-  // breakpoint should be a little bigger since text still wraps a little at this size
-  @media (min-width: $mobile-breakpoint) {
+  @media (min-width: $desktop-breakpoint) {
     & {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
