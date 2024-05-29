@@ -9,20 +9,20 @@ $subheading-font: var(--font-uncutsans-medium);
 
 // Breakpoints
 $mobile-breakpoint: 550px;
-$tablet-breakpoint: 979px;
+$tablet-breakpoint: 1000px;
 
 // Sizes
 $nav-width: clamp(250px, 200px + 11vw, 470px);
 
 // Spacing
 $main-padding-mobile-block: clamp(20px, 30px + 1.2vw, 40px);
-$main-padding-mobile-inline: clamp(20px, 12px + 1.2vw, 40px);
+$main-padding-mobile-inline: clamp(20px, 12px + 5vw, 40px);
 $main-padding-desktop-block: clamp(50px, 25px + 1.8vw, 80px);
 $main-padding-desktop-inline: clamp(50px, 25px + 1.8vw, 80px);
 
 //Font Sizes
 $h1-size: clamp(26px, calc(24px + 0.46vw), 40px);
 $h2-size: clamp(30px, calc(27px + 0.52vw), 44px);
-$h3-size: clamp(18px, calc(15px + 0.32vw), 24px);
+$h3-size: clamp(18px, calc(16px + 0.32vw), 22px);
 $p-size: clamp(14px, calc(12px + 0.25vw), 20px);
 $footer-font-size: clamp(12px, 2.8vw, $p-size);

@@ -1,0 +1,70 @@
+.googly-eyes-container {
+  position: absolute;
+  inset: 0;
+
+  #pupil1,
+  #pupil2 {
+    transition: transform 0.1s;
+  }
+
+  .googly-eyes {
+    transform: scale(0.3);
+
+    @media (min-width: 380px) {
+      transform: scale(0.4);
+    }
+
+    @media (min-width: 550px) {
+      transform: scale(0.55);
+    }
+
+    @media (min-width: 760px) {
+      transform: scale(0.7);
+    }
+
+    @media (min-width: 1250px) {
+      transform: scale(0.85);
+    }
+
+    @media (min-width: 1440px) {
+      transform: scale(1);
+    }
+
+    @media (min-width: 1750px) {
+      transform: scale(1.2);
+    }
+  }
+
+  #googly-eye1 {
+    position: absolute;
+    top: calc(10% + 8vw);
+    right: 20%;
+
+    @media (min-width: 475px) {
+      top: 50%;
+    }
+
+    @media (min-width: 760px) {
+      top: auto;
+      bottom: 10%;
+      right: 22%;
+    }
+  }
+
+  #googly-eye2 {
+    position: absolute;
+    top: calc(25% - 1vw);
+    right: 9%;
+
+    @media (min-width: 475px) {
+      top: 35%;
+      right: 9%;
+    }
+
+    @media (min-width: 760px) {
+      top: auto;
+      bottom: 30%;
+      right: 9%;
+    }
+  }
+}
