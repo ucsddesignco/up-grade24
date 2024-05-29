@@ -1,4 +1,8 @@
 #themes {
   // Overview page will compensate for this padding to allow the squash to be visible
   padding-top: 0;
+
+  @media (min-width: $tablet-breakpoint) {
+    padding-top: $main-padding-desktop-block;
+  }
 }

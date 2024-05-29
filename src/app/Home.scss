@@ -13,6 +13,7 @@
     margin-inline: auto;
 
     @media (min-width: $tablet-breakpoint) {
+      scroll-behavior: smooth;
       display: grid;
       scroll-snap-type: y mandatory;
     }
