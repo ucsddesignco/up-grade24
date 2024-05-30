@@ -17,7 +17,7 @@ export default function Testimonial() {
     },
     slides: {
       perView: 3,
-      spacing: 40
+      spacing: 33.333
     }
   });
 
@@ -25,6 +25,7 @@ export default function Testimonial() {
     <div className="testimonials">
       <h3>See some testimonials from previous participants:</h3>
       <div className="slider-wrapper">
+        <div className="center-background"></div>
         <ul ref={sliderRef} className="keen-slider">
           {TESTIMONIAL_LIST.map(testimonial => (
             <li key={testimonial.id} className="keen-slider__slide">

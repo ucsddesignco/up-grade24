@@ -24,15 +24,26 @@
     margin-bottom: 2rem;
   }
 
+  .center-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 33.33%;
+    height: 100%;
+    background-color: yellow;
+    z-index: 1;
+  }
+
   .slider-wrapper {
     position: relative;
     width: 100%;
 
     ul {
-      background-color: white;
       padding-left: 0;
       list-style-type: none;
       position: relative;
+      z-index: 2;
 
       &::before {
         content: '';
@@ -69,6 +80,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
+    z-index: 2;
 
     .arrow {
       width: 30px;
