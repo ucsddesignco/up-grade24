@@ -8,6 +8,21 @@
   }
 
   .googly-eyes {
+    &.blink {
+      animation: Blink 0.18s forwards;
+    }
+
+    @keyframes Blink {
+      0% {
+        transform: scaleY(1);
+      }
+      50% {
+        transform: scaleY(0.1);
+      }
+      100% {
+        transform: scaleY(1);
+      }
+    }
     transform: scale(0.3);
 
     @media (min-width: 380px) {
@@ -19,19 +34,19 @@
     }
 
     @media (min-width: 760px) {
-      transform: scale(0.7);
+      transform: scale(0.65);
     }
 
     @media (min-width: 1250px) {
-      transform: scale(0.85);
+      transform: scale(0.8);
     }
 
     @media (min-width: 1440px) {
-      transform: scale(1);
+      transform: scale(0.95);
     }
 
     @media (min-width: 1750px) {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 
@@ -63,7 +78,7 @@
 
     @media (min-width: 760px) {
       top: auto;
-      bottom: 30%;
+      bottom: 28%;
       right: 9%;
     }
   }

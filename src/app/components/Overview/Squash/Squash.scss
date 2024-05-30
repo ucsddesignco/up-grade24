@@ -1,0 +1,71 @@
+.squash-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: flex-end;
+  bottom: calc(60% + 7vw);
+  left: 55%;
+
+  @media (min-width: 500px) {
+    bottom: calc(18% + 7vw);
+    left: 40%;
+  }
+
+  @media (min-width: 760px) {
+    transform: rotate(0deg);
+    right: 0;
+    left: 0;
+    bottom: -10%;
+  }
+
+  @media (min-width: 1250px) {
+    bottom: 0;
+  }
+
+  .squash-image-wrapper {
+    transform: scaleX(-1) rotate(-80deg);
+    position: relative;
+    width: 100%;
+    // Ideally height is about 100% subtracted by half of expectations list (~8em) and padding (2rem)
+    @media (min-width: 500px) {
+      width: min(90%, 520px);
+      transform: rotate(-90deg);
+    }
+
+    @media (min-width: 760px) {
+      width: auto;
+      transform: rotate(0deg);
+    }
+
+    @media (min-width: $tablet-breakpoint) {
+      opacity: 0;
+    }
+
+    &.pop-up {
+      opacity: 1;
+      animation: PopUp 0.2s ease-in-out forwards;
+    }
+
+    @keyframes PopUp {
+      0% {
+        transform: scale(0);
+      }
+
+      80% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  }
+
+  .squash {
+    object-fit: contain;
+    object-position: bottom;
+    height: 100%;
+    width: 100%;
+  }
+}

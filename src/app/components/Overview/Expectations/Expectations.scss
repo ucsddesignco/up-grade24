@@ -1,5 +1,6 @@
 #overview {
   .expectations-container {
+    max-height: 550px;
     position: relative;
     background-color: $secondary-yellow;
     padding: 2rem;
@@ -29,6 +30,7 @@
 
     h3 {
       max-width: 16em;
+      height: fit-content;
     }
 
     .expectations-list {
@@ -47,59 +49,6 @@
           padding-right: 5px;
           font-size: 1.2em;
         }
-      }
-    }
-
-    .squash-container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: grid;
-      justify-content: center;
-      align-items: flex-end;
-      bottom: calc(60% + 7vw);
-      left: 55%;
-
-      @media (min-width: 500px) {
-        bottom: calc(18% + 7vw);
-        left: 30%;
-      }
-
-      @media (min-width: 760px) {
-        transform: rotate(0deg);
-        right: 0;
-        left: 0;
-        bottom: -10%;
-      }
-
-      @media (min-width: 1250px) {
-        bottom: 0;
-      }
-
-      .squash-image-wrapper {
-        transform: scaleX(-1) rotate(-80deg);
-        position: relative;
-        width: 100%;
-        // Ideally height is about 100% subtracted by half of expectations list (~8em) and padding (2rem)
-        @media (min-width: 500px) {
-          height: calc(100% - 8em - 2rem);
-          transform: rotate(-90deg);
-        }
-
-        @media (min-width: 760px) {
-          transform: rotate(0deg);
-        }
-
-        @media (min-width: 1080px) {
-          height: calc(100% - 6.25em - 2rem);
-        }
-      }
-
-      .squash {
-        object-fit: contain;
-        object-position: bottom;
-        height: 100%;
-        width: 100%;
       }
     }
   }

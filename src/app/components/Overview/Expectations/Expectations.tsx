@@ -1,7 +1,8 @@
-import Image from 'next/image';
-import Squash from '@/assets/images/squash.webp';
+'use client';
+
+import { useRef } from 'react';
 import './Expectations.scss';
-import SquashGooglyEyes from '../SquashGoogleEyes/SquashGooglyEyes';
+import Squash from '@/components/Overview/Squash/Squash';
 
 type Expectation = {
   id: string;
@@ -11,10 +12,13 @@ type ExpectationsProps = {
   expectationsList: Expectation[];
 };
 export default function Expectations({ expectationsList }: ExpectationsProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   return (
-    <div className="expectations-container">
-      <h3>{`Here's what you can expect from UP-Grade:`}</h3>
-      <ul className="expectations-list">
+    <div ref={containerRef} className="expectations-container">
+      <h3 ref={titleRef}>{`Here's what you can expect from UP-Grade:`}</h3>
+      <ul ref={listRef} className="expectations-list">
         {expectationsList.map(expectation => (
           <li key={expectation.id}>
             <span className="arrow">→</span>
@@ -22,12 +26,7 @@ export default function Expectations({ expectationsList }: ExpectationsProps) {
           </li>
         ))}
       </ul>
-      <div className="squash-container">
-        <div className="squash-image-wrapper">
-          <Image className="squash" src={Squash} alt="Squash" />
-          <SquashGooglyEyes />
-        </div>
-      </div>
+      <Squash expectationRefs={{ containerRef, listRef, titleRef }} />
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function SquashGooglyEyes() {
     <div className='googly-eyes-container'>
         <svg ref={eye1Ref} className='googly-eyes' id="googly-eye1" width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="outer-circle1" filter="url(#filter0_d_2381_2875)">
-            <circle cx="31.2339" cy="28.6925" r="28.2323" fill="white"></circle>
+              <circle cx="31.2339" cy="28.6925" r="28.2323" fill="white"></circle>
             </g>
             <g ref={pupil1Ref} id="pupil1">
               <circle cx="30.6305" cy="28.6305" r="18.6305" fill="#212121"></circle>
