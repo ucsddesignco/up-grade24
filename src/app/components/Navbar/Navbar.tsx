@@ -1,103 +1,98 @@
 'use client';
 import Link from 'next/link';
 import './Navbar.scss';
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Hamburger from './Hamburger/Hamburger';
 import FocusTrap from 'focus-trap-react';
-//import { link } from 'fs';
+import FAQ from '@/pages/FAQ/FAQ';
+import { handleToggle } from './hooks/handleToggle';
 
-//type NavbarProps = {}
-//type Pages = 'Home' | 'Overview' | 'Themes' | 'FAQ' | 'Apply'
+type NavbarProps = {
+  pageRefs: {
+    mainRef: React.RefObject<HTMLElement>;
+    landingRef: React.RefObject<HTMLElement>;
+    overviewRef: React.RefObject<HTMLElement>;
+    themesRef: React.RefObject<HTMLElement>;
+    faqRef: React.RefObject<HTMLElement>;
+    applyRef: React.RefObject<HTMLElement>;
+  }
+}
 
-export default function Navbar() {
-  const hamburgerInnerRef = React.useRef<HTMLSpanElement>(null);
-  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-  const links = [
-    { href: '#landing', text: 'Home' },
-    { href: '#overview', text: 'Overview' },
-    { href: '#themes', text: 'Themes' },
-    { href: '#faq', text: 'FAQ' },
-    { href: '#apply', text: 'Apply' }
-  ];
+const NAV_LINKS = [
+  { href: '#landing', text: 'Home' },
+  { href: '#overview', text: 'Overview' },
+  { href: '#themes', text: 'Themes' },
+  { href: '#faq', text: 'FAQ' },
+  { href: '#apply', text: 'Apply' }
+];
 
-  const toggleHamburger = () => {
-    setIsHamburgerOpen(!isHamburgerOpen);
+const PAGE_TYPES = ["Home", "Overview", "Themes", "FAQ", "Apply"]
 
-    if (!isHamburgerOpen) {
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          setIsHamburgerOpen(false);
-          document.body.style.overflow = 'auto';
-          document.removeEventListener('keydown', handleKeyDown);
-        }
-      };
-      document.querySelector('main')?.setAttribute('aria-hidden', 'true');
-      document.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-      document.querySelector('main')?.removeAttribute('aria-hidden');
-      // Add transition to hamburger menu background color when closing navbar
-      if (hamburgerInnerRef.current) {
-        hamburgerInnerRef.current.style.transition =
-          'transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), background-color 0.3s';
-        hamburgerInnerRef.current.addEventListener('animationend', () => {
-          hamburgerInnerRef.current!.style.transition =
-            'transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19)';
-        });
-      }
-    }
-  };
 
-  /* Vars for setting Astricks */
+export default function Navbar({pageRefs}: NavbarProps) {
+  const { mainRef, landingRef, overviewRef, themesRef, faqRef, applyRef } = pageRefs;
   const [numAstericks, setNumAsterisks] = useState(0);
   const navContainerRef = useRef<HTMLDivElement | null>(null);
-
-  /* Vars for Setting Current Page */
-  //const pageList = ['Home', 'Overview', 'Themes', 'FAQ', 'Apply']
+  const asterisksRef1 = useRef<HTMLDivElement | null>(null);
+  const asterisksRef2 = useRef<HTMLDivElement | null>(null);
   const [currPage, setCurrPage] = useState('Home');
 
-  /* Vars for Setting the Highlights Width and Hight */
-  const [highlightWidth, setHighlightWidth] = useState(0);
-  const [highlightHeight, setHighlightHeight] = useState(0);
-  const highlight = useRef<HTMLDivElement | null>(null);
-  const navLink = useRef<HTMLHeadingElement | null>(null);
+  const {toggleHamburger, isHamburgerOpen, hamburgerInnerRef} = handleToggle({navContainerRef});
 
   useEffect(() => {
+    const mainElement = mainRef.current;
+    const landingElement = landingRef.current;
+    const overviewElement = overviewRef.current;
+    const themesElement = themesRef.current;
+    const faqElement = faqRef.current;
+    const applyElement = applyRef.current;
+    
+    /**
+     * Sets the current page
+     * Current page is based on what part of scroll we are at
+    */
+    if (!mainElement || !landingElement || !overviewElement || !themesElement || !faqElement || !applyElement) return;
+
+    const pagesList = [landingElement, overviewElement, themesElement, faqElement, applyElement]
+    const handleScroll = () => {
+      const scrollPosition = mainElement.scrollTop || 0;
+      
+      pagesList.forEach((page, index) => {
+        const pageTop = page.offsetTop;
+        const pageBottom = pageTop + page.clientHeight;
+        
+        const halfScrollPosition = scrollPosition + window.innerHeight/2;
+        if(halfScrollPosition > pageTop && halfScrollPosition < pageBottom){
+          setCurrPage(PAGE_TYPES[index]);
+        }
+      });
+    }
+
+    mainElement.addEventListener("scroll", handleScroll)
     /**
      * Dynamically set the number of astricks
      */
     const updateAsterisks = () => {
-      if (navContainerRef.current) {
-        const width = navContainerRef.current.offsetWidth;
+      if (asterisksRef1.current) {
+        const width = asterisksRef1.current.getBoundingClientRect().width;
+        const calcNumAstericks = Math.floor(width / 10);
+        setNumAsterisks(calcNumAstericks);
+      }
+      if (asterisksRef2.current) {
+        const width = asterisksRef2.current.getBoundingClientRect().width;
         const calcNumAstericks = Math.floor(width / 10);
         setNumAsterisks(calcNumAstericks);
       }
     };
 
-    /**
-     * If a page is seleted; then update the highlight
-     */
-    const updateHighlightSize = () => {
-      if (highlight.current && navLink.current) {
-        const linkWidth = navLink.current?.offsetWidth;
-        const linkHight = navLink.current?.offsetHeight;
-        setHighlightWidth(linkWidth || 0);
-        setHighlightHeight(linkHight || 0);
-      }
-    };
 
-    /**
-     * Sets the current page
-     * Current page is based on what part of scroll we are at
-     */
-    setCurrPage('Home');
-
-    updateHighlightSize();
     updateAsterisks();
     window.addEventListener('resize', updateAsterisks);
 
-    return () => window.removeEventListener('resize', updateAsterisks);
+    return () => {
+      window.removeEventListener('resize', updateAsterisks)
+      mainElement.removeEventListener('scroll', handleScroll)
+    };
   }, []);
 
   return (
@@ -110,7 +105,8 @@ export default function Navbar() {
         />
 
         <div
-          className={`nav-container ${isHamburgerOpen ? 'panel-open is-active' : 'panel-close'}`}
+          ref={navContainerRef}
+          className={`nav-container slideTransition ${isHamburgerOpen ? 'panel-open is-active' : 'panel-close'}`}
         >
           <Link href="/">
             <h1 style={{ paddingBottom: '7px' }}>UP-GRADE 2024</h1>
@@ -119,38 +115,29 @@ export default function Navbar() {
             </h3>
             <h2 style={{ paddingTop: '7px' }}>JUNE 1ST TO AUGUST 13TH</h2>
           </Link>
-          <h2 ref={navContainerRef} className="asterisk">
+          <h2 ref={asterisksRef1} className="asterisk">
             {'*'.repeat(numAstericks)}
           </h2>
           <ul>
-            {links.map(link => (
+            {NAV_LINKS.map((link, index) => (
               <li
                 key={link.href}
+                aria-current={currPage === link.text}
                 className={`nav-link-container ${currPage === link.text ? 'active' : ''}`}
               >
                 <Link href={link.href} passHref legacyBehavior>
                   <a
                     onClick={() => {
                       isHamburgerOpen ? toggleHamburger() : null;
+                      setCurrPage(PAGE_TYPES[index]);
                     }}
                   >
                     <div className="nav-link-list">
-                      {link.text === currPage ? (
-                        <div
-                          className="highlight"
-                          ref={highlight}
-                          style={{
-                            width: highlightWidth + 5,
-                            height: highlightHeight + 2
-                          }}
-                        ></div>
-                      ) : null}
-                      <h3 className="nav-link" ref={navLink}>
+                      <h3 className="nav-link" style={{backgroundColor: currPage === link.text ? '#f5ff85' : ''}}>
                         {link.text.toUpperCase()}
-                      </h3>{' '}
+                      </h3>
                       <h3 style={{ marginLeft: 'auto' }}>
-                        {' '}
-                        .0{links.indexOf(link) + 1}{' '}
+                        {`.0${index + 1}`}
                       </h3>
                     </div>
                   </a>
@@ -158,7 +145,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <h2 ref={navContainerRef} className="asterisk">
+          <h2 ref={asterisksRef2} className="asterisk">
             {'*'.repeat(numAstericks)}
           </h2>
 
@@ -179,23 +166,23 @@ export default function Navbar() {
                 <path
                   d="M1.5 1.57288H42L37.4949 23.3151H6.08701L1.5 1.57288Z"
                   stroke="#FCFCFC"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
                 <path
                   d="M4.5 15.5729L39.5 15.5729"
                   stroke="#FCFCFC"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
-                <path d="M3.5 8.57288H40.5" stroke="#FCFCFC" stroke-width="2" />
+                <path d="M3.5 8.57288H40.5" stroke="#FCFCFC" strokeWidth="2" />
                 <path
                   d="M28.5 1.57288L27.5 23.0729"
                   stroke="#FCFCFC"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
                 <path
                   d="M15.5 1.57288L16.5 23.0729"
                   stroke="#FCFCFC"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
               </svg>
               <h3 style={{ marginLeft: '20px' }}>ADD ME TO CART</h3>

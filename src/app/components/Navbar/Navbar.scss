@@ -1,4 +1,4 @@
-nav {
+nav {  
   a {
     text-decoration: none;
   }
@@ -12,9 +12,12 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    transition: 0.3s ease-out;
     position: fixed;
     z-index: 1;
+
+    &.slideTransition {
+      transition: transform 0.3s ease-out;
+    }
 
     &.panel-open {
       transform: translateX(0%);

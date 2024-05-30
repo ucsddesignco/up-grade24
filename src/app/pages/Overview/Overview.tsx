@@ -1,8 +1,13 @@
 import './Overview.scss';
+import {PageRef} from '@/page'
 
-export default function Overview() {
+type OverviewProps = {
+  overviewRef: PageRef;
+}
+
+export default function Overview({overviewRef} : OverviewProps) {
   return (
-    <section id="overview">
+    <section ref={overviewRef} id="overview">
       <p className="breadcrumb">.02 / OVERVIEW</p>
       <h2>What is UP-Grade?</h2>
       <p>
