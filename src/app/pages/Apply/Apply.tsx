@@ -1,13 +1,12 @@
 import Footer from '@/components/Footer/Footer';
 import './Apply.scss';
-import {PageRef} from '@/page'
+import { PageRef } from '@/page';
 
 type ApplyProps = {
   applyRef: PageRef;
-}
+};
 
-
-export default function Apply({applyRef}: ApplyProps) {
+export default function Apply({ applyRef }: ApplyProps) {
   return (
     <section ref={applyRef} id="apply">
       <p className="breadcrumb">.05 / Apply</p>

@@ -1,17 +1,18 @@
-import { useState, useRef } from "react";
+import { useState, useRef, RefObject } from 'react';
 
-type handleToggleProps = {
-  navContainerRef: React.RefObject<HTMLDivElement>;
-}
+type UseHandleHamburgerProps = {
+  navContainerRef: RefObject<HTMLDivElement>;
+};
 
-export const handleToggle = ({navContainerRef}: handleToggleProps) => {
+export const useHandleHamburger = ({
+  navContainerRef
+}: UseHandleHamburgerProps) => {
   const hamburgerInnerRef = useRef<HTMLSpanElement>(null);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
   const toggleHamburger = () => {
-    console.log(navContainerRef.current?.classList)
-    navContainerRef.current?.classList.toggle("slideTransition")
-    console.log(navContainerRef.current?.classList)
+    // Toggle slide transition to account for mobile to desktop resize
+    navContainerRef.current?.classList.toggle('slideTransition');
     setIsHamburgerOpen(!isHamburgerOpen);
 
     if (!isHamburgerOpen) {
@@ -40,5 +41,5 @@ export const handleToggle = ({navContainerRef}: handleToggleProps) => {
     }
   };
 
-  return {toggleHamburger, isHamburgerOpen, hamburgerInnerRef}
-}
+  return { toggleHamburger, isHamburgerOpen, hamburgerInnerRef };
+};

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useRef } from 'react';
 import './Home.scss';
@@ -10,8 +10,7 @@ import FAQ from './pages/FAQ/FAQ';
 import Apply from './pages/Apply/Apply';
 import Navbar from './components/Navbar/Navbar';
 
-export type PageRef = React.RefObject<HTMLElement>
-
+export type PageRef = React.RefObject<HTMLElement>;
 
 export default function Home() {
   const mainRef = useRef<HTMLDivElement>(null);
@@ -23,14 +22,23 @@ export default function Home() {
 
   return (
     <main className="home_page">
-      <Navbar pageRefs={{mainRef, landingRef, overviewRef, themesRef, faqRef, applyRef}}/>
+      <Navbar
+        pageRefs={{
+          mainRef,
+          landingRef,
+          overviewRef,
+          themesRef,
+          faqRef,
+          applyRef
+        }}
+      />
       <div ref={mainRef} className="main-content">
         <Landing landingRef={landingRef} />
-        <Overview overviewRef={overviewRef}/>
+        <Overview overviewRef={overviewRef} />
         <Themes themesRef={themesRef} />
-        <FAQ faqRef={faqRef}/>
+        <FAQ faqRef={faqRef} />
         {/* Footer is inside Apply */}
-        <Apply applyRef={applyRef}/>
+        <Apply applyRef={applyRef} />
       </div>
     </main>
   );

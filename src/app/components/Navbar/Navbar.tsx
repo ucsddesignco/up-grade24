@@ -1,22 +1,23 @@
 'use client';
 import Link from 'next/link';
 import './Navbar.scss';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, RefObject } from 'react';
 import Hamburger from './Hamburger/Hamburger';
 import FocusTrap from 'focus-trap-react';
-import FAQ from '@/pages/FAQ/FAQ';
-import { handleToggle } from './hooks/handleToggle';
+import { useHandleHamburger } from './hooks/useHandleHamburger';
+import { useHandleAsterisks } from './hooks/useHandleAsterisks';
+import { useHandleScroll } from './hooks/useHandleScroll';
 
 type NavbarProps = {
   pageRefs: {
-    mainRef: React.RefObject<HTMLElement>;
-    landingRef: React.RefObject<HTMLElement>;
-    overviewRef: React.RefObject<HTMLElement>;
-    themesRef: React.RefObject<HTMLElement>;
-    faqRef: React.RefObject<HTMLElement>;
-    applyRef: React.RefObject<HTMLElement>;
-  }
-}
+    mainRef: RefObject<HTMLElement>;
+    landingRef: RefObject<HTMLElement>;
+    overviewRef: RefObject<HTMLElement>;
+    themesRef: RefObject<HTMLElement>;
+    faqRef: RefObject<HTMLElement>;
+    applyRef: RefObject<HTMLElement>;
+  };
+};
 
 const NAV_LINKS = [
   { href: '#landing', text: 'Home' },
@@ -26,74 +27,21 @@ const NAV_LINKS = [
   { href: '#apply', text: 'Apply' }
 ];
 
-const PAGE_TYPES = ["Home", "Overview", "Themes", "FAQ", "Apply"]
+const PAGE_TYPES = ['Home', 'Overview', 'Themes', 'FAQ', 'Apply'] as const;
+export type PageType = (typeof PAGE_TYPES)[number];
 
-
-export default function Navbar({pageRefs}: NavbarProps) {
-  const { mainRef, landingRef, overviewRef, themesRef, faqRef, applyRef } = pageRefs;
-  const [numAstericks, setNumAsterisks] = useState(0);
+export default function Navbar({ pageRefs }: NavbarProps) {
   const navContainerRef = useRef<HTMLDivElement | null>(null);
   const asterisksRef1 = useRef<HTMLDivElement | null>(null);
   const asterisksRef2 = useRef<HTMLDivElement | null>(null);
-  const [currPage, setCurrPage] = useState('Home');
+  const [currPage, setCurrPage] = useState<PageType>('Home');
 
-  const {toggleHamburger, isHamburgerOpen, hamburgerInnerRef} = handleToggle({navContainerRef});
+  const { toggleHamburger, isHamburgerOpen, hamburgerInnerRef } =
+    useHandleHamburger({ navContainerRef });
 
-  useEffect(() => {
-    const mainElement = mainRef.current;
-    const landingElement = landingRef.current;
-    const overviewElement = overviewRef.current;
-    const themesElement = themesRef.current;
-    const faqElement = faqRef.current;
-    const applyElement = applyRef.current;
-    
-    /**
-     * Sets the current page
-     * Current page is based on what part of scroll we are at
-    */
-    if (!mainElement || !landingElement || !overviewElement || !themesElement || !faqElement || !applyElement) return;
+  const { numAstericks } = useHandleAsterisks({ asterisksRef1, asterisksRef2 });
 
-    const pagesList = [landingElement, overviewElement, themesElement, faqElement, applyElement]
-    const handleScroll = () => {
-      const scrollPosition = mainElement.scrollTop || 0;
-      
-      pagesList.forEach((page, index) => {
-        const pageTop = page.offsetTop;
-        const pageBottom = pageTop + page.clientHeight;
-        
-        const halfScrollPosition = scrollPosition + window.innerHeight/2;
-        if(halfScrollPosition > pageTop && halfScrollPosition < pageBottom){
-          setCurrPage(PAGE_TYPES[index]);
-        }
-      });
-    }
-
-    mainElement.addEventListener("scroll", handleScroll)
-    /**
-     * Dynamically set the number of astricks
-     */
-    const updateAsterisks = () => {
-      if (asterisksRef1.current) {
-        const width = asterisksRef1.current.getBoundingClientRect().width;
-        const calcNumAstericks = Math.floor(width / 10);
-        setNumAsterisks(calcNumAstericks);
-      }
-      if (asterisksRef2.current) {
-        const width = asterisksRef2.current.getBoundingClientRect().width;
-        const calcNumAstericks = Math.floor(width / 10);
-        setNumAsterisks(calcNumAstericks);
-      }
-    };
-
-
-    updateAsterisks();
-    window.addEventListener('resize', updateAsterisks);
-
-    return () => {
-      window.removeEventListener('resize', updateAsterisks)
-      mainElement.removeEventListener('scroll', handleScroll)
-    };
-  }, []);
+  useHandleScroll({ setCurrPage, pageRefs, PAGE_TYPES });
 
   return (
     <FocusTrap active={isHamburgerOpen}>
@@ -133,12 +81,16 @@ export default function Navbar({pageRefs}: NavbarProps) {
                     }}
                   >
                     <div className="nav-link-list">
-                      <h3 className="nav-link" style={{backgroundColor: currPage === link.text ? '#f5ff85' : ''}}>
+                      <h3
+                        className="nav-link"
+                        style={{
+                          backgroundColor:
+                            currPage === link.text ? '#f5ff85' : ''
+                        }}
+                      >
                         {link.text.toUpperCase()}
                       </h3>
-                      <h3 style={{ marginLeft: 'auto' }}>
-                        {`.0${index + 1}`}
-                      </h3>
+                      <h3 style={{ marginLeft: 'auto' }}>{`.0${index + 1}`}</h3>
                     </div>
                   </a>
                 </Link>

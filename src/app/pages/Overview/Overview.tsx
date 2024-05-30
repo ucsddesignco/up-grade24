@@ -1,11 +1,11 @@
 import './Overview.scss';
-import {PageRef} from '@/page'
+import { PageRef } from '@/page';
 
 type OverviewProps = {
   overviewRef: PageRef;
-}
+};
 
-export default function Overview({overviewRef} : OverviewProps) {
+export default function Overview({ overviewRef }: OverviewProps) {
   return (
     <section ref={overviewRef} id="overview">
       <p className="breadcrumb">.02 / OVERVIEW</p>
