@@ -1,9 +1,10 @@
 #apply {
   position: relative;
   width: 100%;
+  overflow: hidden;
 
   h2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
   h3 {
@@ -11,7 +12,7 @@
   }
 
   hr {
-    background-color: lightgray;
+    border: 1px solid lightgray;
     display: none;
 
     @media (min-width: $tablet-breakpoint) {
@@ -23,15 +24,18 @@
     list-style-type: none;
     padding-left: 0;
     display: grid;
-    gap: 1rem;
+    gap: 0.5rem;
     padding-block: 0;
 
     @media (min-width: $tablet-breakpoint) {
       grid-template-columns: repeat(2, 1fr);
-      padding-top: 1rem;
+      gap: 2.5rem;
+      padding-block: 1rem;
+    }
 
-      li:not-nth-child() {
-        margin-right: 60px;
+    li {
+      h3 {
+        margin-bottom: 0.5rem;
       }
     }
   }
@@ -39,31 +43,6 @@
   @media (max-width: $tablet-breakpoint) {
     button {
       display: none;
-    }
-  }
-
-  .testimonials {
-    * {
-      margin-top: 0.5rem;
-    }
-
-    .navigation-wrapper {
-      border: 2px solid lightgray;
-    }
-
-    .testimonial-slide {
-      p.reviewer {
-        float: right;
-      }
-    }
-
-    .buttons {
-      float: right;
-
-      button {
-        background-color: black;
-        color: white;
-      }
     }
   }
 }
