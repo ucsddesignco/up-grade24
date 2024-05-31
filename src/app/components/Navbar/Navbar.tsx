@@ -5,7 +5,6 @@ import { useState, useRef, RefObject } from 'react';
 import Hamburger from './Hamburger/Hamburger';
 import FocusTrap from 'focus-trap-react';
 import { useHandleHamburger } from './hooks/useHandleHamburger';
-import { useHandleAsterisks } from './hooks/useHandleAsterisks';
 import { useHandleScroll } from './hooks/useHandleScroll';
 
 type NavbarProps = {
@@ -27,6 +26,9 @@ const NAV_LINKS = [
   { href: '#apply', text: 'Apply' }
 ];
 
+// Overshoot number of asterisks, as it will anything past first line will be hidden
+const NUM_ASTERISKS = 50;
+
 const PAGE_TYPES = ['Home', 'Overview', 'Themes', 'FAQ', 'Apply'] as const;
 export type PageType = (typeof PAGE_TYPES)[number];
 
@@ -38,8 +40,6 @@ export default function Navbar({ pageRefs }: NavbarProps) {
 
   const { toggleHamburger, isHamburgerOpen, hamburgerInnerRef } =
     useHandleHamburger({ navContainerRef });
-
-  const { numAstericks } = useHandleAsterisks({ asterisksRef1, asterisksRef2 });
 
   useHandleScroll({ setCurrPage, pageRefs, PAGE_TYPES });
 
@@ -64,7 +64,7 @@ export default function Navbar({ pageRefs }: NavbarProps) {
             <h2 style={{ paddingTop: '7px' }}>JUNE 1ST TO AUGUST 13TH</h2>
           </Link>
           <h2 ref={asterisksRef1} className="asterisk">
-            {'*'.repeat(numAstericks)}
+            {'*'.repeat(NUM_ASTERISKS)}
           </h2>
           <ul>
             {NAV_LINKS.map((link, index) => (
@@ -98,14 +98,13 @@ export default function Navbar({ pageRefs }: NavbarProps) {
             ))}
           </ul>
           <h2 ref={asterisksRef2} className="asterisk">
-            {'*'.repeat(numAstericks)}
+            {'*'.repeat(NUM_ASTERISKS)}
           </h2>
 
           <div className="nav-footer">
             <div className={'apply-now'}>
               <h1>Apply Now</h1>
             </div>
-
             <button className="add-me-to-cart">
               <svg
                 className="svg-cart"

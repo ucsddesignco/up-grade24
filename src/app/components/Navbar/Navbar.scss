@@ -109,19 +109,11 @@ nav {
   }
 
   .asterisk {
-    display: flex;
-    justify-content: space-between;
-    color: #212121;
-    opacity: 0.45;
-    max-width: 310px;
-    &::before {
-      content: '********************************************************************************';
-      display: block;
-      white-space: nowrap;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
+    word-wrap: break-word;
+    height: 1em;
+    overflow-y: hidden;
+    color: #bababa;
+    font-family: monospace;
   }
 
   .nav-footer {
