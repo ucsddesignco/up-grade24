@@ -30,7 +30,7 @@ export default function Testimonial() {
           {TESTIMONIAL_LIST.map(testimonial => (
             <li key={testimonial.id} className="keen-slider__slide">
               <p>{testimonial.text}</p>
-              <p className="reviewer">- PAST UPGRADER</p>
+              <p className="reviewer">- {testimonial.reviewer}</p>
             </li>
           ))}
         </ul>
