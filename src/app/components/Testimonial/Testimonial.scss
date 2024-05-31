@@ -51,9 +51,10 @@
         width: 50px;
         height: 100%;
         background-color: white;
-        background: linear-gradient(to right, black, transparent);
+        background: linear-gradient(to right, white, transparent);
         position: absolute;
         left: 0;
+        z-index: 3;
       }
 
       &::after {
@@ -62,9 +63,10 @@
         width: 50px;
         height: 100%;
         background-color: white;
-        background: linear-gradient(to left, black, transparent);
+        background: linear-gradient(to left, white, transparent);
         position: absolute;
         right: 0;
+        z-index: 3;
       }
 
       li {
