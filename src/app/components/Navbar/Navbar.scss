@@ -93,7 +93,7 @@ nav {
       width: 0;
       height: 2px;
       background-color: #212121;
-      transition: width 0.3s ease-in;
+      transition: width 0.25s;
     }
 
     &:is(:hover, :focus-visible):before {
@@ -114,15 +114,14 @@ nav {
     color: #212121;
     opacity: 0.45;
     max-width: 310px;
-    height: 1em;
-    // &::before {
-    //   content: '********************************************************************************';
-    //   display: block;
-    //   white-space: nowrap;
-    //   width: 100%;
-    //   height: 100%;
-    //   overflow: hidden;
-    // }
+    &::before {
+      content: '********************************************************************************';
+      display: block;
+      white-space: nowrap;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
   }
 
   .nav-footer {
@@ -150,6 +149,7 @@ nav {
     background-color: #212121;
     height: 61.75px;
     margin-bottom: 40px;
+    transition: background-color 0.3s;
   }
 
   h1 {

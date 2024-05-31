@@ -142,7 +142,8 @@ export default function Navbar({ pageRefs }: NavbarProps) {
 
             <div>
               <p>
-                THANK YOU FOR CHECKING OUT <br /> UCSD DESIGN CO’S UP-GRADE
+                {`THANK YOU FOR CHECKING OUT`} <br />{' '}
+                {`UCSD DESIGN CO'S UP-GRADE`}
               </p>
               <a href="mailto:hello@ucsddesign.co">
                 <p style={{ textDecoration: 'underline' }}>

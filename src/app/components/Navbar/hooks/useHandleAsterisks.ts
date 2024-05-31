@@ -29,7 +29,7 @@ export const useHandleAsterisks = ({
       }
     };
 
-    updateAsterisks();
+    // updateAsterisks();
     window.addEventListener('resize', updateAsterisks);
 
     return () => {
