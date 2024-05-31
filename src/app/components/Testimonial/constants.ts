@@ -11,11 +11,6 @@ export const TESTIMONIAL_LIST = [
   },
   {
     id: 'apply-2',
-    text: '"On a technical level, I\'ve expanded my skills in areas like mind mapping for brainstorming, conducting competitive analysis for market research, and using new collaboration tools. Personally, I\'ve grown in my ability to communicate effectively, especially when navigating differing opinions to reach compromises within a team."',
-    reviewer: 'Tracy Vu'
-  },
-  {
-    id: 'apply-3',
     text: '“I have definitely gotten a better understanding of visual design and how to develop a good design for website functions.”',
     reviewer: 'Adeline Liem'
   }
