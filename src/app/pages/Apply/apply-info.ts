@@ -1,7 +1,7 @@
 export const applyInfo = [
   {
     id: 'apply-0',
-    header: 'Create Meaningful Solutions for Social Impact Nonprofits',
+    header: 'Solve Meaningful Problems',
     content:
       'Bring your visions to reality, design with intention, problem-solve and overcome obstacles, and work to create lasting change for a larger community!'
   },
@@ -13,13 +13,13 @@ export const applyInfo = [
   },
   {
     id: 'apply-2',
-    header: 'Put classroom knowledge to real-world Use',
+    header: 'Put skills to real-world use',
     content:
       'Bring your knowledge of technical and soft skills (and all things design process related) to active and practical use, further refining your skills along the way!'
   },
   {
     id: 'apply-3',
-    header: 'Network with peers and industry professionals',
+    header: 'Network with peers & professionals',
     content:
       'Collaborate with leaders in local nonprofit organizations, connect with tech industry professionals, and get to know project mentors!'
   }

@@ -10,6 +10,8 @@ $subheading-font: var(--font-uncutsans-medium);
 // Breakpoints
 $mobile-breakpoint: 550px;
 $tablet-breakpoint: 979px;
+$desktop-breakpoint: 1367px;
+$testimonial-height-breakpoint: 800px;
 
 // Sizes
 $nav-width: clamp(250px, 200px + 11vw, 470px);
@@ -17,8 +19,8 @@ $nav-width: clamp(250px, 200px + 11vw, 470px);
 // Spacing
 $main-padding-mobile-block: clamp(20px, 30px + 1.2vw, 40px);
 $main-padding-mobile-inline: clamp(20px, 12px + 1.2vw, 40px);
-$main-padding-desktop-block: clamp(50px, 25px + 1.8vw, 80px);
-$main-padding-desktop-inline: clamp(50px, 25px + 1.8vw, 80px);
+$main-padding-desktop-block: clamp(40px, 22px + 1.7vw, 70px);
+$main-padding-desktop-inline: clamp(40px, 22px + 1.7vw, 70px);
 
 //Font Sizes
 $h1-size: clamp(26px, calc(24px + 0.46vw), 40px);

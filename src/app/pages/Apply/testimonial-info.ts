@@ -2,7 +2,7 @@ export const TESTIMONIAL_LIST = [
   {
     id: 'apply-0',
     testimonial:
-      '"I had a great experience participating in UP-Grade. I really enjoyed getting to collaborate cross-functionally with a team and learn new skills beyond just marketing strategy. For example, I got exposure to UX design and visual design, which gave me inspiration to continue pushing myself to take on new opportunities and learn new things."',
+      '"I really enjoyed getting to collaborate cross-functionally with a team and learn new skills beyond just marketing strategy. For example, I got exposure to UX design and visual design, which gave me inspiration to continue pushing myself to take on new opportunities and learn new things."',
     reviewer: 'Tracy Vu'
   },
   {

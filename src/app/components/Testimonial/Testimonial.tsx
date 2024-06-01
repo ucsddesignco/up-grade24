@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import './Testimonial.scss';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import { TESTIMONIAL_LIST } from './constants';
+import { useHandleSlideSize } from './hooks/useHandleSlideSize';
 
-export default function Testimonial() {
+type TestimonialProps = {
+  setOpenModal: Dispatch<SetStateAction<boolean>>;
+};
+
+export default function Testimonial({ setOpenModal }: TestimonialProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [perView, setPerView] = useState(3);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLUListElement>({
     loop: true,
     slideChanged(slider) {
@@ -16,44 +22,67 @@ export default function Testimonial() {
       setLoaded(true);
     },
     slides: {
-      // perView: 'auto'
-      perView: 3
+      perView: perView,
+      spacing: 10
     }
   });
 
+  useHandleSlideSize({ perView, setPerView });
+
+  const slideWidthStyles = {
+    width: `${1 / perView}%`,
+    maxWidth: `${1 / perView}%`,
+    minWidth: `${1 / perView}%`
+  };
+
   return (
     <div className="testimonials">
-      <h3>See some testimonials from previous participants:</h3>
-      <div className="slider-wrapper">
-        <div className="center-background"></div>
-        <ul ref={sliderRef} className="keen-slider">
-          {TESTIMONIAL_LIST.map(testimonial => (
-            <li key={testimonial.id} className="keen-slider__slide">
-              <p>{testimonial.text}</p>
-              <p className="reviewer">- {testimonial.reviewer}</p>
-            </li>
-          ))}
-        </ul>
-        {loaded && instanceRef.current && (
-          <div className="arrow-container">
-            <Arrow
-              left
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.prev()
-              }
-              disabled={currentSlide === 0}
-            />
-            <Arrow
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.next()
-              }
-              disabled={
-                currentSlide ===
-                instanceRef.current.track.details.slides.length - 1
-              }
-            />
-          </div>
-        )}
+      <button
+        className="testimonials-modal-button"
+        onClick={() => {
+          console.log('test'), setOpenModal(true);
+        }}
+      >
+        See testimonials from previous participants:
+      </button>
+      <div className="bottom-section">
+        <h3>See some testimonials from previous participants:</h3>
+        <div className="slider-wrapper">
+          <div className="center-background"></div>
+          {/* Show Modal Button when height is too small */}
+          <ul ref={sliderRef} className="keen-slider testimonial-slider">
+            {TESTIMONIAL_LIST.map(testimonial => (
+              <li
+                key={testimonial.id}
+                className="keen-slider__slide"
+                style={slideWidthStyles}
+              >
+                <p>{testimonial.text}</p>
+                <p className="reviewer">- {testimonial.reviewer}</p>
+              </li>
+            ))}
+          </ul>
+          {loaded && instanceRef.current && (
+            <div className="arrow-container">
+              <Arrow
+                left
+                onClick={(e: any) =>
+                  e.stopPropagation() || instanceRef.current?.prev()
+                }
+                disabled={currentSlide === 0}
+              />
+              <Arrow
+                onClick={(e: any) =>
+                  e.stopPropagation() || instanceRef.current?.next()
+                }
+                disabled={
+                  currentSlide ===
+                  instanceRef.current.track.details.slides.length - 1
+                }
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

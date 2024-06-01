@@ -1,12 +1,16 @@
 #apply {
   position: relative;
   width: 100%;
-  overflow-y: hidden;
-  display: flex;
-  flex-direction: column;
+  overflow-x: hidden;
+
+  @media (min-width: $tablet-breakpoint) {
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+  }
 
   h2 {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0;
   }
 
   h3 {
@@ -16,9 +20,14 @@
   hr {
     border: 1px solid lightgray;
     display: none;
+    margin-block: 1rem;
 
     @media (min-width: $tablet-breakpoint) {
       display: block;
+    }
+
+    @media (min-width: $desktop-breakpoint) and (min-height: $testimonial-height-breakpoint) {
+      margin-block: 2rem;
     }
   }
 
@@ -31,8 +40,8 @@
 
     @media (min-width: $tablet-breakpoint) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-      padding-block: 1rem;
+      // gap: 2.5rem;
+      gap: clamp(1.5rem, calc(10px + 1vw), 2.5rem);
     }
 
     li {
@@ -40,6 +49,10 @@
         margin-bottom: 0.5rem;
       }
     }
+  }
+
+  .top-section {
+    position: relative;
   }
 
   .bottom-section {
