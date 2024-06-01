@@ -36,6 +36,7 @@
       padding-inline: $main-padding-mobile-inline;
 
       @media (min-width: $mobile-breakpoint) {
+        overflow-y: hidden;
         padding-block: $main-padding-desktop-block;
         padding-inline: $main-padding-desktop-inline;
         height: 100vh;

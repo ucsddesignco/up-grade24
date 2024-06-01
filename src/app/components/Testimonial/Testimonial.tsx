@@ -16,8 +16,8 @@ export default function Testimonial() {
       setLoaded(true);
     },
     slides: {
-      perView: 3,
-      spacing: 33.333
+      // perView: 'auto'
+      perView: 3
     }
   });
 

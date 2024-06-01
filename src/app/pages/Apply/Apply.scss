@@ -1,7 +1,9 @@
 #apply {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
 
   h2 {
     margin-bottom: 0.75rem;
@@ -38,6 +40,14 @@
         margin-bottom: 0.5rem;
       }
     }
+  }
+
+  .bottom-section {
+    height: 100%;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   @media (max-width: $tablet-breakpoint) {

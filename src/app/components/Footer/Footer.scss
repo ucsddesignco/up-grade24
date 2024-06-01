@@ -7,12 +7,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  padding-inline: $main-padding-mobile-inline;
-  padding-block: 1rem;
-
-  @media (min-width: $tablet-breakpoint) {
-    padding-inline: $main-padding-desktop-inline;
-  }
+  padding-top: 1rem;
 
   span {
     display: flex;
