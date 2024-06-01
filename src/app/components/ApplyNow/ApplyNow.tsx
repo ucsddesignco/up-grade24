@@ -12,6 +12,7 @@ export default function ApplyNow({ applySVGRef }: ApplyNowTypes) {
     <>
       {/* prettier-ignore */}
       <svg className='apply-now-svg' ref={applySVGRef} viewBox='0 0 230 60' fill="none" xmlns="http://www.w3.org/2000/svg">
+        <title>Apply Now!</title>
         <defs>
         <mask id="apply-masks" >
           <g id="apply-mask-A">

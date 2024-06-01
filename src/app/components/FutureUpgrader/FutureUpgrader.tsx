@@ -12,6 +12,7 @@ export default function FutureUpgrader({ futureSVGRef }: FutureUpgraderTypes) {
     <>
       {/* prettier-ignore */}
       <svg className='future-upgrader-svg' ref={futureSVGRef} width="219" height="87" viewBox="0 0 219 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <title>Future Upgrader</title>
         <defs>
             <mask id="future-masks">
                 {/* Future */}

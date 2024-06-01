@@ -2,11 +2,28 @@ nav {
   a {
     text-decoration: none;
   }
+
+  h1 {
+    padding-bottom: 7px;
+    @media (min-width: $tablet-breakpoint) {
+      font-size: clamp(22px, calc(20px + 0.6vw), 34px);
+    }
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 400px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
   .nav-container {
     padding-inline: $main-padding-mobile-inline;
     padding-block: $main-padding-mobile-block;
     width: 100vw;
-    max-width: 500px;
+    max-width: 400px;
     background: rgb(255, 255, 255);
     height: 100dvh;
     display: flex;
@@ -27,8 +44,8 @@ nav {
     }
 
     @media (max-width: $mobile-breakpoint) {
-      padding-inline: clamp(41.5px, 12px + 1.2vw, 40px);
-      padding-block: clamp(108px, 30px + 1.2vw, 40px);
+      padding-inline: clamp(34px, 12px + 1.2vw, 40px);
+      padding-top: 5rem;
     }
 
     @media (min-width: $mobile-breakpoint) {
@@ -36,11 +53,8 @@ nav {
       padding-block: $main-padding-desktop-block;
     }
 
-    @media (max-height: 800px) {
-      overflow-y: scroll;
-    }
-
     @media (min-width: $tablet-breakpoint) {
+      max-width: 500px;
       width: $nav-width;
       visibility: visible;
       position: static;
@@ -52,6 +66,11 @@ nav {
 
     .event-logistics {
       margin-bottom: 1rem;
+
+      .event-date {
+        padding-top: 7px;
+        font-size: clamp(14px, calc(11px + 0.52vw), 24px);
+      }
     }
 
     ul {
@@ -82,7 +101,6 @@ nav {
   .nav-link-list {
     display: grid;
     gap: 14px;
-    max-width: 310px;
 
     .nav-link {
       display: flex;
@@ -117,6 +135,7 @@ nav {
 
   .asterisk {
     word-wrap: break-word;
+    min-height: 1em;
     height: 1em;
     overflow-y: hidden;
     color: #bababa;
@@ -128,10 +147,6 @@ nav {
     display: flex;
     justify-content: center;
     flex-direction: column;
-
-    @media (max-width: $tablet-breakpoint) {
-      margin-top: auto;
-    }
   }
 
   .apply-now {
@@ -146,35 +161,36 @@ nav {
     max-width: 310px;
     color: #fcfcfc;
     background-color: #212121;
-    height: 61.75px;
-    margin-bottom: 40px;
+    padding-block: 20px;
     transition: background-color 0.3s;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  h2 {
-    font-size: 20px;
-    font-weight: 400px;
-  }
-
-  h3 {
-    font-size: 18px;
-  }
-
-  .add-me-to-cart {
     border: 2px solid $primary-black;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: clamp(12px, 1vw, 22px);
+
+    @media (min-width: $mobile-breakpoint) {
+      margin-bottom: clamp(15px, calc(10px + 1.2vw), 40px);
+    }
 
     &:hover {
       background-color: #fcfcfc;
       color: #212121;
+    }
+  }
+
+  .thank-you-container {
+    display: none;
+
+    @media (min-width: $mobile-breakpoint) {
+      display: block;
+    }
+    .thank-you-label {
+      @media (min-width: $tablet-breakpoint) {
+        font-size: clamp(12px, calc(7px + 0.62vw), $p-size);
+      }
     }
   }
 }

@@ -12,14 +12,14 @@ type SignatureProps = {
 
 const APPLY_CONFIG = {
   maskPrefix: 'apply',
-  animationDuration: 0.06,
+  animationDuration: 0.055,
   maskList: ['A', 'p-1', 'p-2', 'l', 'y', 'n', 'o', 'w', 'exclamation'],
   heightOffset: '0%'
 };
 
 const FUTURE_CONFIG = {
   maskPrefix: 'future',
-  animationDuration: 0.1,
+  animationDuration: 0.05,
   //   prettier-ignore
   maskList: ['F', 'u1', 't', 'u2', 'r1', 'e1', 'U', 'p', 'dash', 'g', 'r2', 'a', 'd', 'e2', 'r3'],
   heightOffset: '15%'
@@ -34,7 +34,7 @@ export default function Signature({
   const futureSVGRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    if (hoveringCart) {
+    if (!hoveringCart) {
       console.log('APPLY NOW ANIMATION!');
       handleHandwritingAnimation({
         svgRef: applySVGRef,
@@ -59,7 +59,7 @@ export default function Signature({
         <span ref={xElementRef}>X</span>
         <div className="line" />
       </div>
-      {hoveringCart ? (
+      {!hoveringCart ? (
         <ApplyNow applySVGRef={applySVGRef} />
       ) : (
         <FutureUpgrader futureSVGRef={futureSVGRef} />

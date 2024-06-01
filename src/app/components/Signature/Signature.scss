@@ -1,9 +1,15 @@
 .signature {
+  display: none;
+
+  @media (min-width: $mobile-breakpoint) {
+    display: flex;
+  }
+
   position: relative;
-  margin-bottom: 40px;
+  margin-top: 10px;
+  margin-bottom: clamp(15px, calc(3px + 1vw), 40px);
   font-size: $p-font;
   height: 60px;
-  display: flex;
 
   .signature-container {
     display: flex;

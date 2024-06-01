@@ -59,13 +59,13 @@ export default function Navbar({ pageRefs }: NavbarProps) {
           className={`nav-container slideTransition ${isHamburgerOpen ? 'panel-open is-active' : 'panel-close'}`}
         >
           <Link href="/">
-            <h1 style={{ paddingBottom: '7px' }}>UP-GRADE 2024</h1>
+            <h1>UP-GRADE 2024</h1>
           </Link>
           <div className="event-logistics">
             <h3>
               UCSD Design Co <br /> San Diego, CA
             </h3>
-            <h2 style={{ paddingTop: '7px' }}>JUNE 1ST TO AUGUST 13TH</h2>
+            <p className="event-date">JUNE 1ST TO AUGUST 13TH</p>
           </div>
           <span aria-hidden={true} ref={asterisksRef1} className="asterisk">
             {'*'.repeat(NUM_ASTERISKS)}
@@ -155,11 +155,11 @@ export default function Navbar({ pageRefs }: NavbarProps) {
                   strokeWidth="2"
                 />
               </svg>
-              <p style={{ marginLeft: '20px' }}>ADD ME TO CART</p>
+              <p>ADD ME TO CART</p>
             </a>
 
-            <div>
-              <p>
+            <div className="thank-you-container">
+              <p className="thank-you-label">
                 {`THANK YOU FOR CHECKING OUT`} <br />{' '}
                 {`UCSD DESIGN CO'S UP-GRADE`}
               </p>
