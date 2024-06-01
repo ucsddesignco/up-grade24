@@ -65,7 +65,7 @@ export default function Navbar({ pageRefs }: NavbarProps) {
             <h3>
               UCSD Design Co <br /> San Diego, CA
             </h3>
-            <p className="event-date">JUNE 1ST TO AUGUST 13TH</p>
+            <p className="event-date">JULY 1ST TO SEPT 6TH</p>
           </div>
           <span aria-hidden={true} ref={asterisksRef1} className="asterisk">
             {'*'.repeat(NUM_ASTERISKS)}
