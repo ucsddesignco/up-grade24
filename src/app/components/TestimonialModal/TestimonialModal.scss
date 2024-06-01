@@ -1,7 +1,13 @@
 .testimonial-modal-container {
+  display: none;
   position: absolute;
+  top: 0;
   height: 100%;
   width: 100%;
+
+  @media (min-width: $mobile-breakpoint) {
+    display: block;
+  }
 
   .modal-overlay {
     position: absolute;

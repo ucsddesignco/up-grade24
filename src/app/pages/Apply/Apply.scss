@@ -2,6 +2,11 @@
   position: relative;
   width: 100%;
   overflow-x: hidden;
+  height: fit-content;
+
+  @media (min-width: $tablet-breakpoint) {
+    height: 100vh;
+  }
 
   @media (min-width: $tablet-breakpoint) {
     display: flex;
@@ -37,8 +42,9 @@
     display: grid;
     gap: 0.5rem;
     padding-block: 0;
+    margin-block: 1rem;
 
-    @media (min-width: $tablet-breakpoint) {
+    @media (min-width: 766px) {
       grid-template-columns: repeat(2, 1fr);
       // gap: 2.5rem;
       gap: clamp(1.5rem, calc(10px + 1vw), 2.5rem);

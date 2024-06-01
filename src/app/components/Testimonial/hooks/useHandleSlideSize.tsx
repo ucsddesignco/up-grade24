@@ -39,7 +39,10 @@ export const useHandleSlideSize = ({
       console.log('wah');
       return;
     }
-    if (sliderRect.height < 180 && sliderRect.width < 1200) {
+    if (
+      (sliderRect.height < 180 && sliderRect.width < 1200) ||
+      (sliderRect.height < 300 && sliderRect.width < 800)
+    ) {
       newPerView = 1.5;
       currentSliderBg.classList.add('not-center');
       currentSliderBg.style.width = `calc(${(1 / newPerView) * 100}% - 1rem)`;
