@@ -28,7 +28,7 @@
     .top-content {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      // justify-content: space-between;
       height: fit-content;
 
       @media (min-width: 760px) {
@@ -49,8 +49,10 @@
 
         div {
           display: flex;
+          align-items: center;
           gap: 1rem;
           font-family: $p-font;
+          letter-spacing: 0.6px;
         }
       }
     }

@@ -2,11 +2,6 @@
   position: absolute;
   inset: 0;
 
-  #pupil1,
-  #pupil2 {
-    transition: transform 0.1s;
-  }
-
   .googly-eyes {
     &.blink {
       animation: Blink 0.18s forwards;

@@ -1,6 +1,6 @@
 #overview {
   .past-projects-container {
-    max-width: 22em;
+    max-width: 23em;
     margin-bottom: 2rem;
     h3 {
       max-width: max(20em, 60%);
@@ -16,7 +16,7 @@
 
       @media (min-width: $mobile-breakpoint) {
         gap: 20px;
-        max-width: 19em;
+        max-width: 21em;
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -28,7 +28,7 @@
           border: 2px solid $primary-black;
           background-color: $primary-black;
           border-radius: 4px;
-          padding-block: 6px;
+          padding-block: 4px;
           text-align: center;
           display: block;
           font-family: $p-font;

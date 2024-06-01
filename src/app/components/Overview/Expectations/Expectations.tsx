@@ -17,7 +17,7 @@ export default function Expectations({ expectationsList }: ExpectationsProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   return (
     <div ref={containerRef} className="expectations-container">
-      <h3 ref={titleRef}>{`Here's what you can expect from UP-Grade:`}</h3>
+      <h3 ref={titleRef}>{`Here’s what you can expect from UP-Grade 2024:`}</h3>
       <ul ref={listRef} className="expectations-list">
         {expectationsList.map(expectation => (
           <li key={expectation.id}>
