@@ -41,13 +41,13 @@ export const useHandleSlideSize = ({
     }
     if (
       (sliderRect.height < 180 && sliderRect.width < 1200) ||
-      (sliderRect.height < 300 && sliderRect.width < 800)
+      sliderRect.width < 650
     ) {
       newPerView = 1.5;
       currentSliderBg.classList.add('not-center');
       currentSliderBg.style.width = `calc(${(1 / newPerView) * 100}% - 1rem)`;
       sliderContainer.classList.add('hide-left');
-    } else if (sliderRect.height < 205) {
+    } else if (sliderRect.height < 205 || sliderRect.width < 800) {
       newPerView = 2;
       currentSliderBg.classList.add('not-center');
       currentSliderBg.style.width = `calc(${(1 / newPerView) * 100}% - 1rem)`;
