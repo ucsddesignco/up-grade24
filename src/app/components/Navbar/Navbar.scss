@@ -11,7 +11,6 @@ nav {
     height: 100dvh;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
     position: fixed;
     z-index: 1;
 
@@ -51,10 +50,15 @@ nav {
       }
     }
 
+    .event-logistics {
+      margin-bottom: 1rem;
+    }
+
     ul {
       list-style: none;
       font-family: $p-font;
       padding-left: 0;
+      margin-block: 2rem;
     }
   }
 
@@ -76,29 +80,32 @@ nav {
   }
 
   .nav-link-list {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 14px;
+    display: grid;
+    gap: 14px;
     max-width: 310px;
-  }
 
-  .nav-link {
-    position: relative;
+    .nav-link {
+      display: flex;
 
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: #212121;
-      transition: width 0.25s;
-    }
+      .nav-link-text {
+        position: relative;
 
-    &:is(:hover, :focus-visible):before {
-      width: 100%;
-      left: 0;
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: #212121;
+          transition: width 0.25s;
+        }
+
+        &:is(:hover, :focus-visible):before {
+          width: 100%;
+          left: 0;
+        }
+      }
     }
   }
 
@@ -158,20 +165,16 @@ nav {
   }
 
   .add-me-to-cart {
+    border: 2px solid $primary-black;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-  }
 
-  .add-me-to-cart:hover {
-    background-color: #fcfcfc;
-    color: #212121;
-  }
-
-  .add-me-to-cart:hover .svg-cart path {
-    stroke: #212121;
-    stroke-width: 2.25px;
+    &:hover {
+      background-color: #fcfcfc;
+      color: #212121;
+    }
   }
 }

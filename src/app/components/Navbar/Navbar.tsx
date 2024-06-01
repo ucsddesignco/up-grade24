@@ -6,6 +6,7 @@ import Hamburger from './Hamburger/Hamburger';
 import FocusTrap from 'focus-trap-react';
 import { useHandleHamburger } from './hooks/useHandleHamburger';
 import { useHandleScroll } from './hooks/useHandleScroll';
+import Signature from '../Signature/Signature';
 
 type NavbarProps = {
   pageRefs: {
@@ -37,6 +38,7 @@ export default function Navbar({ pageRefs }: NavbarProps) {
   const asterisksRef1 = useRef<HTMLDivElement | null>(null);
   const asterisksRef2 = useRef<HTMLDivElement | null>(null);
   const [currPage, setCurrPage] = useState<PageType>('Home');
+  const [hoveringCart, setHoveringCart] = useState(false);
 
   const { toggleHamburger, isHamburgerOpen, hamburgerInnerRef } =
     useHandleHamburger({ navContainerRef });
@@ -58,15 +60,17 @@ export default function Navbar({ pageRefs }: NavbarProps) {
         >
           <Link href="/">
             <h1 style={{ paddingBottom: '7px' }}>UP-GRADE 2024</h1>
+          </Link>
+          <div className="event-logistics">
             <h3>
               UCSD Design Co <br /> San Diego, CA
             </h3>
             <h2 style={{ paddingTop: '7px' }}>JUNE 1ST TO AUGUST 13TH</h2>
-          </Link>
-          <h2 ref={asterisksRef1} className="asterisk">
+          </div>
+          <span aria-hidden={true} ref={asterisksRef1} className="asterisk">
             {'*'.repeat(NUM_ASTERISKS)}
-          </h2>
-          <ul>
+          </span>
+          <ul className="nav-link-list">
             {NAV_LINKS.map((link, index) => (
               <li
                 key={link.href}
@@ -80,9 +84,9 @@ export default function Navbar({ pageRefs }: NavbarProps) {
                       setCurrPage(PAGE_TYPES[index]);
                     }}
                   >
-                    <div className="nav-link-list">
+                    <div className="nav-link">
                       <h3
-                        className="nav-link"
+                        className="nav-link-text"
                         style={{
                           backgroundColor:
                             currPage === link.text ? '#f5ff85' : ''
@@ -97,15 +101,26 @@ export default function Navbar({ pageRefs }: NavbarProps) {
               </li>
             ))}
           </ul>
-          <h2 ref={asterisksRef2} className="asterisk">
+          <span aria-hidden={true} ref={asterisksRef2} className="asterisk">
             {'*'.repeat(NUM_ASTERISKS)}
-          </h2>
+          </span>
 
           <div className="nav-footer">
-            <div className={'apply-now'}>
-              <h1>Apply Now</h1>
-            </div>
-            <button className="add-me-to-cart">
+            {/* <ApplyNow navContainerRef={navContainerRef} /> */}
+            {/* <FutureUpgrader/> */}
+            <Signature
+              navContainerRef={navContainerRef}
+              hoveringCart={hoveringCart}
+            />
+            <a
+              className="add-me-to-cart"
+              onMouseEnter={() => {
+                setHoveringCart(true);
+              }}
+              onMouseLeave={() => {
+                setHoveringCart(false);
+              }}
+            >
               <svg
                 className="svg-cart"
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,28 +131,32 @@ export default function Navbar({ pageRefs }: NavbarProps) {
               >
                 <path
                   d="M1.5 1.57288H42L37.4949 23.3151H6.08701L1.5 1.57288Z"
-                  stroke="#FCFCFC"
+                  stroke="currentColor"
                   strokeWidth="2"
                 />
                 <path
                   d="M4.5 15.5729L39.5 15.5729"
-                  stroke="#FCFCFC"
+                  stroke="currentColor"
                   strokeWidth="2"
                 />
-                <path d="M3.5 8.57288H40.5" stroke="#FCFCFC" strokeWidth="2" />
+                <path
+                  d="M3.5 8.57288H40.5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
                 <path
                   d="M28.5 1.57288L27.5 23.0729"
-                  stroke="#FCFCFC"
+                  stroke="currentColor"
                   strokeWidth="2"
                 />
                 <path
                   d="M15.5 1.57288L16.5 23.0729"
-                  stroke="#FCFCFC"
+                  stroke="currentColor"
                   strokeWidth="2"
                 />
               </svg>
-              <h3 style={{ marginLeft: '20px' }}>ADD ME TO CART</h3>
-            </button>
+              <p style={{ marginLeft: '20px' }}>ADD ME TO CART</p>
+            </a>
 
             <div>
               <p>

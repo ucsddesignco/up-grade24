@@ -1,0 +1,28 @@
+.signature {
+  position: relative;
+  margin-bottom: 40px;
+  font-size: $p-font;
+  height: 60px;
+  display: flex;
+
+  .signature-container {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    gap: 12px;
+
+    span {
+      font-family: $p-font;
+      line-height: 1;
+    }
+
+    .line {
+      width: 100%;
+      height: 1px;
+      background-color: #bababa;
+      z-index: -1;
+    }
+  }
+}
