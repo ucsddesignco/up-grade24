@@ -1,11 +1,79 @@
 #faq {
+  $mobile-apricot-lower-breakpoint: 720px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
   h2 {
     margin-bottom: $main-padding-mobile-block;
   }
 
+  #apricot-container,
+  .apricot.mobile {
+    display: none;
+    z-index: -1;
+  }
+
   @media (min-width: $mobile-breakpoint) {
+    overflow: hidden;
     h2 {
-      margin-bottom: $main-padding-desktop-block;
+      margin-bottom: calc($main-padding-mobile-block);
+    }
+  }
+
+  @media ($mobile-apricot-lower-breakpoint < width < $tablet-breakpoint) {
+    .apricot.mobile {
+      display: block;
+      position: absolute;
+      width: 30%;
+      height: auto;
+    }
+
+    #apricot-1 {
+      top: 20%;
+      left: -20%;
+      transform: rotate(20deg);
+    }
+
+    #apricot-2 {
+      bottom: 20%;
+      right: -15%;
+      transform: rotate(-30deg);
+    }
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    h2 {
+      margin-bottom: calc($main-padding-mobile-block - 24px);
+    }
+
+    #apricot-container {
+      display: flex;
+      position: absolute;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10%;
+      bottom: -5%;
+      width: calc(100% - 2 * $main-padding-desktop-inline);
+
+      .apricot {
+        transform: rotate(-10deg);
+
+        &#apricot-3 {
+          height: 15%;
+          width: 15%;
+        }
+
+        &#apricot-4 {
+          height: 20%;
+          width: 20%;
+        }
+
+        &#apricot-5 {
+          height: 25%;
+          width: 25%;
+        }
+      }
     }
   }
 }

@@ -11,7 +11,8 @@ $subheading-font: var(--font-uncutsans-medium);
 
 // Breakpoints
 $mobile-breakpoint: 550px;
-$tablet-breakpoint: 1000px;
+$tablet-breakpoint: 979px;
+$desktop-breakpoint: 1440px;
 
 // Sizes
 $nav-width: clamp(250px, 200px + 11vw, 470px);

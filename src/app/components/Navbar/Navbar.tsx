@@ -81,7 +81,6 @@ export default function Navbar({ pageRefs }: NavbarProps) {
                   <a
                     onClick={() => {
                       isHamburgerOpen ? toggleHamburger() : null;
-                      setCurrPage(PAGE_TYPES[index]);
                     }}
                   >
                     <div className="nav-link">
