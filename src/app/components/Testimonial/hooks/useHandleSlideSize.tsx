@@ -39,14 +39,20 @@ export const useHandleSlideSize = ({
       console.log('wah');
       return;
     }
+
     if (
       (sliderRect.height < 180 && sliderRect.width < 1200) ||
-      sliderRect.width < 650
+      (sliderRect.width < 650 && sliderRect.width > 550)
     ) {
       newPerView = 1.5;
       currentSliderBg.classList.add('not-center');
       currentSliderBg.style.width = `calc(${(1 / newPerView) * 100}% - 1rem)`;
       sliderContainer.classList.add('hide-left');
+    } else if (sliderRect.width < 550) {
+      newPerView = 1;
+      currentSliderBg.style.width = `calc(${(1 / newPerView) * 100}% - 2rem)`;
+      sliderContainer.classList.add('hide-left');
+      sliderContainer.classList.add('hide-right');
     } else if (sliderRect.height < 205 || sliderRect.width < 800) {
       newPerView = 2;
       currentSliderBg.classList.add('not-center');

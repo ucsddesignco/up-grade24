@@ -95,6 +95,12 @@
         }
       }
 
+      &.hide-right {
+        &::after {
+          display: none;
+        }
+      }
+
       &::before,
       &::after {
         content: '';
@@ -163,6 +169,46 @@
     .arrow--right {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .arrow-container {
+      display: none;
+    }
+  }
+
+  .dots {
+    position: relative;
+    display: flex;
+    padding: 10px 0;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .dot {
+    border: none;
+    width: 10px;
+    height: 10px;
+    background: #c5c5c5;
+    border-radius: 50%;
+    margin: 0 5px;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .dot:focus {
+    outline: none;
+  }
+
+  .dot.active {
+    background: #000;
+  }
+
+  @media (min-width: 551px) {
+    .dots {
+      display: none;
     }
   }
 }

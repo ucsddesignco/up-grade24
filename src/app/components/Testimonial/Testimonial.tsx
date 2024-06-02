@@ -82,6 +82,22 @@ export default function Testimonial({ setOpenModal }: TestimonialProps) {
               />
             </div>
           )}
+          {loaded && instanceRef.current && (
+            <div className="dots">
+              {loaded &&
+                [...Array(instanceRef.current?.slides.length)].map(
+                  (_, slideIdx) => (
+                    <button
+                      key={slideIdx}
+                      className={
+                        'dot' + (currentSlide === slideIdx ? ' active' : '')
+                      }
+                      onClick={() => instanceRef.current?.moveToIdx(slideIdx)}
+                    ></button>
+                  )
+                )}
+            </div>
+          )}
         </div>
       </div>
     </div>
