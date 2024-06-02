@@ -44,7 +44,7 @@
       gap: 10%;
       bottom: -5%;
       width: calc(100% - 2 * $main-padding-desktop-inline);
-      z-index: 3;
+      z-index: 2;
 
       .apricot {
         transform: rotate(-10deg) translateX(20%);
