@@ -27,7 +27,7 @@
     position: absolute;
     width: calc(100% - 2 * $main-padding-desktop-inline);
     height: calc(100% - 2 * $main-padding-desktop-block - var(--title-height));
-    border: 1px solid #bababa;
+    border: 1px solid $outline-gray;
     background: #fcfcfc;
     z-index: 2;
     transition: opacity 0.3s;

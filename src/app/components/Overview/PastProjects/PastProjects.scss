@@ -32,11 +32,11 @@
           text-align: center;
           display: block;
           font-family: $p-font;
-          color: white;
+          color: $primary-white;
           cursor: pointer;
 
           &:is(:hover, :focus-visible) {
-            background-color: white;
+            background-color: $primary-white;
             color: $primary-black;
           }
           text-decoration: none;

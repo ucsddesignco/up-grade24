@@ -23,7 +23,7 @@
 
   .bottom-section {
     hr {
-      border: 1px solid #bababa;
+      border: 1px solid $outline-gray;
       margin-block: $slide-margin;
     }
   }
@@ -54,7 +54,7 @@
         text-decoration: none;
         font-family: $p-font;
         outline: none;
-        background-color: white;
+        background-color: $primary-white;
         display: flex;
         flex-wrap: wrap;
         padding: 10px;
@@ -69,7 +69,7 @@
 
         &:is(:hover, :focus-visible) {
           background-color: $primary-black;
-          color: white;
+          color: $primary-white;
         }
       }
     }

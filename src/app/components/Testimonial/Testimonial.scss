@@ -54,14 +54,14 @@
     opacity: 0;
     position: absolute;
     background-color: $primary-black;
-    color: white;
+    color: $primary-white;
     z-index: 1;
     transition:
       background-color 0.3s,
       color 0.3s;
 
     &:is(:hover, :focus-visible) {
-      background-color: white;
+      background-color: $primary-white;
       color: $primary-black;
     }
   }
@@ -69,7 +69,7 @@
   .slider-wrapper {
     position: relative;
     width: 100%;
-    border: 1px solid #bababa;
+    border: 1px solid $outline-gray;
     padding: 1rem;
     overflow-y: hidden;
     height: 100%;

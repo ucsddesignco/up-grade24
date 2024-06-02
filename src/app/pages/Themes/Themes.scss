@@ -17,7 +17,7 @@
 
   .title-line {
     display: none;
-    border: 1px solid #bababa;
+    border: 1px solid $outline-gray;
     margin-block: 1rem;
 
     @media (min-width: $tablet-breakpoint) {

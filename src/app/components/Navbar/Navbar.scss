@@ -1,4 +1,10 @@
 nav {
+  border-right: none;
+
+  @media (min-width: $mobile-breakpoint) {
+    border-right: 1px solid $outline-gray;
+  }
+
   a {
     text-decoration: none;
   }
@@ -138,7 +144,7 @@ nav {
     min-height: 1em;
     height: 1em;
     overflow-y: hidden;
-    color: #bababa;
+    color: $outline-gray;
     font-family: monospace;
   }
 
