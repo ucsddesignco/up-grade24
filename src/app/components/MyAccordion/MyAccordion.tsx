@@ -3,7 +3,7 @@
 import './MyAccordion.scss';
 import * as Accordion from '@radix-ui/react-accordion';
 import PlusIcon from '@/assets/icons/plus-icon.svg';
-import CheveronIcon from '@/assets/icons/chevron.svg';
+// import CheveronIcon from '@/assets/icons/chevron.svg';
 import { useRef, useState } from 'react';
 import { useSetAdjacentTriggerHeight } from './hooks/useSetAdjacentTriggerHeight';
 
@@ -27,15 +27,15 @@ export default function MyAccordion({ accordionData }: AccordionTabProps) {
   const [isExpandAll, setIsExpandAll] = useState(false);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
-  const handleExpandAll = () => {
-    if (isExpandAll) {
-      setExpandedItems([]); // Collapse all items
-      setIsExpandAll(false);
-    } else {
-      setExpandedItems(accordionData.map(item => `accordion-${item.id}`)); // Expand all items
-      setIsExpandAll(true);
-    }
-  };
+  // const handleExpandAll = () => {
+  //   if (isExpandAll) {
+  //     setExpandedItems([]); // Collapse all items
+  //     setIsExpandAll(false);
+  //   } else {
+  //     setExpandedItems(accordionData.map(item => `accordion-${item.id}`)); // Expand all items
+  //     setIsExpandAll(true);
+  //   }
+  // };
 
   const handleValueChange = (newValues: string[]) => {
     if (isExpandAll && newValues.length === 0) {
@@ -48,7 +48,7 @@ export default function MyAccordion({ accordionData }: AccordionTabProps) {
 
   return (
     <div className="accordion-container">
-      <span className="expand-all-btn-container">
+      {/* <span className="expand-all-btn-container">
         <button
           onClick={handleExpandAll}
           className={'expand-all-btn ' + (isExpandAll ? 'expanded' : '')}
@@ -56,7 +56,7 @@ export default function MyAccordion({ accordionData }: AccordionTabProps) {
           {isExpandAll ? 'Collapse' : 'Expand all'}
           <CheveronIcon className="cheveron" />
         </button>
-      </span>
+      </span> */}
 
       {isExpandAll ? (
         <Accordion.Root

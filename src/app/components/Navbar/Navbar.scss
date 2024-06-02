@@ -29,7 +29,7 @@ nav {
     display: flex;
     flex-direction: column;
     position: fixed;
-    z-index: 1;
+    z-index: 4;
 
     &.slideTransition {
       transition: transform 0.3s ease-out;
@@ -88,7 +88,7 @@ nav {
     top: 0;
     height: 100dvh;
     background-color: black;
-    z-index: 0;
+    z-index: 3;
     opacity: 0;
     transition: opacity 0.3s ease-out;
 

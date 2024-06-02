@@ -1,4 +1,71 @@
 #apply {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
+  height: fit-content;
+
+  @media (min-width: $tablet-breakpoint) {
+    height: 100vh;
+  }
+
+  @media (min-width: $tablet-breakpoint) {
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+
+  hr {
+    border: 1px solid lightgray;
+    display: none;
+    margin-block: 1rem;
+
+    @media (min-width: $tablet-breakpoint) {
+      display: block;
+    }
+
+    @media (min-width: $desktop-breakpoint) and (min-height: $testimonial-height-breakpoint) {
+      margin-block: 2rem;
+    }
+  }
+
+  .grid {
+    list-style-type: none;
+    padding-left: 0;
+    display: grid;
+    gap: 1.5rem;
+    padding-block: 0;
+    margin-block: 1.5rem;
+
+    @media (min-width: 766px) {
+      grid-template-columns: repeat(2, 1fr);
+      // gap: 2.5rem;
+      gap: clamp(1.5rem, calc(10px + 1vw), 2.5rem);
+    }
+
+    li {
+      h3 {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .top-section {
+    position: relative;
+  }
+
+  .bottom-section {
+    height: 100%;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

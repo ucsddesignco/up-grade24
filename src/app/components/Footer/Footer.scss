@@ -3,16 +3,11 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding-inline: $main-padding-mobile-inline;
-  padding-bottom: 1rem;
-
-  @media (min-width: $tablet-breakpoint) {
-    padding-inline: $main-padding-desktop-inline;
-  }
+  padding-top: 1rem;
 
   span {
     display: flex;
