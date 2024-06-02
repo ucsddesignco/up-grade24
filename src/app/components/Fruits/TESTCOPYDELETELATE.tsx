@@ -1,7 +1,7 @@
 'use client';
 
 import './Fruits.scss';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Matter, { Vertices, Body } from 'matter-js';
 
 import 'pathseg';
@@ -10,10 +10,18 @@ import createEllipseVertices from './createEllipseVertices';
 export default function Fruits() {
   const scene = useRef<HTMLDivElement>(null);
 
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [wireframe, setWireframe] = useState(false);
+
   useEffect(() => {
     if (!scene.current) return;
 
-    const isDesktop = window.innerWidth > 979;
+    console.log(window.innerWidth);
+
+    if (window.innerWidth > 979) {
+      setIsDesktop(true);
+      console.log(isDesktop);
+    }
 
     /* ************ engine and renderer initialization + config ***************** */
     const Engine = Matter.Engine,
@@ -28,7 +36,7 @@ export default function Fruits() {
       element: scene.current,
       engine: engine,
       options: {
-        wireframes: false,
+        wireframes: wireframe,
         // debugging properties
         // showBounds: true,
         // showDebug: true,
@@ -181,10 +189,8 @@ export default function Fruits() {
     Composite.add(engine.world, basket);
 
     /* ********************* define and add text ***************************** */
+    const wordSpriteScale = 1;
     const wordBoxScale = 1;
-    const wordSpriteScale = 0.8;
-    const wordBoxScaleMobile = 0.6;
-    const wordSpriteScaleMobile = 0.5;
     const wordsDesktop = [
       {
         // DESIGN
@@ -224,35 +230,35 @@ export default function Fruits() {
     const wordsMobile = [
       {
         // DESIGN
-        textWidth: 200,
-        textHeight: 55,
-        boxScale: wordBoxScaleMobile,
-        spriteScale: wordSpriteScaleMobile,
+        textWidth: 220,
+        textHeight: 80,
+        boxScale: 1,
+        spriteScale: 0.4,
         svgPath: '/textures/wordFour.svg'
       },
       {
         // CO
-        textWidth: 100,
-        textHeight: 55,
-        boxScale: wordBoxScaleMobile,
-        spriteScale: wordSpriteScaleMobile,
+        textWidth: 220,
+        textHeight: 120,
+        boxScale: 1,
+        spriteScale: 0.4,
         svgPath: '/textures/wordTwo.svg'
       },
 
       {
         // UP-GRADE
-        textWidth: 360,
-        textHeight: 55,
-        boxScale: wordBoxScaleMobile,
-        spriteScale: wordSpriteScaleMobile,
+        textWidth: 200,
+        textHeight: 40,
+        boxScale: 1,
+        spriteScale: 0.4,
         svgPath: '/textures/wordOne.svg'
       },
       {
         // 2024
-        textWidth: 180,
-        textHeight: 55,
-        boxScale: wordBoxScaleMobile,
-        spriteScale: wordSpriteScaleMobile,
+        textWidth: 220,
+        textHeight: 60,
+        boxScale: 1,
+        spriteScale: 0.4,
         svgPath: '/textures/wordThree.svg'
       }
     ];
@@ -305,7 +311,7 @@ export default function Fruits() {
           isStatic: false,
           velocity: { x: 0, y: 0 },
           restitution: 0.1,
-          mass: 1,
+          mass: 0.0005,
           render: {
             strokeStyle: 'black',
             fillStyle: 'black',
@@ -363,7 +369,6 @@ export default function Fruits() {
         Body.setStatic(cherry, false);
       }, cherryDelay * 1000);
 
-      // const watermelonRatio = 799/844;
       const watermelonScale = 0.2;
       const watermelonShape = createEllipseVertices({
         cx: 0,
@@ -373,21 +378,21 @@ export default function Fruits() {
         steps: 16
       });
       const watermelon = Bodies.fromVertices(
-        scene.current?.clientWidth * 1,
+        scene.current?.clientWidth * 0.6,
         scene.current?.clientHeight * -0.2,
         [Vertices.hull(watermelonShape)],
         {
           restitution: 0.1, //Bounciness
-          mass: 4,
+          mass: 5,
           render: {
             fillStyle: 'black',
             sprite: {
               texture: '/textures/watermelon.webp',
               xScale:
-                (watermelonScale * scene.current?.clientWidth * 0.423) /
+                (watermelonScale * scene.current?.clientWidth * 0.4) /
                 textureWidth,
               yScale:
-                (watermelonScale * scene.current?.clientWidth * 0.423) /
+                (watermelonScale * scene.current?.clientWidth * 0.4) /
                 textureWidth
             }
           }
@@ -406,21 +411,21 @@ export default function Fruits() {
         steps: 20
       });
       const apricot = Bodies.fromVertices(
-        scene.current?.clientWidth * 0.1,
-        scene.current?.clientHeight * -0.4,
+        scene.current?.clientWidth * 0.2,
+        scene.current?.clientHeight * -0.8,
         [Vertices.hull(apricotShape)],
         {
           restitution: 0.1, //Bounciness
-          mass: 4,
+          mass: 5,
           render: {
             fillStyle: 'black',
             sprite: {
               texture: '/textures/apricot.webp',
               xScale:
-                (apricotScale * scene.current?.clientWidth * 0.48) /
+                (apricotScale * scene.current?.clientWidth * 0.45) /
                 textureWidth,
               yScale:
-                (apricotScale * scene.current?.clientWidth * 0.48) /
+                (apricotScale * scene.current?.clientWidth * 0.45) /
                 textureWidth
             }
           }
@@ -431,14 +436,13 @@ export default function Fruits() {
       // MOBILE ---------------------------------------------
 
       //Create Cherry
-      let cherryScale = 0.13;
-      let cherryRatio = 68 / 179;
+      let cherryScale = 0.15;
 
       const cherryShape = createEllipseVertices({
         cx: 0,
         cy: 0,
-        ry: scene.current?.clientWidth * cherryScale * 1,
-        rx: scene.current?.clientWidth * cherryScale * 1 * cherryRatio,
+        ry: scene.current?.clientWidth * cherryScale * 0.8,
+        rx: scene.current?.clientWidth * cherryScale * 0.5,
         steps: 20
       });
       const textureWidth = 150;
@@ -454,9 +458,9 @@ export default function Fruits() {
             sprite: {
               texture: '/textures/cherry.png',
               xScale:
-                (cherryScale * scene.current?.clientWidth * 2) / textureWidth,
+                (cherryScale * scene.current?.clientWidth * 1.5) / textureWidth,
               yScale:
-                (cherryScale * scene.current?.clientWidth * 2) / textureWidth
+                (cherryScale * scene.current?.clientWidth * 1.5) / textureWidth
             }
           }
         }
@@ -476,8 +480,8 @@ export default function Fruits() {
         scene.current?.clientHeight * -0.4,
         [Vertices.hull(watermelonShape)],
         {
-          restitution: 0.1, //Bounciness
-          mass: 3,
+          restitution: 0.2, //Bounciness
+          mass: 0.0005,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -504,11 +508,11 @@ export default function Fruits() {
       });
       const apricot = Bodies.fromVertices(
         scene.current?.clientWidth * 0.2,
-        scene.current?.clientHeight * -1,
+        scene.current?.clientHeight * -1.5,
         [Vertices.hull(apricotShape)],
         {
-          restitution: 0.1, //Bounciness
-          mass: 2,
+          restitution: 0.2, //Bounciness
+          mass: 0.0005,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -695,11 +699,18 @@ export default function Fruits() {
       render.textures = {};
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isDesktop, wireframe]);
 
   return (
     <>
       <div ref={scene} className="fruit-container" />
+      <button
+        onClick={() => {
+          setWireframe(!wireframe);
+        }}
+      >
+        Wireframe
+      </button>
     </>
   );
 }
