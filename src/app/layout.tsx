@@ -45,6 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      lang="en"
       className={`${Aspekta.variable} ${UncutSansMedium.variable} ${UncutSansSemiBold.variable}`}
     >
       <body>{children}</body>

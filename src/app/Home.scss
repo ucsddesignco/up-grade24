@@ -10,10 +10,11 @@
 
     //For extremely large screen sizes
     max-width: 1600px;
-    display: grid;
     margin-inline: auto;
 
     @media (min-width: $tablet-breakpoint) {
+      scroll-behavior: smooth;
+      display: grid;
       scroll-snap-type: y mandatory;
     }
 
@@ -35,10 +36,11 @@
       padding-block: $main-padding-mobile-block;
       padding-inline: $main-padding-mobile-inline;
 
-      @media (min-width: $mobile-breakpoint) {
+      @media (min-width: $tablet-breakpoint) {
         padding-block: $main-padding-desktop-block;
         padding-inline: $main-padding-desktop-inline;
         height: 100vh;
+        overflow: hidden;
 
         h2 {
           margin-bottom: 40px;
