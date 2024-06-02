@@ -34,6 +34,12 @@ export default function ThemesSlider({
         slides: { origin: 'center', perView: 1.5, spacing: 10 }
       },
       '(min-width: 979px)': {
+        slides: { perView: 1.5, spacing: 10 }
+      },
+      '(min-width: 1200px)': {
+        slides: { perView: 2.5, spacing: 20 }
+      },
+      '(min-width: 1400px)': {
         slides: { perView: 3, spacing: 20 }
       }
     },
