@@ -26,6 +26,7 @@ export default function Landing({ landingRef }: LandingProps) {
             width="101"
             height="125"
             alt="Design Co Sticker"
+            draggable={false}
           />
         }
         style={{ right: '50px', top: '15%' }}
