@@ -38,11 +38,14 @@
       @media (min-width: $mobile-breakpoint) {
         padding-block: $main-padding-desktop-block;
         padding-inline: $main-padding-desktop-inline;
-        height: 100vh;
 
         h2 {
           margin-bottom: 40px;
         }
+      }
+
+      @media (min-width: $tablet-breakpoint) {
+        height: 100vh;
       }
     }
   }

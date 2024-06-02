@@ -70,6 +70,12 @@
   }
 
   @media (min-width: $tablet-breakpoint) {
+    height: 100%;
+
+    .keen-slider {
+      height: 100%;
+    }
+
     & {
       width: calc(
         100vw - clamp(250px, 200px + 11vw, 470px) - 2 *

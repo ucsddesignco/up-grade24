@@ -1,19 +1,45 @@
 #themes {
-  h2 {
-    margin-block: 10px $h1-size;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  @media (min-width: $tablet-breakpoint) {
+    overflow: hidden;
   }
 
-  .non-profit {
-    font-size: calc($p-size * 0.8);
-    text-transform: uppercase;
-    text-wrap: nowrap;
-    line-height: 1;
+  h2 {
+    margin-bottom: 0;
+  }
 
-    display: inline-block;
-    padding: 10px;
-    border: 2px solid $outline-gray;
-    border-radius: 5px;
+  .title-line {
+    border: 1px solid #bababa;
+    margin-block: 1rem;
 
-    color: $outline-gray;
+    @media (min-width: $tablet-breakpoint) {
+      margin-block: 2rem;
+    }
+  }
+
+  .pomegranate-container {
+    position: absolute;
+    // bottom: calc(-15% - 5vw);
+    bottom: 0;
+    right: -100px;
+    z-index: 1;
+    height: fit-content;
+    width: calc(160px + 8vw);
+
+    .pomegranate {
+      transform: rotate(-20deg);
+      object-fit: contain;
+      width: 100%;
+      height: fit-content;
+    }
+
+    @media (min-width: $tablet-breakpoint) {
+      right: auto;
+      bottom: max(calc(-75px - 6.5vw), -200px);
+      left: 150px;
+    }
   }
 }
