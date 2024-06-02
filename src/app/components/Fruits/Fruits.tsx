@@ -17,14 +17,18 @@ import createEllipseVertices from './createEllipseVertices';
 
 export default function Fruits() {
   const scene = useRef<HTMLDivElement>(null);
- 
-  Common.setDecomp(require('poly-decomp'));
 
-
-
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     if (!scene.current) return;
+
+    console.log(window.innerWidth)
+
+    if (window.innerWidth > 938) {
+      setIsDesktop(true);
+      console.log(isDesktop);
+    }
 
     const Engine = Matter.Engine,
       Render = Matter.Render,
@@ -131,39 +135,67 @@ export default function Fruits() {
     });
     Body.rotate(leftSlant, -0.075 * Math.PI);
     Body.rotate(rightSlant, 0.075 * Math.PI);
-    let spriteWidth = width / 815;
-    let spriteHeight = height * .5 / 385;
-    const basket = Bodies.rectangle(width / 2, height *.75, width, height * .5, {
-      isStatic: true,
-      friction: 0.1, // Adjust this value, 0 means no friction
-      restitution: 0.1,
-      render: {
-        sprite: {
-          texture: '/textures/basket.png',
-          xScale: spriteWidth,
-          yScale: spriteHeight,
-        },
-      },
-    });
-    basket.collisionFilter = {
-      'group': -1,
-      'category': 2,
-      'mask': 0,
-    };
 
-    // Matter.Body.rotate(leftWall, -0.08 * Math.PI);
-    // Matter.Body.rotate(rightWall, 0.08 * Math.PI);
+    
+    // Basket Desktop
+    let basketX;
+    let basketY;
+    let basketWidth;
+    let basketHeight;
+    let spriteWidth;
+    let spriteHeight
+
+    if (isDesktop) {
+      basketX = width / 2;
+      basketY = height * .75;
+      basketWidth = width;
+      basketHeight = height * .5;
+      spriteHeight = height * .5 / 385;
+      spriteWidth = width / 385;
+    }
+    else {
+      basketX = width / 2;
+      basketY = height * .85;
+      basketWidth = width;
+      basketHeight = height * .3;
+      spriteHeight = height * .3 / 385;
+      spriteWidth = width * .44 / 385;
+
+    }
+
+  
+   
+      const basket = Bodies.rectangle(basketX, basketY, basketWidth, basketHeight, {
+        isStatic: true,
+        friction: 0.1, // Adjust this value, 0 means no friction
+        restitution: 0.1,
+        render: {
+          sprite: {
+            texture: '/textures/basket.png',
+            xScale: spriteWidth,
+            yScale: spriteHeight,
+          },
+        },
+      });
+      basket.collisionFilter = {
+        'group': -1,
+        'category': 2,
+        'mask': 0,
+      };
+
+  
+    
     Composite.add(engine.world, [ground, leftWall, rightWall, leftSlant, rightSlant]);
     
 
-    const words = [
+    const wordsDesktop = [
       {
-        // UP-GRADE
-        textWidth: 200,
-        textHeight: 40,
-        boxScale: 1.8,
+        // DESIGN
+        textWidth: 220,
+        textHeight: 60,
+        boxScale: 1.5,
         spriteScale: 0.8,
-        svgPath: '/textures/wordOne.svg'
+        svgPath: '/textures/wordFour.svg',
       },
       {
         // CO
@@ -173,6 +205,16 @@ export default function Fruits() {
         spriteScale: 0.8,
         svgPath: '/textures/wordTwo.svg'
       },
+     
+     
+      {
+        // UP-GRADE
+        textWidth: 200,
+        textHeight: 40,
+        boxScale: 1.8,
+        spriteScale: 0.8,
+        svgPath: '/textures/wordOne.svg'
+      },
       {
         // 2024
         textWidth: 220,
@@ -181,49 +223,196 @@ export default function Fruits() {
         spriteScale: 0.8,
         svgPath: '/textures/wordThree.svg'
       },
+    ];
+    const wordsMobile = [
       {
         // DESIGN
         textWidth: 220,
-        textHeight: 60,
-        boxScale: 1.5,
-        spriteScale: 0.8,
+        textHeight: 80,
+        boxScale: .65,
+        spriteScale: 0.5,
         svgPath: '/textures/wordFour.svg',
-      }
+      },
+      {
+        // CO
+        textWidth: 220,
+        textHeight: 120,
+        boxScale: 0.3,
+        spriteScale: 0.5,
+        svgPath: '/textures/wordTwo.svg'
+      },
+     
+     
+      {
+        // UP-GRADE
+        textWidth: 200,
+        textHeight: 40,
+        boxScale: 1,
+        spriteScale: 0.5,
+        svgPath: '/textures/wordOne.svg'
+      },
+      {
+        // 2024
+        textWidth: 220,
+        textHeight: 60,
+        boxScale: .6,
+        spriteScale: 0.5,
+        svgPath: '/textures/wordThree.svg'
+      },
     ];
 
    
     // Create Words
- 
-    words.forEach((word, index) => {
-      const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
-      const posX = (index) * 200 + 200;
-      const posY = -200;
-      let width = textWidth * boxScale;
-      let height = textHeight * boxScale;
-
-      // Create rectangle body
-      const rectangle = Bodies.rectangle(posX, posY, width, height, {
-        isStatic: false,
-        // velocity: { x: 0, y: 0 },
-        // friction: 0.1, // Adjust this value, 0 means no friction
-        // restitution: 0.1,
-        render: {
-          strokeStyle: 'black',
-          fillStyle: 'black',
-          lineWidth: 1,
-        
-          sprite: {
-            texture: svgPath,
-            xScale: spriteScale,
-            yScale: spriteScale ,
+    if (isDesktop == true) {
+      wordsDesktop.forEach((word, index) => {
+        const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
+        const posX = index * (scene.current?.clientWidth ?? 0) * 0.25 + 100;
+        const posY = -300 - (index * (scene.current?.clientHeight ?? 0) * 0.4);
+        const rotationAngle = Math.random() * Math.PI;
+        const rotationSpeed = Math.random() * 0.1 - 0.05;
+        let width = textWidth * boxScale;
+        let height = textHeight * boxScale;
+  
+        // Create rectangle body
+        const rectangle = Bodies.rectangle(posX, posY, width, height, {
+          isStatic: false,
+          // velocity: { x: 0, y: 0 },
+          // friction: 0.1, // Adjust this value, 0 means no friction
+          // restitution: 0.1,
+          render: {
+            strokeStyle: 'black',
+            fillStyle: 'black',
+            lineWidth: 1,
+          
+            sprite: {
+              texture: svgPath,
+              xScale: spriteScale,
+              yScale: spriteScale ,
+            }
           }
-        }
+        });
+        Body.rotate(rectangle, rotationAngle); // Rotate the rectangle
+        Body.setAngularSpeed(rectangle,
+           rotationSpeed); // Set the angular speed of the rectangle
+        Composite.add(engine.world, rectangle);
+        
       });
 
-      Composite.add(engine.world, rectangle);
-    });
-
+    }
+    else {
+      wordsMobile.forEach((word, index) => {
+        const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
+        const posX = index * (scene.current?.clientWidth ?? 0) * 0.25 + 100;
+        const posY = -300 - (index * (scene.current?.clientHeight ?? 0) * 0.4);
+        const rotationAngle = Math.random() * Math.PI;
+        const rotationSpeed = Math.random() * 0.1 - 0.05;
+        let width = textWidth * boxScale;
+        let height = textHeight * boxScale;
   
+        // Create rectangle body
+        const rectangle = Bodies.rectangle(posX, posY, width, height, {
+          isStatic: false,
+          // velocity: { x: 0, y: 0 },
+          // friction: 0.1, // Adjust this value, 0 means no friction
+          // restitution: 0.1,
+          render: {
+            strokeStyle: 'black',
+            fillStyle: 'black',
+            lineWidth: 1,
+          
+            sprite: {
+              texture: svgPath,
+              xScale: spriteScale,
+              yScale: spriteScale ,
+            }
+          }
+        });
+        Body.rotate(rectangle, rotationAngle); // Rotate the rectangle
+        Body.setAngularSpeed(rectangle,
+           rotationSpeed); // Set the angular speed of the rectangle
+        Composite.add(engine.world, rectangle);
+        
+      });
+    }
+
+    if (isDesktop == true ){
+
+      //Create Cherry
+      let cherryScale = 0.15;
+
+      const cherryShape = createEllipseVertices({
+        cx: 0,
+        cy: 0,
+        ry: scene.current?.clientWidth * cherryScale* 1,
+        rx: scene.current?.clientWidth * cherryScale*.6,
+        steps: 20
+      });
+      const textureWidth = 150;
+      const cherry = Bodies.fromVertices(
+        scene.current?.clientWidth*.3, scene.current?.clientHeight * -0.2, 
+        [Vertices.hull(cherryShape)],
+        {
+        restitution: 0.6, //Bounciness
+        render: {
+          fillStyle: 'black',
+          sprite: {
+            texture: '/textures/cherry.png',
+            xScale: (cherryScale * scene.current?.clientWidth * 1.5) / textureWidth,
+            yScale: (cherryScale * scene.current?.clientWidth * 1.5 ) / textureWidth,
+          },
+        },
+          });
+          Composite.add(engine.world, cherry);
+
+        const watermelonScale = 0.25;
+        const watermelonShape = createEllipseVertices({
+          cx: 0,
+          cy: 0,
+          ry: scene.current?.clientWidth * watermelonScale* 1.2,
+          rx: scene.current?.clientWidth * watermelonScale*1,
+          steps: 16
+        });
+        const watermelon = Bodies.fromVertices(
+          scene.current?.clientWidth *.6, scene.current?.clientHeight * -0.2, 
+          [Vertices.hull(watermelonShape)],
+          {
+          restitution: 0.6, //Bounciness
+          render: {
+            fillStyle: 'black',
+            sprite: {
+              texture: '/textures/watermelon.webp',
+              xScale: (watermelonScale * scene.current?.clientWidth * 0.4) / textureWidth,
+              yScale: (watermelonScale * scene.current?.clientWidth * 0.4 ) / textureWidth,
+            },
+          },
+            });
+            Composite.add(engine.world, watermelon);
+
+            const apricotScale = 0.25;
+            const apricotShape = createEllipseVertices({
+              cx: 0,
+              cy: 0,
+              ry: scene.current?.clientHeight * apricotScale*.9,
+              rx: scene.current?.clientWidth * apricotScale*.8,
+              steps: 20
+            });
+            const apricot = Bodies.fromVertices(
+              scene.current?.clientWidth*.2, scene.current?.clientHeight * -.8, 
+              [Vertices.hull(apricotShape)],
+              {
+              restitution: 0.6, //Bounciness
+              render: {
+                fillStyle: 'black',
+                sprite: {
+                  texture: '/textures/apricot.webp',
+                  xScale: (apricotScale * scene.current?.clientWidth * .45) / textureWidth,
+                  yScale: (apricotScale * scene.current?.clientWidth * .45 ) / textureWidth,
+                },
+              },
+                });
+                Composite.add(engine.world, apricot);
+    }
+    else {
 
     //Create Cherry
     let cherryScale = 0.15;
@@ -231,12 +420,11 @@ export default function Fruits() {
     const cherryShape = createEllipseVertices({
       cx: 0,
       cy: 0,
-      ry: scene.current?.clientWidth * cherryScale* 1,
-      rx: scene.current?.clientWidth * cherryScale*.6,
+      ry: scene.current?.clientWidth * cherryScale* .8,
+      rx: scene.current?.clientWidth * cherryScale*.5,
       steps: 20
     });
     const textureWidth = 150;
-    const textureHeight = 100;
     const cherry = Bodies.fromVertices(
       scene.current?.clientWidth*.3, scene.current?.clientHeight * -0.2, 
       [Vertices.hull(cherryShape)],
@@ -277,7 +465,7 @@ export default function Fruits() {
           });
           Composite.add(engine.world, watermelon);
 
-          const apricotScale = 0.25;
+          const apricotScale = 0.15;
           const apricotShape = createEllipseVertices({
             cx: 0,
             cy: 0,
@@ -294,12 +482,16 @@ export default function Fruits() {
               fillStyle: 'black',
               sprite: {
                 texture: '/textures/apricot.webp',
-                xScale: (apricotScale * scene.current?.clientWidth * .45) / textureWidth,
-                yScale: (apricotScale * scene.current?.clientWidth * .45 ) / textureWidth,
+                xScale: (apricotScale * scene.current?.clientWidth * .8) / textureWidth,
+                yScale: (apricotScale * scene.current?.clientWidth * .8 ) / textureWidth,
               },
             },
               });
               Composite.add(engine.world, apricot);
+    }
+
+  
+
 
           // Get the canvas element
     const canvas = scene.current;
@@ -410,7 +602,7 @@ export default function Fruits() {
 
   return (
     <>
-      <div ref={scene} className="fruit-container"></div>;
+      <div ref={scene} className="fruit-container"></div>
     </>
   );
 }
