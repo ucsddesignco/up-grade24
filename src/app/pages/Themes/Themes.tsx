@@ -31,7 +31,6 @@ export default function Themes({ themesRef }: ThemesProps) {
       />
       <p className="breadcrumb">.03 / Themes</p>
       <h2>{`Get a Taste Of Our Fresh Themes.`}</h2>
-      <hr className="title-line" />
       <ThemesSlider slidesContent={ThemesContent} />
       <div className="pomegranate-container">
         <Image src={pomegranateImg} alt="Pomegranate" className="pomegranate" />

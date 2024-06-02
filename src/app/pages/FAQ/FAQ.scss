@@ -5,19 +5,13 @@
   position: relative;
 
   h2 {
-    margin-bottom: $main-padding-mobile-block;
+    margin-bottom: 2rem;
   }
 
   #apricot-container,
   .apricot.mobile {
     display: none;
     z-index: 0;
-  }
-
-  @media (min-width: $mobile-breakpoint) {
-    h2 {
-      margin-bottom: calc($main-padding-mobile-block);
-    }
   }
 
   @media ($mobile-apricot-lower-breakpoint < width < $tablet-breakpoint) {
@@ -42,10 +36,6 @@
   }
 
   @media (min-width: $desktop-breakpoint) {
-    h2 {
-      margin-bottom: calc($main-padding-mobile-block - 24px);
-    }
-
     #apricot-container {
       display: flex;
       position: absolute;
