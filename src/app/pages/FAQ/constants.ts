@@ -1,7 +1,7 @@
 export const FAQContent = [
   {
     id: 'item-1',
-    header: 'Who is eligible to participate in UP-Grade?',
+    header: 'Who is eligible to participate?',
     content:
       'Eligibility is offered to all UCSD students and recent graduates — of various backgrounds, experience levels, and majors! We encourage anyone interested to apply, to learn, and offer their unique knowledge.'
   },

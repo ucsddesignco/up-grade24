@@ -1,6 +1,6 @@
 .theme-slider-container {
   /* variables */
-  $dot-size: 2px;
+  $dot-size: 4px;
   $dot-gap: 7px;
   $hide-slides-gradient: linear-gradient(
     90deg,
@@ -38,11 +38,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-area: 1 / 1 / 2 / 2;
 
     .dot {
-      background-color: $outline-gray;
-      border-color: transparent;
+      border: 1px solid $primary-black;
+      background: transparent;
       border-radius: 50%;
       margin: 0 $dot-gap;
       padding: $dot-size;

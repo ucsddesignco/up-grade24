@@ -3,6 +3,7 @@
   position: absolute;
   z-index: 2;
   scale: 0.65;
+  width: fit-content;
   cursor: grab;
 
   &.hide-mobile {
