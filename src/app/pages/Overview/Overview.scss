@@ -1,8 +1,4 @@
 #overview {
-  overflow: hidden;
-  // Account for additional padding for theme page to allow squash to be visible
-  padding-bottom: calc(2 * $main-padding-mobile-block);
-
   @media (min-width: $tablet-breakpoint) {
     padding-bottom: 0;
     padding-bottom: $main-padding-desktop-block;

@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-top: 0;
-  overflow: hidden;
 
   @media (min-width: $tablet-breakpoint) {
     padding-top: $main-padding-mobile-block;
@@ -30,7 +28,6 @@
 
   .pomegranate-container {
     position: absolute;
-    // bottom: calc(-15% - 5vw);
     bottom: 0;
     right: -100px;
     z-index: 1;
@@ -45,9 +42,9 @@
     }
 
     @media (min-width: $tablet-breakpoint) {
-      right: auto;
-      bottom: max(calc(-75px - 6.5vw), -200px);
-      left: 150px;
+      width: calc(120px + 6vw);
+      bottom: calc(10px - 5.5vw);
+      right: 150px;
     }
   }
 }

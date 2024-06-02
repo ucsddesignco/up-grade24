@@ -37,14 +37,11 @@
       scroll-snap-align: center;
       padding-block: $main-padding-mobile-block;
       padding-inline: $main-padding-mobile-inline;
-
-      overflow-x: hidden;
-
-      @media (min-width: $tablet-breakpoint) {
-        height: 100vh;
-      }
+      overflow: hidden;
 
       @media (min-width: $mobile-breakpoint) {
+        overflow: clip;
+        overflow-clip-margin: 100px;
         padding-block: $main-padding-desktop-block;
         padding-inline: $main-padding-desktop-inline;
 
