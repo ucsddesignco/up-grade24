@@ -115,6 +115,9 @@ export default function Navbar({ pageRefs }: NavbarProps) {
             </div>
             <a
               className="add-me-to-cart"
+              href="https://forms.gle/o88jgQCt3iFFQ4wK6"
+              target="_blank"
+              rel="noopener noreferrer"
               onMouseEnter={() => {
                 setHoveringCart(true);
               }}
