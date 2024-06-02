@@ -10,14 +10,20 @@
   }
 
   h2 {
-    margin-bottom: 0;
+    margin-bottom: 2rem;
+
+    @media (min-width: $tablet-breakpoint) {
+      margin-bottom: 0;
+    }
   }
 
   .title-line {
+    display: none;
     border: 1px solid #bababa;
     margin-block: 1rem;
 
     @media (min-width: $tablet-breakpoint) {
+      display: block;
       margin-block: 2rem;
     }
   }
