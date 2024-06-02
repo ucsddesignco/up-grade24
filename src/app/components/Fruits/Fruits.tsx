@@ -599,7 +599,7 @@ export default function Fruits() {
     Matter.Events.on(engine, 'beforeUpdate', limitMaxSpeed);
 
     let barriers = [ground, leftWall, rightWall];
-    Events.on(mouseConstraint, 'startdrag', event => {
+    Events.on(mouseConstraint, 'startdrag', (event: any) => {
       const body = event.body;
 
       // Store the original inertia of the body
@@ -615,7 +615,7 @@ export default function Fruits() {
       }
     });
 
-    Events.on(mouseConstraint, 'enddrag', event => {
+    Events.on(mouseConstraint, 'enddrag', (event: any) => {
       const body = event.body;
 
       // Reset the inertia back to its original value

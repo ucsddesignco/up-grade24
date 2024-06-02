@@ -1,15 +1,20 @@
+'use client';
 import Sticker from '@/components/Sticker/Sticker';
 import './Landing.scss';
 import Fruits from '@/components/Fruits/Fruits';
 import { PageRef } from '@/page';
 import DcoSticker from '@/assets/stickers/dco-sticker.svg';
 import Impact from '@/assets/stickers/impact.svg';
+import CartIcon from '@/assets/icons/cart.svg';
+import Signature from '@/components/Signature/Signature';
+import { useRef } from 'react';
 
 type LandingProps = {
   landingRef: PageRef;
 };
 
 export default function Landing({ landingRef }: LandingProps) {
+  const signatureContainerRef = useRef<HTMLDivElement>(null);
   return (
     <section ref={landingRef} id="landing">
       <Sticker
@@ -24,13 +29,25 @@ export default function Landing({ landingRef }: LandingProps) {
         style={{ left: '10px', top: '55%' }}
         hideMobile
       />
+      <div className="mobile-header">
+        <h1>up-grade 2024</h1>
+        <p>UCSD Design Co</p>
+        <p>San Diego, CA</p>
+        <h3>July 1st to September 6th</h3>
+      </div>
       <p className="breadcrumb">.01 / Home</p>
+
       <Fruits />
-      {/* <Signature
-        navContainerRef={navContainerRef}
-        hoveringCart={hoveringCart}
-      /> */}
+
+      <div ref={signatureContainerRef} className="landing-signature-container">
+        <Signature
+          hideMobile={false}
+          navContainerRef={signatureContainerRef}
+          hoveringCart={false}
+        />
+      </div>
       <a className="add-me-to-cart">
+        <CartIcon className="svg-cart" />
         <p>ADD ME TO CART</p>
       </a>
     </section>

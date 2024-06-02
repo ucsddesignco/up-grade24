@@ -1,4 +1,5 @@
 #landing {
+  height: 100dvh;
   h1,
   h3 {
     text-transform: uppercase;
@@ -23,6 +24,20 @@
     display: none;
   }
 
+  .landing-signature-container {
+    height: 80px;
+    margin-block: 1rem;
+    margin-inline: auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (min-width: $mobile-breakpoint) {
+      display: none;
+    }
+  }
+
   .add-me-to-cart {
     margin-inline: auto;
     width: 80%;
@@ -38,7 +53,12 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: clamp(12px, 1vw, 22px);
+    gap: clamp(16px, 1vw, 22px);
+
+    &:is(:hover, :focus-visible) {
+      background-color: #fcfcfc;
+      color: #212121;
+    }
   }
 
   @media (min-width: $tablet-breakpoint) {

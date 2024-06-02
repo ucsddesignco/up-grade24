@@ -22,6 +22,8 @@ export const handleHandwritingAnimation = ({
   const applyContainer = svgRef.current;
   const navContainer = navContainerRef.current;
   const xElement = xElementRef.current;
+  console.log('WEEEE');
+  console.log(applyContainer, navContainer, xElement);
   if (!applyContainer || !navContainer || !xElement) return;
   const navFullWidth = parseFloat(window.getComputedStyle(navContainer).width);
   const navPadding = parseFloat(

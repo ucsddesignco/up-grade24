@@ -1,9 +1,9 @@
-svg {
-  display: none;
-}
 .fruit-container {
+  svg {
+    display: none;
+  }
   width: calc(80dvw - 190px);
-  height: 60dvh;
+  height: min(60dvh, 350px);
   width: calc(100% - 2 * $main-padding-mobile-inline - 20vw);
   margin-inline: auto;
   //   border: 2px solid red;

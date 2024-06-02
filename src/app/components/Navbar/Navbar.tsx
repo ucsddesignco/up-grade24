@@ -7,6 +7,7 @@ import FocusTrap from 'focus-trap-react';
 import { useHandleHamburger } from './hooks/useHandleHamburger';
 import { useHandleScroll } from './hooks/useHandleScroll';
 import Signature from '../Signature/Signature';
+import CartIcon from '@/assets/icons/cart.svg';
 
 type NavbarProps = {
   pageRefs: {
@@ -108,6 +109,7 @@ export default function Navbar({ pageRefs }: NavbarProps) {
             {/* <ApplyNow navContainerRef={navContainerRef} /> */}
             {/* <FutureUpgrader/> */}
             <Signature
+              hideMobile={true}
               navContainerRef={navContainerRef}
               hoveringCart={hoveringCart}
             />
@@ -120,40 +122,7 @@ export default function Navbar({ pageRefs }: NavbarProps) {
                 setHoveringCart(false);
               }}
             >
-              <svg
-                className="svg-cart"
-                xmlns="http://www.w3.org/2000/svg"
-                width="44"
-                height="25"
-                viewBox="0 0 44 25"
-                fill="none"
-              >
-                <path
-                  d="M1.5 1.57288H42L37.4949 23.3151H6.08701L1.5 1.57288Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M4.5 15.5729L39.5 15.5729"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M3.5 8.57288H40.5"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M28.5 1.57288L27.5 23.0729"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M15.5 1.57288L16.5 23.0729"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-              </svg>
+              <CartIcon className="svg-cart" />
               <p>ADD ME TO CART</p>
             </a>
 
