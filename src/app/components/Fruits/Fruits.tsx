@@ -3,7 +3,6 @@
 import './Fruits.scss';
 import { useEffect, useRef, useState } from 'react';
 import Matter, {
-  Common,
   Mouse,
   MouseConstraint,
   Vertices, 
@@ -143,23 +142,23 @@ export default function Fruits() {
     let basketWidth;
     let basketHeight;
     let spriteWidth;
-    let spriteHeight
+    let spriteHeight;
 
-    if (isDesktop) {
+    if (isDesktop == true) {
       basketX = width / 2;
       basketY = height * .75;
       basketWidth = width;
       basketHeight = height * .5;
       spriteHeight = height * .5 / 385;
-      spriteWidth = width / 385;
+      spriteWidth = width / 815;
     }
     else {
       basketX = width / 2;
       basketY = height * .85;
       basketWidth = width;
-      basketHeight = height * .3;
+      basketHeight = height * .2;
       spriteHeight = height * .3 / 385;
-      spriteWidth = width * .44 / 385;
+      spriteWidth = width / 815;
 
     }
 
