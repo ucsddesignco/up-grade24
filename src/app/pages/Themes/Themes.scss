@@ -1,8 +1,45 @@
 #themes {
-  // Overview page will compensate for this padding to allow the squash to be visible
-  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 
   @media (min-width: $tablet-breakpoint) {
-    padding-top: $main-padding-desktop-block;
+    overflow: hidden;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  .title-line {
+    border: 1px solid #bababa;
+    margin-block: 1rem;
+
+    @media (min-width: $tablet-breakpoint) {
+      margin-block: 2rem;
+    }
+  }
+
+  .pomegranate-container {
+    position: absolute;
+    // bottom: calc(-15% - 5vw);
+    bottom: 0;
+    right: -100px;
+    z-index: 1;
+    height: fit-content;
+    width: calc(160px + 8vw);
+
+    .pomegranate {
+      transform: rotate(-20deg);
+      object-fit: contain;
+      width: 100%;
+      height: fit-content;
+    }
+
+    @media (min-width: $tablet-breakpoint) {
+      right: auto;
+      bottom: max(calc(-75px - 6.5vw), -200px);
+      left: 150px;
+    }
   }
 }

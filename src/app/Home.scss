@@ -46,6 +46,10 @@
           margin-bottom: 40px;
         }
       }
+
+      @media (min-width: $tablet-breakpoint) {
+        height: 100vh;
+      }
     }
   }
 }
