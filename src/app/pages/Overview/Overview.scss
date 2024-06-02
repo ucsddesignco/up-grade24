@@ -1,4 +1,11 @@
 #overview {
+  // This is so the section can overlap the themes section below
+  padding-bottom: calc($main-padding-mobile-block * 2);
+
+  @media (min-width: 760px) {
+    padding-bottom: $main-padding-mobile-block;
+  }
+
   @media (min-width: $tablet-breakpoint) {
     padding-bottom: 0;
     padding-bottom: $main-padding-desktop-block;

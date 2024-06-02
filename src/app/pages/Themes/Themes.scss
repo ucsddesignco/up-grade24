@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  padding-top: 0;
+
+  @media (min-width: 760px) {
+    padding-top: $main-padding-desktop-block;
+  }
 
   @media (min-width: $tablet-breakpoint) {
     padding-top: $main-padding-mobile-block;
