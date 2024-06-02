@@ -36,8 +36,12 @@
       position: relative;
       background-color: $primary-white;
       scroll-snap-align: center;
+      padding-inline: 24px;
       padding-block: $main-padding-mobile-block;
-      padding-inline: $main-padding-mobile-inline;
+
+      @media (min-width: 350px) {
+        padding-inline: $main-padding-mobile-inline;
+      }
       overflow: hidden;
       @media (min-width: $mobile-breakpoint) {
         padding-block: $main-padding-desktop-block;

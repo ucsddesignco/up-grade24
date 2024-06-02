@@ -20,9 +20,10 @@ $nav-width: clamp(250px, 200px + 11vw, 470px);
 
 // Spacing
 $main-padding-mobile-block: clamp(20px, 30px + 1.2vw, 40px);
-$main-padding-mobile-inline: clamp(20px, 18px + 5vw, 40px);
-$main-padding-desktop-block: clamp(40px, 22px + 1.7vw, 70px);
-$main-padding-desktop-inline: clamp(40px, 22px + 1.7vw, 70px);
+$main-padding-mobile-inline: clamp(22px, 24px + 5.5vw, 48px);
+
+$main-padding-desktop-block: clamp(52px, 40px + 2.7vw, 80px);
+$main-padding-desktop-inline: clamp(52px, 40px + 2.7vw, 80px);
 
 //Font Sizes
 $h1-size: clamp(26px, calc(24px + 0.46vw), 40px);
