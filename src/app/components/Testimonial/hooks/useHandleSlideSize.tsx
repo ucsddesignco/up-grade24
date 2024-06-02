@@ -29,14 +29,10 @@ export const useHandleSlideSize = ({
     if (!bottomSection || !sliderContainer || !currentSliderBg) return;
 
     const sliderRect = sliderContainer.getBoundingClientRect();
-    const sliderWidth = sliderRect.width;
-    const sliderHeight = sliderRect.height;
-    console.log({ sliderWidth, sliderHeight });
     let newPerView = perView;
     if (sliderRect.height < 140) {
       modalButton.style.display = 'block';
       modalButton.style.opacity = '1';
-      console.log('wah');
       return;
     }
 
@@ -63,8 +59,6 @@ export const useHandleSlideSize = ({
     if (perView !== newPerView) {
       setPerView(newPerView);
     }
-
-    console.log(bottomSection);
 
     bottomSection.style.opacity = '1';
     currentSliderBg.style.opacity = '1';

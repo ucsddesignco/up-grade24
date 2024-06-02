@@ -19,7 +19,7 @@ export const ThemesContent = [
     theme: 'Community',
     themeColor: '#92E9FF',
     description:
-      'Community-focused nonprofit organizations here in San Diego tackle basic needs insecurities, like food, housing, and healthcare crises through accessible medical support, healthy meals, and services that aid the search for affordable housing. With remarkable resilience and innovation, these groups foster significant, empathetic change in their local communities',
+      'Community-focused nonprofit organizations here in San Diego tackle basic needs insecurities, like food, housing, and healthcare crises through accessible medical support, healthy meals, and services that aid the search for affordable housing. With remarkable resilience and innovation, these groups foster significant, empathetic change in their local communities.',
     nonProfits: [
       {
         text: 'HandsOn San Diego',

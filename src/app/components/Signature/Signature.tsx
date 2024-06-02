@@ -35,7 +35,6 @@ export default function Signature({
 
   useEffect(() => {
     if (!hoveringCart) {
-      console.log('APPLY NOW ANIMATION!');
       handleHandwritingAnimation({
         svgRef: applySVGRef,
         navContainerRef,
@@ -43,7 +42,6 @@ export default function Signature({
         config: APPLY_CONFIG
       });
     } else {
-      console.log('FUTURE UPGRADER ANIMATION!');
       handleHandwritingAnimation({
         svgRef: futureSVGRef,
         navContainerRef,

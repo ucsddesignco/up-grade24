@@ -28,6 +28,14 @@ export const useHandleScroll = ({
     const themesElement = themesRef.current;
     const faqElement = faqRef.current;
     const applyElement = applyRef.current;
+    console.log(
+      mainElement,
+      landingElement,
+      overviewElement,
+      themesElement,
+      faqElement,
+      applyElement
+    );
 
     /**
      * Sets the current page
@@ -51,6 +59,7 @@ export const useHandleScroll = ({
       applyElement
     ];
     const handleScroll = () => {
+      console.log('test');
       const scrollPosition = mainElement.scrollTop || 0;
 
       pagesList.forEach((page, index) => {

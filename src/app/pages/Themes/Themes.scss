@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  padding-top: 0;
+  overflow: hidden;
 
   @media (min-width: $tablet-breakpoint) {
-    overflow: hidden;
+    padding-top: $main-padding-mobile-block;
   }
 
   h2 {
@@ -25,7 +27,7 @@
     // bottom: calc(-15% - 5vw);
     bottom: 0;
     right: -100px;
-    z-index: 1;
+    z-index: 10;
     height: fit-content;
     width: calc(160px + 8vw);
 

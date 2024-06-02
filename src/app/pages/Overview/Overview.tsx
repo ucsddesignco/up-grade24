@@ -5,6 +5,9 @@ import { EXPECTATIONS_LIST, PAST_PROJECTS } from './constants';
 import Expectations from '@/components/Overview/Expectations/Expectations';
 import PastProjects from '@/components/Overview/PastProjects/PastProjects';
 import { PageRef } from '@/page';
+import Sticker from '@/components/Sticker/Sticker';
+import BananaCan from '@/assets/stickers/banana-can.svg';
+import Bread from '@/assets/stickers/bread.svg';
 
 type OverviewProps = {
   overviewRef: PageRef;
@@ -13,6 +16,16 @@ type OverviewProps = {
 export default function Overview({ overviewRef }: OverviewProps) {
   return (
     <section ref={overviewRef} id="overview">
+      <Sticker
+        name="banana-can"
+        image={<BananaCan />}
+        style={{ right: '-45px' }}
+      />
+      <Sticker
+        name="bread"
+        image={<Bread />}
+        style={{ left: '10px', top: '55%' }}
+      />
       <p className="breadcrumb">.02 / OVERVIEW</p>
       <h2>What is UP-Grade?</h2>
       <div className="overview-content">

@@ -52,7 +52,7 @@ export default function TestimonialModal({
           <button onClick={() => setOpenModal(false)} className="close-button">
             {/* prettier-ignore */}
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.00071 7.41379L10.587 11.9993L12.0013 10.5852L7.41505 5.9997L12.0014 1.41409L10.5871 0L6.00071 4.58561L1.41433 0L0 1.41409L4.58638 5.9997L0.000128787 10.5852L1.41446 11.9993L6.00071 7.41379Z" fill="#FCFCFC"/>
+            <path fillRule="evenodd" clipRule="evenodd" d="M6.00071 7.41379L10.587 11.9993L12.0013 10.5852L7.41505 5.9997L12.0014 1.41409L10.5871 0L6.00071 4.58561L1.41433 0L0 1.41409L4.58638 5.9997L0.000128787 10.5852L1.41446 11.9993L6.00071 7.41379Z" fill="#FCFCFC"/>
           </svg>
           </button>
         </div>

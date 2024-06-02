@@ -32,7 +32,7 @@ export const FAQContent = [
     id: 'item-6',
     header: 'Can I request teammates?',
     content:
-      'Yes! We cannot guarantee you will be placed with everyone you request, but we will take this into consideration when organizing teams'
+      'Yes! We cannot guarantee you will be placed with everyone you request, but we will take this into consideration when organizing teams.'
   },
   {
     id: 'item-7',

@@ -32,6 +32,7 @@
     }
 
     section {
+      position: relative;
       background-color: #fcfcfc;
       scroll-snap-align: center;
       padding-block: $main-padding-mobile-block;
@@ -39,7 +40,7 @@
 
       @media (min-width: $tablet-breakpoint) {
         height: 100vh;
-        overflow: hidden;
+        overflow-x: hidden;
       }
 
       @media (min-width: $mobile-breakpoint) {

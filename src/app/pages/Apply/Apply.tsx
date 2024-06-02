@@ -7,11 +7,18 @@ import { applyInfo } from './apply-info';
 import Testimonial from '@/components/Testimonial/Testimonial';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import TestimonialModal from '@/components/TestimonialModal/TestimonialModal';
+import Grape from '@/assets/stickers/grape.svg';
+import Yuzu from '@/assets/stickers/yuzu.svg';
+import Sticker from '@/components/Sticker/Sticker';
+import { PageRef } from '@/page';
 
-export default function Apply() {
+type ApplyProps = {
+  applyRef: PageRef;
+};
+
+export default function Apply({ applyRef }: ApplyProps) {
   const [openModal, setOpenModal] = useState(false);
   const topOffsetRef = useRef<HTMLDivElement>(null);
-  const applyRef = useRef<HTMLDivElement>(null);
 
   const handleEscapePress = useCallback(
     (e: KeyboardEvent) => {
@@ -34,10 +41,21 @@ export default function Apply() {
         applyContainer.removeEventListener('keydown', handleEscapePress);
       }
     };
-  }, [handleEscapePress, openModal]);
+  }, [applyRef, handleEscapePress, openModal]);
 
   return (
     <section id="apply" ref={applyRef}>
+      <Sticker
+        name="grape"
+        image={<Grape />}
+        style={{ right: '5%', top: '10%' }}
+        hideMobile
+      />
+      <Sticker
+        name="yuzu"
+        image={<Yuzu />}
+        style={{ bottom: '5%', left: '40%' }}
+      />
       <div className="top-section">
         <div ref={topOffsetRef} className="top-offset">
           <p className="breadcrumb">.05 / Apply</p>

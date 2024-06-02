@@ -1,0 +1,59 @@
+.sticker {
+  $hide-breakpoint: 800px;
+  position: absolute;
+  z-index: 5;
+  scale: 0.65;
+
+  &.hide-mobile {
+    display: none;
+    @media (min-width: $hide-breakpoint) {
+      display: block;
+    }
+  }
+
+  @media (min-width: 800px) {
+    scale: 0.7;
+  }
+  @media (min-width: 1000px) {
+    scale: 0.75;
+  }
+  @media (min-width: 1300px) {
+    scale: 0.8;
+  }
+  @media (min-width: 1500px) {
+    scale: 0.9;
+  }
+  @media (min-width: 1920px) {
+    scale: 1;
+  }
+
+  // Positioning mobile stickers
+  @media (max-width: $hide-breakpoint) {
+    &.bread-sticker {
+      top: auto !important;
+      bottom: 0 !important;
+      left: 45% !important;
+    }
+
+    &.capybara-sticker {
+      bottom: -20px !important;
+      left: -55px !important;
+    }
+
+    // &.orange-sticker {
+    //   bottom: -20px !important;
+    //   left: -55px !important;
+    // }
+
+    &.melon-sticker {
+      bottom: -20px !important;
+      right: -55px !important;
+    }
+
+    &.yuzu-sticker {
+      bottom: -20px !important;
+      right: 0px !important;
+      left: auto !important;
+    }
+  }
+}

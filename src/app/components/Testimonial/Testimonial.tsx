@@ -40,7 +40,7 @@ export default function Testimonial({ setOpenModal }: TestimonialProps) {
       <button
         className="testimonials-modal-button"
         onClick={() => {
-          console.log('test'), setOpenModal(true);
+          setOpenModal(true);
         }}
       >
         See testimonials from previous participants:

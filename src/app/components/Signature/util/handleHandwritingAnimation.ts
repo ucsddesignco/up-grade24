@@ -37,7 +37,6 @@ export const handleHandwritingAnimation = ({
   let currentDelay = 0;
   for (let maskID of maskList) {
     const maskElement = document.querySelector(`#${maskPrefix}-mask-${maskID}`);
-    console.log(maskElement);
     if (!maskElement) return;
     const maskChildren = maskElement.children;
     for (var i = 0; i < maskChildren.length; i++) {

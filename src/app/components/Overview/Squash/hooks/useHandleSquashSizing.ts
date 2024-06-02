@@ -44,7 +44,6 @@ export const useHandleSquashSizing = ({
           getComputedStyle(container).paddingTop
         );
         const spaceUnderList = containerRect.height - listRect.height;
-        console.log({ spaceUnderList });
         const spaceUnderTitle =
           containerRect.height - title.getBoundingClientRect().height;
 
