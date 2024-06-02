@@ -20,7 +20,7 @@
 
   @media (min-width: $mobile-breakpoint) {
     margin-block: $main-padding-tablet-block;
-    margin-inline: $main-padding-tablet-inline;
+    margin-right: calc($main-padding-tablet-inline/2);
   }
 
   .line {
