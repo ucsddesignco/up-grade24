@@ -10,6 +10,7 @@
 
     .AccordionItem {
       width: 100%;
+      background-color: $primary-white;
       // This is to avoid double borders
       border: $border-thickness solid $trigger-border-color;
       border-bottom: none;
@@ -61,7 +62,6 @@
     }
 
     .AccordionContent {
-      background-color: $primary-white;
       overflow: hidden;
 
       &[data-state='open'] {

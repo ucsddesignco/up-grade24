@@ -1,9 +1,9 @@
 export const FAQContent = [
   {
     id: 'item-1',
-    header: 'Who is eligible?',
+    header: 'Who is eligible to participate in UP-Grade?',
     content:
-      'Eligibility is offered to all UCSD students and recent graduates — of various backgrounds, experience levels, and majors! We encourage anyone interested to apply, to learn and offer their one-of-a-kind knowledge!'
+      'Eligibility is offered to all UCSD students and recent graduates — of various backgrounds, experience levels, and majors! We encourage anyone interested to apply, to learn, and offer their unique knowledge.'
   },
   {
     id: 'item-2',
@@ -14,7 +14,7 @@ export const FAQContent = [
     id: 'item-3',
     header: 'How many people will be accepted?',
     content:
-      'UP-Grade will have 6 student teams, with 6 participants in each team — 36 participants total. For each topic, there will be 2 teams assigned.'
+      'UP-Grade will have 7 student teams, with 6 participants in each team — 42 participants total.'
   },
   {
     id: 'item-4',
