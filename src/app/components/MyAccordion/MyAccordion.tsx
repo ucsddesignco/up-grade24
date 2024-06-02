@@ -53,7 +53,7 @@ export default function MyAccordion({ accordionData }: AccordionTabProps) {
           onClick={handleExpandAll}
           className={'expand-all-btn ' + (isExpandAll ? 'expanded' : '')}
         >
-          {isExpandAll ? 'Collapse all' : 'Expand all'}
+          {isExpandAll ? 'Collapse' : 'Expand all'}
           <CheveronIcon className="cheveron" />
         </button>
       </span>

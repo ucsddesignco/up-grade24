@@ -43,7 +43,7 @@
       font-size: $p-size;
       padding: $trigger-padding-mobile;
       color: $primary-black;
-      background-color: transparent;
+      background-color: $primary-white;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -61,6 +61,7 @@
     }
 
     .AccordionContent {
+      background-color: $primary-white;
       overflow: hidden;
 
       &[data-state='open'] {
@@ -158,7 +159,7 @@
       }
 
       &.expanded > .cheveron {
-        transform: rotate(-180deg);
+        transform: rotate(90deg);
       }
     }
   }
