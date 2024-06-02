@@ -1,0 +1,87 @@
+.desktop-fruits {
+  $num-pages: 5;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: calc(100vh * $num-pages);
+  z-index: 0;
+  pointer-events: none;
+  overflow-x: hidden;
+
+  .fruits-theme-section {
+    display: none;
+
+    @media (min-width: $tablet-breakpoint) {
+      display: block;
+      position: relative;
+      transform: translateY(100vh * 2);
+      width: 100%;
+      height: 100vh;
+    }
+
+    #desktop-pomegranate-container {
+      position: absolute;
+      bottom: 0;
+      right: -100px;
+      z-index: 1;
+      height: fit-content;
+      width: calc(160px + 8vw);
+
+      #desktop-pomegranate {
+        transform: rotate(-20deg);
+        object-fit: contain;
+        width: 100%;
+        height: fit-content;
+      }
+
+      @media (min-width: $tablet-breakpoint) {
+        width: calc(120px + 6vw);
+        bottom: calc(10px - 5.5vw);
+        right: 20px;
+      }
+    }
+  }
+
+  .fruits-faq-section {
+    display: none;
+
+    @media (min-width: $tablet-breakpoint) {
+      display: block;
+      position: relative;
+      transform: translateY(100vh * 2);
+      width: 100%;
+      height: 100vh;
+    }
+
+    #desktop-apricot-container {
+      display: flex;
+      position: absolute;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10%;
+      bottom: -4.5%;
+      width: 100%;
+      margin-inline: auto;
+      z-index: 0;
+
+      .apricot {
+        transform: rotate(-10deg);
+
+        &#desktop-apricot-1 {
+          height: 15%;
+          width: 15%;
+        }
+
+        &#desktop-apricot-2 {
+          height: 20%;
+          width: 20%;
+        }
+
+        &#desktop-apricot-3 {
+          height: 25%;
+          width: 25%;
+        }
+      }
+    }
+  }
+}

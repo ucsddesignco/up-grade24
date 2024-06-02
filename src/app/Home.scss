@@ -7,6 +7,7 @@
     overflow-y: scroll;
     scroll-snap-type: none;
     width: 100%;
+    position: relative;
 
     //For extremely large screen sizes
     max-width: 1600px;
@@ -38,10 +39,7 @@
       padding-block: $main-padding-mobile-block;
       padding-inline: $main-padding-mobile-inline;
       overflow: hidden;
-
       @media (min-width: $mobile-breakpoint) {
-        overflow: clip;
-        overflow-clip-margin: 100px;
         padding-block: $main-padding-desktop-block;
         padding-inline: $main-padding-desktop-inline;
 

@@ -9,6 +9,7 @@ import Themes from './pages/Themes/Themes';
 import FAQ from './pages/FAQ/FAQ';
 import Apply from './pages/Apply/Apply';
 import Navbar from './components/Navbar/Navbar';
+import DesktopFruits from './components/DesktopFruits/DesktopFruits';
 
 export type PageRef = React.RefObject<HTMLElement>;
 
@@ -39,6 +40,7 @@ export default function Home() {
         <FAQ faqRef={faqRef} />
         {/* Footer is inside Apply */}
         <Apply applyRef={applyRef} />
+        <DesktopFruits />
       </div>
     </main>
   );
