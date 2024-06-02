@@ -3,10 +3,16 @@ import ThemesSlider from '@/components/ThemesSlider/ThemesSlider';
 import { ThemesContent } from './constants';
 import pomegranateImg from '@/assets/images/pomegranate.webp';
 import Image from 'next/image';
+import { PageRef } from '@/page';
 
-export default function Themes() {
+
+type ThemesProps = {
+  themesRef: PageRef;
+};
+
+export default function Themes({ themesRef }: ThemesProps) {
   return (
-    <section id="themes">
+    <section ref={themesRef} id="themes">
       <p className="breadcrumb">.03 / Themes</p>
       <h2>{`Get a Taste Of Our Fresh Themes.`}</h2>
       <hr className="title-line" />
