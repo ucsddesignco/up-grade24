@@ -30,7 +30,7 @@ nav {
     padding-block: $main-padding-mobile-block;
     width: 100vw;
     max-width: 400px;
-    background: #fcfcfc;
+    background: $primary-white;
     height: 100dvh;
     display: flex;
     flex-direction: column;
@@ -172,8 +172,8 @@ nav {
 
   .add-me-to-cart {
     max-width: 310px;
-    color: #fcfcfc;
-    background-color: #212121;
+    color: $primary-white;
+    background-color: $primary-black;
     padding-block: 20px;
     transition: background-color 0.3s;
     border: 2px solid $primary-black;
@@ -189,8 +189,8 @@ nav {
     }
 
     &:is(:hover, :focus-visible) {
-      background-color: #fcfcfc;
-      color: #212121;
+      background-color: $primary-white;
+      color: $primary-black;
     }
   }
 
