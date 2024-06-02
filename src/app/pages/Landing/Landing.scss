@@ -17,7 +17,10 @@
 
   .mobile-header {
     margin-block-start: calc($main-padding-mobile-block + 10px);
-    margin-inline: 10vw;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
   }
 
   .breadcrumb {
