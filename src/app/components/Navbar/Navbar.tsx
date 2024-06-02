@@ -106,13 +106,13 @@ export default function Navbar({ pageRefs }: NavbarProps) {
           </span>
 
           <div className="nav-footer">
-            {/* <ApplyNow navContainerRef={navContainerRef} /> */}
-            {/* <FutureUpgrader/> */}
-            <Signature
-              hideMobile={true}
-              navContainerRef={navContainerRef}
-              hoveringCart={hoveringCart}
-            />
+            <div className="nav-signature-container">
+              <Signature
+                hideMobile={true}
+                navContainerRef={navContainerRef}
+                hoveringCart={hoveringCart}
+              />
+            </div>
             <a
               className="add-me-to-cart"
               onMouseEnter={() => {

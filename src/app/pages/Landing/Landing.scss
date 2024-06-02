@@ -1,6 +1,7 @@
 #landing {
   h1,
   h3 {
+    width: fit-content;
     text-transform: uppercase;
     text-wrap: nowrap;
   }
@@ -10,7 +11,7 @@
     margin-block-end: calc($p-size * 0.5);
 
     @media (min-width: 400px) {
-      font-size: clamp(30px, calc(27px + 0.9vw), 44px);
+      font-size: clamp(30px, calc(25px + 2vw), 44px);
     }
   }
 
@@ -19,8 +20,13 @@
   }
 
   .mobile-header {
+    width: fit-content;
     margin-block-start: calc($main-padding-mobile-block + 10px);
-    margin-inline: 10vw;
+    margin-inline: auto;
+
+    p {
+      width: fit-content;
+    }
   }
 
   .breadcrumb {
@@ -32,6 +38,7 @@
     margin-block: 1rem;
     margin-inline: auto;
     width: 80%;
+    max-width: 400px;
     display: flex;
     justify-content: center;
     flex-direction: column;

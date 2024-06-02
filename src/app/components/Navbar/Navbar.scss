@@ -85,6 +85,13 @@ nav {
       padding-left: 0;
       margin-block: 2rem;
     }
+
+    .nav-signature-container {
+      margin-bottom: 1rem;
+      @media (min-width: $desktop-breakpoint) {
+        margin-bottom: clamp(1rem, 3.5vw, 2.5rem);
+      }
+    }
   }
 
   .dark_overlay {
