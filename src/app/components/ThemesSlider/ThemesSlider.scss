@@ -66,12 +66,12 @@
       background: $hide-slides-gradient;
     }
 
-    .arrows {
-      display: flex;
-      gap: 2px;
-      grid-area: 1 / 1 / 2 / 2;
-      padding: 10px;
-    }
+    // .arrows {
+    //   display: flex;
+    //   gap: 2px;
+    //   grid-area: 1 / 1 / 2 / 2;
+    //   padding: 10px;
+    // }
   }
 
   @media ($mobile-breakpoint < width < 1400px) {
@@ -91,7 +91,7 @@
     height: 100%;
 
     .keen-slider {
-      height: 100%;
+      height: calc(100% - 3rem);
     }
 
     & {
@@ -99,9 +99,17 @@
         100vw - clamp(250px, 200px + 11vw, 470px) - 2 *
           $main-padding-desktop-inline
       );
-
-      border: none;
     }
+  }
+
+  @media (min-width: 1400px) {
+    height: 100%;
+
+    .keen-slider {
+      height: 100%;
+    }
+
+    border: none;
 
     .dots {
       display: none;

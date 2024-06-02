@@ -8,8 +8,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 420px;
   max-height: 575px;
+  min-height: 420px;
+
+  @media ($mobile-breakpoint < width < $tablet-breakpoint) {
+    min-height: 500px;
+  }
 
   .top-section {
     h3 {
