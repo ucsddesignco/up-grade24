@@ -1,8 +1,8 @@
 #faq {
   $mobile-apricot-lower-breakpoint: 720px;
-
+  display: flex;
+  flex-direction: column;
   position: relative;
-  overflow: hidden;
 
   h2 {
     margin-bottom: $main-padding-mobile-block;
@@ -15,6 +15,7 @@
   }
 
   @media (min-width: $mobile-breakpoint) {
+    overflow: hidden;
     h2 {
       margin-bottom: calc($main-padding-mobile-block);
     }
