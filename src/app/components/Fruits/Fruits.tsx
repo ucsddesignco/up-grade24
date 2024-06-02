@@ -11,6 +11,7 @@ export default function Fruits() {
   const scene = useRef<HTMLDivElement>(null);
 
   const [isDesktop, setIsDesktop] = useState(false);
+  const [wireframe, setWireframe] = useState(false);
 
   useEffect(() => {
     if (!scene.current) return;
@@ -35,7 +36,7 @@ export default function Fruits() {
       element: scene.current,
       engine: engine,
       options: {
-        wireframes: false,
+        wireframes: wireframe,
         // debugging properties
         // showBounds: true,
         // showDebug: true,
@@ -131,8 +132,13 @@ export default function Fruits() {
       }
     );
 
-    Body.rotate(leftSlant, -0.075 * Math.PI);
-    Body.rotate(rightSlant, 0.075 * Math.PI);
+    Body.rotate(leftSlant, -0.06 * Math.PI);
+    Body.rotate(rightSlant, 0.06 * Math.PI);
+
+    if (window.innerWidth > 550) {
+      Body.rotate(leftSlant, -0.03 * Math.PI);
+      Body.rotate(rightSlant, 0.03 * Math.PI);
+    }
 
     Composite.add(engine.world, [
       ground,
@@ -183,38 +189,41 @@ export default function Fruits() {
     Composite.add(engine.world, basket);
 
     /* ********************* define and add text ***************************** */
+    const wordSpriteScale = 1;
+    const wordBoxScale = 1;
     const wordsDesktop = [
       {
         // DESIGN
-        textWidth: 220,
-        textHeight: 60,
-        boxScale: 1.5,
-        spriteScale: 0.8,
+        textWidth: 200,
+        textHeight: 55,
+        boxScale: wordBoxScale,
+        spriteScale: wordSpriteScale,
         svgPath: '/textures/wordFour.svg'
       },
       {
         // CO
-        textWidth: 220,
-        textHeight: 120,
-        boxScale: 0.6,
-        spriteScale: 0.8,
+        textWidth: 100,
+        textHeight: 55,
+        boxScale: wordBoxScale,
+        spriteScale: wordSpriteScale,
         svgPath: '/textures/wordTwo.svg'
       },
 
       {
         // UP-GRADE
-        textWidth: 200,
-        textHeight: 40,
-        boxScale: 1.8,
-        spriteScale: 0.8,
+        // 360 55
+        textWidth: 360,
+        textHeight: 55,
+        boxScale: wordBoxScale,
+        spriteScale: wordSpriteScale,
         svgPath: '/textures/wordOne.svg'
       },
       {
         // 2024
-        textWidth: 220,
-        textHeight: 60,
-        boxScale: 1,
-        spriteScale: 0.8,
+        textWidth: 180,
+        textHeight: 55,
+        boxScale: wordBoxScale,
+        spriteScale: wordSpriteScale,
         svgPath: '/textures/wordThree.svg'
       }
     ];
@@ -223,7 +232,7 @@ export default function Fruits() {
         // DESIGN
         textWidth: 220,
         textHeight: 80,
-        boxScale: 0.5,
+        boxScale: 1,
         spriteScale: 0.4,
         svgPath: '/textures/wordFour.svg'
       },
@@ -231,7 +240,7 @@ export default function Fruits() {
         // CO
         textWidth: 220,
         textHeight: 120,
-        boxScale: 0.3,
+        boxScale: 1,
         spriteScale: 0.4,
         svgPath: '/textures/wordTwo.svg'
       },
@@ -240,7 +249,7 @@ export default function Fruits() {
         // UP-GRADE
         textWidth: 200,
         textHeight: 40,
-        boxScale: 0.9,
+        boxScale: 1,
         spriteScale: 0.4,
         svgPath: '/textures/wordOne.svg'
       },
@@ -248,7 +257,7 @@ export default function Fruits() {
         // 2024
         textWidth: 220,
         textHeight: 60,
-        boxScale: 0.5,
+        boxScale: 1,
         spriteScale: 0.4,
         svgPath: '/textures/wordThree.svg'
       }
@@ -259,7 +268,7 @@ export default function Fruits() {
       wordsDesktop.forEach((word, index) => {
         const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
         const posX = index * (scene.current?.clientWidth ?? 0) * 0.25 + 100;
-        const posY = -300 - index * (scene.current?.clientHeight ?? 0) * 0.4;
+        const posY = -200 - index * (scene.current?.clientHeight ?? 0) * 0.4;
         const rotationAngle = Math.random() * 2 * Math.PI;
         const rotationSpeed = Math.random() * 0.1 - 0.05;
         let width = textWidth * boxScale;
@@ -270,7 +279,7 @@ export default function Fruits() {
           isStatic: false,
           velocity: { x: 0, y: 0 },
           restitution: 0.1,
-          mass: 0.0005,
+          mass: 3,
           render: {
             strokeStyle: 'black',
             fillStyle: 'black',
@@ -291,7 +300,8 @@ export default function Fruits() {
         const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
         const posX = index * (scene.current?.clientWidth ?? 0) * 0.2 + 100;
         const posY = -10 - index * (scene.current?.clientHeight ?? 0) * 0.6;
-        const rotationAngle = Math.random() * 2 * Math.PI;
+        // const rotationAngle = Math.random() * 0 * Math.PI;
+        const rotationAngle = 0.1 * Math.PI;
         const rotationSpeed = Math.random() * 0.1 - 0.05;
         let width = textWidth * boxScale;
         let height = textHeight * boxScale;
@@ -333,11 +343,11 @@ export default function Fruits() {
       });
       const textureWidth = 150;
       const cherry = Bodies.fromVertices(
-        scene.current?.clientWidth * 0.3,
-        scene.current?.clientHeight * -0.2,
+        scene.current?.clientWidth * (Math.random() * 0.5 + 0.3),
+        scene.current?.clientHeight * -0.5,
         [Vertices.hull(cherryShape)],
         {
-          restitution: 0.2, //Bounciness
+          restitution: 0.1, //Bounciness
           mass: 0.0005,
           render: {
             fillStyle: 'black',
@@ -348,10 +358,16 @@ export default function Fruits() {
               yScale:
                 (cherryScale * scene.current?.clientWidth * 1.5) / textureWidth
             }
-          }
+          },
+          isStatic: true
         }
       );
       Composite.add(engine.world, cherry);
+      const cherryDelay = 1;
+      // Delay the falling of the cherry
+      setTimeout(() => {
+        Body.setStatic(cherry, false);
+      }, cherryDelay * 1000);
 
       const watermelonScale = 0.2;
       const watermelonShape = createEllipseVertices({
@@ -366,8 +382,8 @@ export default function Fruits() {
         scene.current?.clientHeight * -0.2,
         [Vertices.hull(watermelonShape)],
         {
-          restitution: 0.2, //Bounciness
-          mass: 0.01,
+          restitution: 0.1, //Bounciness
+          mass: 5,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -386,11 +402,12 @@ export default function Fruits() {
       Composite.add(engine.world, watermelon);
 
       const apricotScale = 0.25;
+      const apricotRatio = 295 / 383;
       const apricotShape = createEllipseVertices({
         cx: 0,
         cy: 0,
-        ry: scene.current?.clientHeight * apricotScale * 0.9,
-        rx: scene.current?.clientWidth * apricotScale * 0.8,
+        ry: scene.current?.clientHeight * apricotScale * 1,
+        rx: scene.current?.clientWidth * apricotScale * apricotRatio,
         steps: 20
       });
       const apricot = Bodies.fromVertices(
@@ -398,7 +415,8 @@ export default function Fruits() {
         scene.current?.clientHeight * -0.8,
         [Vertices.hull(apricotShape)],
         {
-          restitution: 0.2, //Bounciness
+          restitution: 0.1, //Bounciness
+          mass: 5,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -431,8 +449,8 @@ export default function Fruits() {
         scene.current?.clientHeight * -0.2,
         [Vertices.hull(cherryShape)],
         {
-          restitution: 0.2, //Bounciness
-          mass: 0.0005,
+          restitution: 0.1, //Bounciness
+          mass: 2,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -679,7 +697,18 @@ export default function Fruits() {
       render.textures = {};
       window.removeEventListener('resize', handleResize);
     };
-  }, [isDesktop]);
+  }, [isDesktop, wireframe]);
 
-  return <div ref={scene} className="fruit-container" />;
+  return (
+    <>
+      <div ref={scene} className="fruit-container" />
+      <button
+        onClick={() => {
+          setWireframe(!wireframe);
+        }}
+      >
+        Wireframe
+      </button>
+    </>
+  );
 }
