@@ -11,9 +11,8 @@ export const TESTIMONIAL_LIST = [
   },
   {
     id: 'apply-2',
-    text: 'This should be updated',
-    // text: '"On a technical level, I\'ve expanded my skills in areas like mind mapping for brainstorming, conducting competitive analysis for market research, and using new collaboration tools. Personally, I\'ve grown in my ability to communicate effectively, especially when navigating differing opinions to reach compromises within a team."',
-    reviewer: 'Tracy Vu'
+    text: `"UP-Grade was an extremely rewarding experience and I can't recommend it enough! Mentioning this project in interviews has always been beneficial to me. The biggest highlight was getting to see my project from start to finish and delivering something our client's were very proud of!"`,
+    reviewer: 'Thoa Nguyen'
   },
   {
     id: 'apply-3',
