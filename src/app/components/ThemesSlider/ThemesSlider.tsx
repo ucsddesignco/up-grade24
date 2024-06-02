@@ -28,6 +28,7 @@ export default function ThemesSlider({
   const [loaded, setLoaded] = useState(false);
 
   const [sliderRef, instanceRef] = useKeenSlider({
+    loop: true,
     initial: 0,
     breakpoints: {
       '(min-width: 550px)': {
