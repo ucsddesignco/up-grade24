@@ -3,11 +3,12 @@ import Sticker from '@/components/Sticker/Sticker';
 import './Landing.scss';
 import Fruits from '@/components/Fruits/Fruits';
 import { PageRef } from '@/page';
-import DcoSticker from '@/assets/stickers/dco-sticker.svg';
 import Impact from '@/assets/stickers/impact.svg';
 import CartIcon from '@/assets/icons/cart.svg';
 import Signature from '@/components/Signature/Signature';
 import { useRef } from 'react';
+import DCOSticker from '@/assets/stickers/dco-sticker.png';
+import Image from 'next/image';
 
 type LandingProps = {
   landingRef: PageRef;
@@ -19,7 +20,14 @@ export default function Landing({ landingRef }: LandingProps) {
     <section ref={landingRef} id="landing">
       <Sticker
         name="dco"
-        image={<DcoSticker />}
+        image={
+          <Image
+            src={DCOSticker}
+            width="101"
+            height="125"
+            alt="Design Co Sticker"
+          />
+        }
         style={{ right: '50px', top: '15%' }}
         hideMobile
       />
