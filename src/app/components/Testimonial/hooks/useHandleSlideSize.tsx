@@ -35,7 +35,6 @@ export const useHandleSlideSize = ({
       modalButton.style.opacity = '1';
       return;
     }
-
     if (
       (sliderRect.height < 180 && sliderRect.width < 1200) ||
       (sliderRect.width < 650 && sliderRect.width > 550)

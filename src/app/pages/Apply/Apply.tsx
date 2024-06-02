@@ -54,7 +54,7 @@ export default function Apply({ applyRef }: ApplyProps) {
       <Sticker
         name="yuzu"
         image={<Yuzu />}
-        style={{ bottom: '5%', left: '40%' }}
+        style={{ bottom: '-8px', left: '38%' }}
       />
       <div className="top-section">
         <div ref={topOffsetRef} className="top-offset">

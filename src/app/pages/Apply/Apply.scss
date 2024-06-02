@@ -24,12 +24,7 @@
 
   hr {
     border: 1px solid lightgray;
-    display: none;
     margin-block: 1rem;
-
-    @media (min-width: $tablet-breakpoint) {
-      display: block;
-    }
 
     @media (min-width: $desktop-breakpoint) and (min-height: $testimonial-height-breakpoint) {
       margin-block: 2rem;

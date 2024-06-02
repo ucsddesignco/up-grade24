@@ -1,4 +1,23 @@
 .testimonials {
+  $hide-slides-gradient: linear-gradient(
+    90deg,
+    $primary-white 0%,
+    rgba(252, 252, 252, 0) 33%,
+    rgba(252, 252, 252, 0) 66%,
+    $primary-white 100%
+  );
+  $right-hide-slides-gradient: linear-gradient(
+    90deg,
+    rgba(252, 252, 252, 0) 0%,
+    rgba(252, 252, 252, 0) 66%,
+    $primary-white 100%
+  );
+  $left-hide-slides-gradient: linear-gradient(
+    90deg,
+    rgba(252, 252, 252, 0) 33%,
+    rgba(252, 252, 252, 0) 0%,
+    $primary-white 100%
+  );
   width: 100%;
   height: min(100%, 350px);
   overflow-y: hidden;
@@ -20,7 +39,6 @@
 
     @media (max-width: $tablet-breakpoint) {
       margin-top: 0;
-      margin-bottom: 0.5rem;
     }
   }
 
@@ -91,35 +109,28 @@
 
       &.hide-left {
         &::before {
-          display: none;
+          background: $right-hide-slides-gradient;
         }
       }
 
       &.hide-right {
-        &::after {
-          display: none;
+        &::before {
+          background: $left-hide-slides-gradient;
         }
       }
 
-      &::before,
-      &::after {
+      &::before {
         content: '';
-        display: block;
-        width: 30%;
+        display: none;
+        width: 100%;
         height: 100%;
-        background-color: white;
+        background: $hide-slides-gradient;
         position: absolute;
         z-index: 3;
-      }
 
-      &::before {
-        left: 0;
-        background: linear-gradient(to right, white, transparent);
-      }
-
-      &::after {
-        right: 0;
-        background: linear-gradient(to left, white, transparent);
+        @media (min-width: $mobile-breakpoint) {
+          display: block;
+        }
       }
 
       li {
@@ -184,6 +195,9 @@
     padding: 10px 0;
     justify-content: center;
     z-index: 2;
+    @media (min-width: $mobile-breakpoint) {
+      display: none;
+    }
   }
 
   .dot {
@@ -204,11 +218,5 @@
 
   .dot.active {
     background: $primary-black;
-  }
-
-  @media (min-width: $mobile-breakpoint) {
-    .dots {
-      display: none;
-    }
   }
 }
