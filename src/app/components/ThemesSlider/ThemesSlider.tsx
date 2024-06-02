@@ -9,17 +9,20 @@ import SliderArrow from './SliderArrow/SliderArrow';
 
 import { useState } from 'react';
 
-export type slideContent = {
+export type SlideContent = {
   theme: string;
   themeColor?: string;
   description: string;
-  nonProfits: Array<string>;
+  nonProfits: {
+    link: string;
+    text: string;
+  }[];
 };
 
 export default function ThemesSlider({
   slidesContent
 }: {
-  slidesContent: Array<slideContent>;
+  slidesContent: Array<SlideContent>;
 }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
