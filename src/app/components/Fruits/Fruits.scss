@@ -2,10 +2,10 @@
   svg {
     display: none;
   }
-  width: calc(80dvw - 190px);
-  height: min(60dvh, 350px);
-  width: calc(100% - 2 * $main-padding-mobile-inline - 20vw);
+  height: min(60dvh, 380px);
+  width: calc(80dvw - 2 * $main-padding-mobile-inline);
   margin-inline: auto;
+  margin-block: 2.5dvh;
   //   border: 2px solid red;
 }
 

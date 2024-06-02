@@ -17,10 +17,7 @@
 
   .mobile-header {
     margin-block-start: calc($main-padding-mobile-block + 10px);
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
+    margin-inline: 10vw;
   }
 
   .breadcrumb {
@@ -36,21 +33,23 @@
     justify-content: center;
     flex-direction: column;
 
-    @media (min-width: $mobile-breakpoint) {
+    @media (min-width: $tablet-breakpoint) {
       display: none;
     }
   }
 
   .add-me-to-cart {
-    margin-inline: auto;
-    width: 80%;
-    max-width: 300px;
     color: $primary-white;
     background-color: $primary-black;
-    padding-block: 15px;
-    transition: background-color 0.3s;
     border: 2px solid $primary-black;
     border-radius: 5px;
+
+    width: 80%;
+    max-width: 400px;
+    margin-inline: auto;
+    padding-block: 15px;
+
+    transition: background-color 0.3s;
 
     display: flex;
     flex-direction: row;
@@ -59,8 +58,8 @@
     gap: clamp(16px, 1vw, 22px);
 
     &:is(:hover, :focus-visible) {
-      background-color: #fcfcfc;
-      color: #212121;
+      background-color: $primary-white;
+      color: $primary-black;
     }
   }
 

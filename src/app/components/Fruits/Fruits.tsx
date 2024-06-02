@@ -2,14 +2,7 @@
 
 import './Fruits.scss';
 import { useEffect, useRef, useState } from 'react';
-import Matter, {
-  Mouse,
-  MouseConstraint,
-  Vertices,
-  Events,
-  Body,
-  Query
-} from 'matter-js';
+import Matter, { Vertices, Body } from 'matter-js';
 
 import 'pathseg';
 import createEllipseVertices from './createEllipseVertices';
@@ -24,11 +17,12 @@ export default function Fruits() {
 
     console.log(window.innerWidth);
 
-    if (window.innerWidth > 938) {
+    if (window.innerWidth > 979) {
       setIsDesktop(true);
       console.log(isDesktop);
     }
 
+    /* ************ engine and renderer initialization + config ***************** */
     const Engine = Matter.Engine,
       Render = Matter.Render,
       Runner = Matter.Runner,
@@ -42,6 +36,11 @@ export default function Fruits() {
       engine: engine,
       options: {
         wireframes: false,
+        // debugging properties
+        // showBounds: true,
+        // showDebug: true,
+        // showInternalEdges: true,
+        // showPositions: true,
         width: scene.current?.clientWidth, // Use the width of the fruit container
         height: scene.current?.clientHeight, // Use the height of the fruit container
         pixelRatio: window.devicePixelRatio || 1,
@@ -49,43 +48,13 @@ export default function Fruits() {
       }
     });
 
-    // Import the necessary modules from Matter.js
-
     engine.positionIterations = 10;
     engine.velocityIterations = 10;
-    const handleResize = () => {
-      if (!scene.current) return; // Add null check
 
-      const width = scene.current?.clientWidth ?? 0; // Provide default value of 0 if undefined
-      const height = scene.current?.clientHeight ?? 0; // Provide default value of 0 if undefined
-
-      render.bounds.max.x = width;
-      render.bounds.max.y = height;
-      render.options.width = width;
-      render.options.height = height;
-      render.canvas.width = width;
-      render.canvas.height = height;
-      render.canvas.style.width = width + 'px';
-      render.canvas.style.height = height + 'px';
-
-      console.log('Width:', width, 'Height:', height);
-      console.log(width / 2, height + barrierWidth / 2);
-      Body.setPosition(ground, {
-        x: width / 2,
-        y: (height + barrierWidth) / 2
-      });
-
-      Body.setPosition(rightWall, {
-        x: (width + barrierWidth) / 2,
-        y: height / 2
-      });
-
-      Engine.update(engine, 0);
-    };
-
-    let barrierWidth = 500;
-    const width = scene.current?.clientWidth ?? 0; // Provide default value of 0 if undefined
-    const height = scene.current?.clientHeight ?? 0; // Provide default value of 0 if undefined
+    /* ************** define and add container boundaries/walls ***************** */
+    const barrierWidth = 500;
+    let width = scene.current?.clientWidth ?? 0; // Provide default value of 0 if undefined
+    let height = scene.current?.clientHeight ?? 0; // Provide default value of 0 if undefined
 
     const ground = Bodies.rectangle(
       width / 2,
@@ -101,43 +70,15 @@ export default function Fruits() {
         }
       }
     );
-    const leftSlant = Bodies.rectangle(
-      -5 - barrierWidth / 2,
-      height / 2,
-      barrierWidth,
-      height * 5,
-      {
-        isStatic: true,
-        friction: 0.1, // Adjust this value, 0 means no friction
-        restitution: 0.1,
-        render: {
-          fillStyle: 'transparent'
-        }
-      }
-    );
-    const rightSlant = Bodies.rectangle(
-      width + barrierWidth / 2 + 5,
-      height / 2,
-      barrierWidth,
-      height * 5,
-      {
-        isStatic: true,
-
-        friction: 0.1, // Adjust this value, 0 means no friction
-        restitution: 0.1,
-        render: {
-          fillStyle: 'transparent'
-        }
-      }
-    );
     const leftWall = Bodies.rectangle(
-      0 - barrierWidth / 2,
+      -barrierWidth / 2,
       height / 2,
       barrierWidth,
       height * 5,
       {
         isStatic: true,
-        friction: 0.1, // Adjust this value, 0 means no friction
+        frictionStatic: 0,
+        friction: 0, // Adjust this value, 0 means no friction
         restitution: 0.1,
         render: {
           fillStyle: 'transparent'
@@ -151,18 +92,57 @@ export default function Fruits() {
       height * 5,
       {
         isStatic: true,
-
-        friction: 0.1, // Adjust this value, 0 means no friction
+        frictionStatic: 0,
+        friction: 0, // Adjust this value, 0 means no friction
         restitution: 0.1,
         render: {
           fillStyle: 'transparent'
         }
       }
     );
+    const leftSlant = Bodies.rectangle(
+      -5 - barrierWidth / 2,
+      height / 2,
+      barrierWidth,
+      height * 5,
+      {
+        isStatic: true,
+        frictionStatic: 0,
+        friction: 0, // Adjust this value, 0 means no friction
+        restitution: 0.1,
+        render: {
+          fillStyle: 'transparent'
+        }
+      }
+    );
+    const rightSlant = Bodies.rectangle(
+      width + barrierWidth / 2 + 5,
+      height / 2,
+      barrierWidth,
+      height * 5,
+      {
+        isStatic: true,
+        frictionStatic: 0,
+        friction: 0, // Adjust this value, 0 means no friction
+        restitution: 0.1,
+        render: {
+          fillStyle: 'transparent'
+        }
+      }
+    );
+
     Body.rotate(leftSlant, -0.075 * Math.PI);
     Body.rotate(rightSlant, 0.075 * Math.PI);
 
-    // Basket Desktop
+    Composite.add(engine.world, [
+      ground,
+      leftWall,
+      rightWall,
+      leftSlant,
+      rightSlant
+    ]);
+
+    /* ********************* define and add basket ***************************** */
     let basketX;
     let basketY;
     let basketWidth;
@@ -170,21 +150,12 @@ export default function Fruits() {
     let spriteWidth;
     let spriteHeight;
 
-    if (isDesktop == true) {
-      basketX = width / 2;
-      basketY = height * 0.75;
-      basketWidth = width;
-      basketHeight = height * 0.5;
-      spriteHeight = (height * 0.5) / 385;
-      spriteWidth = width / 815;
-    } else {
-      basketX = width / 2;
-      basketY = height * 0.85;
-      basketWidth = width;
-      basketHeight = height * 0.15;
-      spriteHeight = (height * 0.28) / 385;
-      spriteWidth = width / 815;
-    }
+    basketX = width / 2;
+    basketY = height * 0.75;
+    basketWidth = width;
+    basketHeight = height * 0.5;
+    spriteHeight = (height * 0.5) / 385;
+    spriteWidth = width / 815;
 
     const basket = Bodies.rectangle(
       basketX,
@@ -193,7 +164,6 @@ export default function Fruits() {
       basketHeight,
       {
         isStatic: true,
-        friction: 0.1, // Adjust this value, 0 means no friction
         restitution: 0.1,
         render: {
           sprite: {
@@ -210,14 +180,9 @@ export default function Fruits() {
       mask: 0
     };
 
-    Composite.add(engine.world, [
-      ground,
-      leftWall,
-      rightWall,
-      leftSlant,
-      rightSlant
-    ]);
+    Composite.add(engine.world, basket);
 
+    /* ********************* define and add text ***************************** */
     const wordsDesktop = [
       {
         // DESIGN
@@ -290,7 +255,7 @@ export default function Fruits() {
     ];
 
     // Create Words
-    if (isDesktop == true) {
+    if (isDesktop) {
       wordsDesktop.forEach((word, index) => {
         const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
         const posX = index * (scene.current?.clientWidth ?? 0) * 0.25 + 100;
@@ -303,14 +268,13 @@ export default function Fruits() {
         // Create rectangle body
         const rectangle = Bodies.rectangle(posX, posY, width, height, {
           isStatic: false,
-          // velocity: { x: 0, y: 0 },
-          // friction: 0.1, // Adjust this value, 0 means no friction
-          // restitution: 0.1,
+          velocity: { x: 0, y: 0 },
+          restitution: 0.1,
+          mass: 0.0005,
           render: {
             strokeStyle: 'black',
             fillStyle: 'black',
             lineWidth: 1,
-
             sprite: {
               texture: svgPath,
               xScale: spriteScale,
@@ -335,9 +299,9 @@ export default function Fruits() {
         // Create rectangle body
         const rectangle = Bodies.rectangle(posX, posY, width, height, {
           isStatic: false,
-          // velocity: { x: 0, y: 0 },
-          // friction: 0.1, // Adjust this value, 0 means no friction
-          // restitution: 0.1,
+          velocity: { x: 0, y: 0 },
+          restitution: 0.1,
+          mass: 0.0005,
           render: {
             strokeStyle: 'black',
             fillStyle: 'black',
@@ -356,7 +320,7 @@ export default function Fruits() {
       });
     }
 
-    if (isDesktop == true) {
+    if (isDesktop) {
       //Create Cherry
       let cherryScale = 0.15;
 
@@ -373,7 +337,8 @@ export default function Fruits() {
         scene.current?.clientHeight * -0.2,
         [Vertices.hull(cherryShape)],
         {
-          restitution: 0.6, //Bounciness
+          restitution: 0.2, //Bounciness
+          mass: 0.0005,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -388,7 +353,7 @@ export default function Fruits() {
       );
       Composite.add(engine.world, cherry);
 
-      const watermelonScale = 0.25;
+      const watermelonScale = 0.2;
       const watermelonShape = createEllipseVertices({
         cx: 0,
         cy: 0,
@@ -401,7 +366,8 @@ export default function Fruits() {
         scene.current?.clientHeight * -0.2,
         [Vertices.hull(watermelonShape)],
         {
-          restitution: 0.6, //Bounciness
+          restitution: 0.2, //Bounciness
+          mass: 0.01,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -416,6 +382,7 @@ export default function Fruits() {
           }
         }
       );
+
       Composite.add(engine.world, watermelon);
 
       const apricotScale = 0.25;
@@ -431,7 +398,7 @@ export default function Fruits() {
         scene.current?.clientHeight * -0.8,
         [Vertices.hull(apricotShape)],
         {
-          restitution: 0.6, //Bounciness
+          restitution: 0.2, //Bounciness
           render: {
             fillStyle: 'black',
             sprite: {
@@ -464,7 +431,8 @@ export default function Fruits() {
         scene.current?.clientHeight * -0.2,
         [Vertices.hull(cherryShape)],
         {
-          restitution: 0.6, //Bounciness
+          restitution: 0.2, //Bounciness
+          mass: 0.0005,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -492,7 +460,8 @@ export default function Fruits() {
         scene.current?.clientHeight * -0.4,
         [Vertices.hull(watermelonShape)],
         {
-          restitution: 0.6, //Bounciness
+          restitution: 0.2, //Bounciness
+          mass: 0.0005,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -522,7 +491,8 @@ export default function Fruits() {
         scene.current?.clientHeight * -1.5,
         [Vertices.hull(apricotShape)],
         {
-          restitution: 0.6, //Bounciness
+          restitution: 0.2, //Bounciness
+          mass: 0.0005,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -552,32 +522,15 @@ export default function Fruits() {
 
           // Generate a stronger random force
           const force = {
-            x: Math.random() * 2 - 1, // Random value between -1 and 1
-            y: Math.random() * 2 - 1
+            x: Math.round(Math.random()) * 10 - 5, // Random value between -50 and 50
+            y: Math.round(Math.random()) * -100 - 100
           };
 
           // Apply the force to the fruit
-          Body.applyForce(body, body.position, force);
+          Body.setVelocity(body, force);
         });
       });
     }
-
-    const mouse = Mouse.create(render.canvas);
-    const mouseConstraint = MouseConstraint.create(engine, {
-      mouse: mouse,
-      constraint: {
-        stiffness: 0.2,
-        render: {
-          visible: false
-        }
-      }
-    });
-
-    Composite.add(engine.world, basket);
-
-    Composite.add(engine.world, mouseConstraint);
-
-    // ...
 
     interface Event {
       source: {
@@ -589,47 +542,134 @@ export default function Fruits() {
 
     const limitMaxSpeed = (event: Event) => {
       event.source.world.bodies.forEach((body: Body) => {
-        let maxSpeed: number = 10;
+        let maxSpeed: number = 15;
         Matter.Body.setVelocity(body, {
           x: Math.min(maxSpeed, Math.max(-maxSpeed, body.velocity.x)),
           y: Math.min(maxSpeed, Math.max(-maxSpeed, body.velocity.y))
         });
       });
     };
+
     Matter.Events.on(engine, 'beforeUpdate', limitMaxSpeed);
 
-    let barriers = [ground, leftWall, rightWall];
-    Events.on(mouseConstraint, 'startdrag', (event: any) => {
-      const body = event.body;
+    /* ************************* define mouse drag events ************************** */
 
-      // Store the original inertia of the body
-      body.originalInertia = body.inertia;
+    // let barriers = [ground, leftWall, rightWall];
 
-      // Check if the body being dragged is colliding with any of the barriers
-      const collisions = Query.collides(body, barriers);
-      if (collisions.length > 0) {
-        // If it is, set its inertia to Infinity
-        Body.set(body, {
-          inertia: Infinity
-        });
-      }
-    });
+    // const mouse = Mouse.create(render.canvas);
+    // const mouseConstraint = MouseConstraint.create(engine, {
+    //   mouse: mouse,
+    //   constraint: {
+    //     stiffness: 0.2,
+    //     render: {
+    //       visible: false
+    //     }
+    //   }
+    // });
 
-    Events.on(mouseConstraint, 'enddrag', (event: any) => {
-      const body = event.body;
+    // Composite.add(engine.world, mouseConstraint);
 
-      // Reset the inertia back to its original value
-      Body.set(body, {
-        inertia: body.originalInertia
+    // Events.on(mouseConstraint, 'startdrag', (event: any) => {
+    //   const body = event.body;
+
+    //   // Store the original inertia of the body
+    //   body.originalInertia = body.inertia;
+
+    //   // Check if the body being dragged is colliding with any of the barriers
+    //   const collisions = Query.collides(body, barriers);
+    //   if (collisions.length > 0) {
+    //     // If it is, set its inertia to Infinity
+    //     Body.set(body, {
+    //       inertia: Infinity
+    //     });
+    //   }
+    // });
+
+    // Events.on(mouseConstraint, 'enddrag', (event: any) => {
+    //   const body = event.body;
+
+    //   // Reset the inertia back to its original value
+    //   Body.set(body, {
+    //     inertia: body.originalInertia
+    //   });
+
+    //   // Remove the original inertia from the body
+    //   delete body.originalInertia;
+    // });
+
+    /* ************************** handle window resizing ********************** */
+    const handleResize = () => {
+      if (!scene.current) return; // Add null check
+
+      console.log('resizing!');
+
+      let newWidth = scene.current?.clientWidth ?? 0; // Provide default value of 0 if undefined
+      let newHeight = scene.current?.clientHeight ?? 0; // Provide default value of 0 if undefined
+
+      render.bounds.max.x = newWidth;
+      render.bounds.max.y = newHeight;
+      render.options.width = newWidth;
+      render.options.height = newHeight;
+      render.canvas.width = newWidth;
+      render.canvas.height = newHeight;
+      render.canvas.style.width = newWidth + 'px';
+      render.canvas.style.height = newHeight + 'px';
+
+      console.log('Width:', newWidth, 'Height:', newHeight);
+      console.log(newWidth / 2, newHeight + barrierWidth / 2);
+      Body.setPosition(ground, {
+        x: newWidth / 2,
+        y: newHeight + barrierWidth / 2 - 10
+      });
+      Body.setPosition(leftWall, {
+        x: -barrierWidth / 2,
+        y: newHeight / 2
+      });
+      Body.setPosition(rightWall, {
+        x: newWidth + barrierWidth / 2,
+        y: newHeight / 2
+      });
+      Body.setPosition(leftSlant, {
+        x: -5 - barrierWidth / 2,
+        y: newHeight / 2
+      });
+      Body.setPosition(rightSlant, {
+        x: newWidth + barrierWidth / 2 + 5,
+        y: newHeight / 2
       });
 
-      // Remove the original inertia from the body
-      delete body.originalInertia;
-    });
+      Body.setPosition(basket, {
+        x: newWidth / 2,
+        y: newHeight * 0.75
+      });
 
+      console.log(
+        ((newWidth - width) / width) * 10,
+        (newHeight - height) / height
+      );
+
+      Body.scale(basket, newWidth / width, newHeight / height);
+      if (basket.render.sprite) {
+        basket.render.sprite.xScale =
+          (basket.render.sprite.xScale * newWidth) / width;
+        basket.render.sprite.yScale =
+          (basket.render.sprite.yScale * newHeight) / height;
+      }
+
+      width = newWidth;
+      height = newHeight;
+
+      Engine.update(engine, 0);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    /* ************************ run renderer  ******************************** */
     Render.run(render);
     const runner = Runner.create();
     Runner.run(runner, engine);
+
+    /* ********************** clean up before unmouting *********************** */
 
     return () => {
       Render.stop(render);
@@ -641,9 +681,5 @@ export default function Fruits() {
     };
   }, [isDesktop]);
 
-  return (
-    <>
-      <div ref={scene} className="fruit-container"></div>
-    </>
-  );
+  return <div ref={scene} className="fruit-container" />;
 }
