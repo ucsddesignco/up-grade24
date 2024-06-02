@@ -1,4 +1,3 @@
-
 import { Vertex } from 'matter-js';
 
 type EllipseVerticesProps = {

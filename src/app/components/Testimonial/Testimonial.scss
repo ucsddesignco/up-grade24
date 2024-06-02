@@ -1,0 +1,214 @@
+.testimonials {
+  width: 100%;
+  height: min(100%, 350px);
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .bottom-section {
+    transition: opacity 0.3s;
+    opacity: 0;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+
+    @media (min-width: $desktop-breakpoint) and (min-height: $testimonial-height-breakpoint) {
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: $tablet-breakpoint) {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .center-background {
+    transition: opacity 0.3s;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 33%;
+    height: calc(100% - 2 * 1rem);
+    background-color: $secondary-yellow;
+    z-index: 1;
+
+    &.not-center {
+      inset: auto;
+      left: 1rem;
+      transform: translate(0%, 0%);
+    }
+  }
+
+  .testimonials-modal-button {
+    border: 1px solid $primary-black;
+    text-transform: uppercase;
+    font-family: $p-font;
+    font-size: $h3-size;
+    transition: opacity 0.3s;
+    border-radius: 5px;
+    padding: 20px 42px;
+    opacity: 0;
+    position: absolute;
+    background-color: $primary-black;
+    color: white;
+    z-index: 1;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+
+    &:is(:hover, :focus-visible) {
+      background-color: white;
+      color: $primary-black;
+    }
+  }
+
+  .slider-wrapper {
+    position: relative;
+    width: 100%;
+    border: 1px solid #bababa;
+    padding: 1rem;
+    overflow-y: hidden;
+    height: 100%;
+    overflow-y: hidden;
+
+    ul {
+      padding-left: 0;
+      list-style-type: none;
+      position: relative;
+      z-index: 2;
+      height: 250px;
+      cursor: grab;
+
+      @media (min-width: $tablet-breakpoint) {
+        height: 100%;
+        max-height: 100%;
+        min-height: 100%;
+      }
+
+      &.hide-left {
+        &::before {
+          display: none;
+        }
+      }
+
+      &.hide-right {
+        &::after {
+          display: none;
+        }
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        width: 30%;
+        height: 100%;
+        background-color: white;
+        position: absolute;
+        z-index: 3;
+      }
+
+      &::before {
+        left: 0;
+        background: linear-gradient(to right, white, transparent);
+      }
+
+      &::after {
+        right: 0;
+        background: linear-gradient(to left, white, transparent);
+      }
+
+      li {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        min-height: 100%;
+        max-height: 100%;
+
+        .reviewer {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  .arrow-container {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    z-index: 2;
+    gap: 2px;
+
+    .arrow {
+      width: 35px;
+      height: 30px;
+      top: 0;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      fill: #fff;
+      cursor: pointer;
+    }
+
+    .arrow--left,
+    .arrow--right {
+      background-color: black;
+      padding: 10% 0;
+    }
+
+    .arrow--left {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    .arrow--right {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .arrow-container {
+      display: none;
+    }
+  }
+
+  .dots {
+    position: relative;
+    display: flex;
+    padding: 10px 0;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .dot {
+    border: 1px solid $primary-black;
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border-radius: 50%;
+    margin: 0 5px;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .dot:focus {
+    outline: none;
+  }
+
+  .dot.active {
+    background: $primary-black;
+  }
+
+  @media (min-width: $mobile-breakpoint) {
+    .dots {
+      display: none;
+    }
+  }
+}

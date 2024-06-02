@@ -2,16 +2,15 @@ footer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  position: absolute;
+  justify-content: center;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding-inline: $main-padding-mobile-inline;
-  padding-bottom: 1rem;
+  padding-top: 1rem;
 
-  @media (min-width: $tablet-breakpoint) {
-    padding-inline: $main-padding-desktop-inline;
+  @media (min-width: $mobile-breakpoint) {
+    justify-content: start;
   }
 
   span {
@@ -26,11 +25,21 @@ footer {
     svg {
       height: $footer-font-size;
       color: rgba(184, 0, 66, 1);
+      transform: scale(1.2);
+
+      @media (min-width: $mobile-breakpoint) {
+        transform: scale(1.1);
+      }
     }
 
     #heart {
       margin-inline-start: calc($footer-font-size / 2);
-      margin-inline-end: calc($footer-font-size / 3);
+      margin-inline-end: calc($footer-font-size / 1.5);
+
+      @media (min-width: $mobile-breakpoint) {
+        margin-inline-start: calc($footer-font-size / 2);
+        margin-inline-end: calc($footer-font-size / 2);
+      }
     }
   }
   a {

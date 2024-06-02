@@ -1,0 +1,20 @@
+.future-upgrader-svg {
+  align-self: flex-end;
+  margin-inline: auto;
+  opacity: 0;
+  font-size: $p-font;
+  display: flex;
+
+  .mask {
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+.theme-slide {
+  /* variables */
+  $slide-margin: 20px;
+
+  margin: $slide-margin;
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 420px;
+  max-height: 575px;
+
+  .top-section {
+    h3 {
+      display: inline-block;
+      border-radius: 5px;
+      padding: 10px;
+      line-height: 1;
+      font-size: $p-size;
+    }
+  }
+
+  .bottom-section {
+    hr {
+      border: 1px solid #bababa;
+      margin-block: $slide-margin;
+    }
+  }
+
+  h4 {
+    text-transform: uppercase;
+    font-size: $h3-size;
+  }
+
+  p {
+    margin-block-start: $slide-margin;
+  }
+
+  .non-profit-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-left: 0;
+    list-style-type: none;
+    max-width: 80%;
+
+    @media (min-width: $mobile-breakpoint) {
+      max-width: 100%;
+    }
+
+    .non-profit {
+      a {
+        text-decoration: none;
+        font-family: $p-font;
+        outline: none;
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+        line-height: 1;
+        border: 1px solid $primary-black;
+        border-radius: 5px;
+        margin-block-start: 0;
+        cursor: pointer;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+
+        &:is(:hover, :focus-visible) {
+          background-color: $primary-black;
+          color: white;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $mobile-breakpoint) {
+    padding: $slide-margin;
+    border: 1px solid $outline-gray;
+  }
+
+  @media (min-width: $tablet-breakpoint) {
+    margin: 0;
+    min-height: auto;
+    height: 100%;
+  }
+}

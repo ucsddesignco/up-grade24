@@ -1,0 +1,47 @@
+#overview {
+  .past-projects-container {
+    max-width: 23em;
+    margin-bottom: 2rem;
+    h3 {
+      max-width: max(20em, 60%);
+    }
+
+    .past-projects {
+      padding-left: 0;
+      list-style-type: none;
+      display: grid;
+      font-size: 18px;
+      max-width: 10em;
+      gap: 10px;
+
+      @media (min-width: $mobile-breakpoint) {
+        gap: 20px;
+        max-width: 21em;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      li {
+        a {
+          transition:
+            background-color 0.3s,
+            border-color 0.3s;
+          border: 1px solid $primary-black;
+          background-color: $primary-black;
+          border-radius: 4px;
+          padding-block: 4px;
+          text-align: center;
+          display: block;
+          font-family: $p-font;
+          color: white;
+          cursor: pointer;
+
+          &:is(:hover, :focus-visible) {
+            background-color: white;
+            color: $primary-black;
+          }
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

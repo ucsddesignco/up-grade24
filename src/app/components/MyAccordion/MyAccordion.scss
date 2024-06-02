@@ -1,0 +1,226 @@
+.accordion-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  .AccordionRoot {
+    /* variables */
+    $trigger-border-color: #bababa;
+    $trigger-padding-mobile: calc($p-size * 1.25);
+    $trigger-padding-desktop: calc($h3-size * 1.25);
+    $border-thickness: 1px;
+    // Used to reduce space between accordion trigger and content by ignoring trigger's padding-bottom
+    $content-top-offset-desktop: calc(0.75 * $trigger-padding-desktop);
+    $content-top-offset-mobile: calc(0.5 * $trigger-padding-mobile);
+
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-track {
+      background: rgb(230, 230, 230);
+      border-radius: 1rem;
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgb(182, 182, 182);
+      border-radius: 1rem;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(163, 163, 163);
+    }
+
+    .AccordionItem {
+      width: 100%;
+      background-color: $primary-white;
+      // This is to avoid double borders
+      border: $border-thickness solid $trigger-border-color;
+      border-bottom: none;
+
+      &:last-child {
+        @media (min-width: $desktop-breakpoint) {
+          border-bottom: $border-thickness solid $trigger-border-color;
+        }
+      }
+    }
+
+    .AccordionColumn {
+      // Avoid double border on right side when there are 2 columns
+      &:not(:first-child) {
+        @media (min-width: $desktop-breakpoint) {
+          transform: translateX(-$border-thickness);
+        }
+      }
+
+      // Add border bottom for mobile
+      &:last-child {
+        .AccordionItem:last-child {
+          border-bottom: $border-thickness solid $trigger-border-color;
+        }
+      }
+    }
+
+    .AccordionTrigger {
+      border: none;
+      font-family: $subheading-font;
+      font-size: $p-size;
+      padding: $trigger-padding-mobile;
+      color: $primary-black;
+      background-color: $primary-white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+      width: 100%;
+      text-align: left;
+      text-transform: uppercase;
+
+      @media (min-width: $tablet-breakpoint) {
+        & {
+          font-size: $h3-size;
+          padding: $trigger-padding-desktop;
+        }
+      }
+    }
+
+    .AccordionContent {
+      overflow: hidden;
+
+      &[data-state='open'] {
+        animation: slideDown 300ms forwards;
+        @media (min-width: $mobile-breakpoint) {
+          animation: slideDownDesktop 300ms forwards;
+        }
+      }
+      &[data-state='closed'] {
+        animation: slideUp 300ms;
+        @media (min-width: $mobile-breakpoint) {
+          animation: slideUpDesktop 300ms forwards;
+        }
+      }
+
+      p {
+        padding: $trigger-padding-mobile;
+        padding-top: 0;
+
+        @media (min-width: $tablet-breakpoint) {
+          padding: $trigger-padding-desktop;
+          padding-top: 0;
+        }
+      }
+    }
+
+    .AccordionIcon {
+      transition: transform 300ms;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+
+      @media (min-width: $tablet-breakpoint) {
+        width: 28px;
+        height: 28px;
+      }
+    }
+    .AccordionTrigger[data-state='open'] > .AccordionIcon {
+      transform: rotate(225deg);
+    }
+
+    @keyframes slideDown {
+      from {
+        height: 0;
+      }
+      to {
+        height: calc(
+          var(--radix-accordion-content-height) - $content-top-offset-mobile
+        );
+        transform: translateY(calc(-1 * $content-top-offset-mobile));
+      }
+    }
+
+    @keyframes slideDownDesktop {
+      from {
+        height: 0;
+      }
+      to {
+        height: calc(
+          var(--radix-accordion-content-height) - $content-top-offset-desktop
+        );
+        transform: translateY(calc(-1 * $content-top-offset-desktop));
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        height: calc(
+          var(--radix-accordion-content-height) - $content-top-offset-mobile
+        );
+        transform: translateY(calc(-1 * $content-top-offset-mobile));
+      }
+      to {
+        height: 0;
+      }
+    }
+
+    @keyframes slideUpDesktop {
+      from {
+        height: calc(
+          var(--radix-accordion-content-height) - $content-top-offset-desktop
+        );
+        transform: translateY(calc(-1 * $content-top-offset-desktop));
+      }
+      to {
+        height: 0;
+      }
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      & {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+
+  .expand-all-btn-container {
+    display: none;
+    @media (min-width: $desktop-breakpoint) {
+      & {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    .expand-all-btn {
+      font-family: $subheading-font;
+      font-size: $p-size;
+
+      background-color: transparent;
+      border: none;
+
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0;
+      margin-block-end: $p-size;
+
+      .cheveron {
+        transition: transform 300ms;
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+      }
+
+      &.expanded > .cheveron {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

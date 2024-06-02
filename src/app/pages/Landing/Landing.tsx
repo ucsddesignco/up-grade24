@@ -1,15 +1,29 @@
+import Sticker from '@/components/Sticker/Sticker';
 import './Landing.scss';
 import Fruits from '@/components/Fruits/Fruits';
+import { PageRef } from '@/page';
+import DcoSticker from '@/assets/stickers/dco-sticker.svg';
+import Impact from '@/assets/stickers/impact.svg';
 
-export default function Landing() {
+type LandingProps = {
+  landingRef: PageRef;
+};
+
+export default function Landing({ landingRef }: LandingProps) {
   return (
-    <section id="landing">
-      <div className="mobile-header">
-        <h1>up-grade 2024</h1>
-        <p>UCSD Design Co</p>
-        <p>San Diego, CA</p>
-        <h3>june 1st to august 13th</h3>
-      </div>
+    <section ref={landingRef} id="landing">
+      <Sticker
+        name="dco"
+        image={<DcoSticker />}
+        style={{ right: '50px', top: '15%' }}
+        hideMobile
+      />
+      <Sticker
+        name="impact"
+        image={<Impact />}
+        style={{ left: '10px', top: '55%' }}
+        hideMobile
+      />
       <p className="breadcrumb">.01 / Home</p>
       <Fruits />
       {/* <Signature

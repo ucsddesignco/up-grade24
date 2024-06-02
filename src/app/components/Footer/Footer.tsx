@@ -76,7 +76,7 @@ export default function Footer() {
           />
         </svg>
       </span>
-      <a href="mailto: designatucsd@gmail.com">hello@ucsddesign.co</a>
+      {/* <a href="mailto: designatucsd@gmail.com">hello@ucsddesign.co</a> */}
     </footer>
   );
 }
