@@ -5,7 +5,7 @@
 
   position: absolute;
   margin-block: $main-padding-mobile-block;
-  margin-inline: $main-padding-mobile-inline;
+  margin-inline: calc($main-padding-mobile-inline/2);
   right: 0;
   background: none;
   outline-offset: 3px;

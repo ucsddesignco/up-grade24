@@ -11,7 +11,7 @@
     $trigger-border-color: $outline-gray;
     $trigger-padding-mobile: calc($p-size * 1.25);
     $trigger-padding-desktop: calc($h3-size * 1.25);
-    $border-thickness: 1px;
+    $border-thickness: 1.5px;
     // Used to reduce space between accordion trigger and content by ignoring trigger's padding-bottom
     $content-top-offset-desktop: calc(0.75 * $trigger-padding-desktop);
     $content-top-offset-mobile: calc(0.5 * $trigger-padding-mobile);
