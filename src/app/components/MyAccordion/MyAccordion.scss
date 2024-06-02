@@ -12,7 +12,8 @@
     $trigger-padding-desktop: calc($h3-size * 1.25);
     $border-thickness: 1px;
     // Used to reduce space between accordion trigger and content by ignoring trigger's padding-bottom
-    $content-top-offset: calc(0.75 * $trigger-padding-desktop);
+    $content-top-offset-desktop: calc(0.75 * $trigger-padding-desktop);
+    $content-top-offset-mobile: calc(0.5 * $trigger-padding-mobile);
 
     height: 100%;
     overflow-y: auto;
@@ -95,9 +96,15 @@
 
       &[data-state='open'] {
         animation: slideDown 300ms forwards;
+        @media (min-width: $mobile-breakpoint) {
+          animation: slideDownDesktop 300ms forwards;
+        }
       }
       &[data-state='closed'] {
         animation: slideUp 300ms;
+        @media (min-width: $mobile-breakpoint) {
+          animation: slideUpDesktop 300ms forwards;
+        }
       }
 
       p {
@@ -132,18 +139,42 @@
       }
       to {
         height: calc(
-          var(--radix-accordion-content-height) - $content-top-offset
+          var(--radix-accordion-content-height) - $content-top-offset-mobile
         );
-        transform: translateY(calc(-1 * $content-top-offset));
+        transform: translateY(calc(-1 * $content-top-offset-mobile));
+      }
+    }
+
+    @keyframes slideDownDesktop {
+      from {
+        height: 0;
+      }
+      to {
+        height: calc(
+          var(--radix-accordion-content-height) - $content-top-offset-desktop
+        );
+        transform: translateY(calc(-1 * $content-top-offset-desktop));
       }
     }
 
     @keyframes slideUp {
       from {
         height: calc(
-          var(--radix-accordion-content-height) - $content-top-offset
+          var(--radix-accordion-content-height) - $content-top-offset-mobile
         );
-        transform: translateY(calc(-1 * $content-top-offset));
+        transform: translateY(calc(-1 * $content-top-offset-mobile));
+      }
+      to {
+        height: 0;
+      }
+    }
+
+    @keyframes slideUpDesktop {
+      from {
+        height: calc(
+          var(--radix-accordion-content-height) - $content-top-offset-desktop
+        );
+        transform: translateY(calc(-1 * $content-top-offset-desktop));
       }
       to {
         height: 0;
