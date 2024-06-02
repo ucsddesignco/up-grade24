@@ -38,9 +38,10 @@
       padding-block: $main-padding-mobile-block;
       padding-inline: $main-padding-mobile-inline;
 
+      overflow-x: hidden;
+
       @media (min-width: $tablet-breakpoint) {
         height: 100vh;
-        overflow-x: hidden;
       }
 
       @media (min-width: $mobile-breakpoint) {
