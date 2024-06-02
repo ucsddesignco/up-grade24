@@ -59,6 +59,7 @@ export default function Landing({ landingRef }: LandingProps) {
         <CartIcon className="svg-cart" />
         <p>ADD ME TO CART</p>
       </a>
+      <hr className="mobile-line" />
     </section>
   );
 }

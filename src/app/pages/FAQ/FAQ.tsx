@@ -55,6 +55,7 @@ export default function FAQ({ faqRef }: FAQProps) {
         <Image src={Apricot} alt="apricot" id="apricot-4" className="apricot" />
         <Image src={Apricot} alt="apricot" id="apricot-5" className="apricot" />
       </div>
+      <hr className="mobile-line" />
     </section>
   );
 }

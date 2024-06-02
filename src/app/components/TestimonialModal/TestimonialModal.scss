@@ -29,7 +29,7 @@
     height: calc(100% - 2 * $main-padding-desktop-block - var(--title-height));
     border: 1px solid $outline-gray;
     background: $primary-white;
-    z-index: 2;
+    z-index: 3;
     transition: opacity 0.3s;
     opacity: 0;
     pointer-events: none;

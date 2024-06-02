@@ -52,6 +52,7 @@ export default function Overview({ overviewRef }: OverviewProps) {
         </div>
         <Expectations expectationsList={EXPECTATIONS_LIST} />
       </div>
+      <hr className="mobile-line" />
     </section>
   );
 }

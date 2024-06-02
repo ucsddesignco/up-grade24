@@ -35,6 +35,7 @@ export default function Themes({ themesRef }: ThemesProps) {
       <div className="pomegranate-container">
         <Image src={pomegranateImg} alt="Pomegranate" className="pomegranate" />
       </div>
+      <hr className="mobile-line" />
     </section>
   );
 }

@@ -23,7 +23,7 @@
   }
 
   hr {
-    border: 1px solid lightgray;
+    border: 1px solid $outline-gray;
     margin-block: 1rem;
 
     @media (min-width: $desktop-breakpoint) and (min-height: $testimonial-height-breakpoint) {

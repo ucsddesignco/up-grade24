@@ -38,9 +38,16 @@
       background-color: $primary-white;
       scroll-snap-align: center;
       padding-inline: 24px;
-      padding-block: $main-padding-mobile-block;
-
       overflow-y: visible;
+
+      .mobile-line {
+        border: 1px solid $outline-gray;
+        margin-block: $main-padding-mobile-block;
+
+        @media (min-width: $mobile-breakpoint) {
+          display: none;
+        }
+      }
 
       @media (min-width: 350px) {
         padding-inline: $main-padding-mobile-inline;
