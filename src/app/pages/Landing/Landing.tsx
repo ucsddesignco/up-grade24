@@ -41,7 +41,7 @@ export default function Landing({ landingRef }: LandingProps) {
         <h1>up-grade 2024</h1>
         <p>UCSD Design Co</p>
         <p>San Diego, CA</p>
-        <h3>July 1st to September 6th</h3>
+        <h3>July 1st to Sept 6th</h3>
       </div>
       <p className="breadcrumb">.01 / Home</p>
 

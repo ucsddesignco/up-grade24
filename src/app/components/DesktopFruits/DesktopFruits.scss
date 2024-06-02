@@ -7,10 +7,13 @@
   z-index: 0;
   pointer-events: none;
   overflow-x: hidden;
+  display: none;
+
+  @media (min-width: $tablet-breakpoint) {
+    display: block;
+  }
 
   .fruits-theme-section {
-    display: none;
-
     @media (min-width: $tablet-breakpoint) {
       display: block;
       position: relative;
@@ -65,7 +68,7 @@
       z-index: 0;
 
       .apricot {
-        transform: rotate(-10deg);
+        transform: rotate(-10deg) translateX(20%);
 
         &#desktop-apricot-1 {
           height: 15%;

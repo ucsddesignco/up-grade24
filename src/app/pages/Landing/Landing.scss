@@ -1,5 +1,4 @@
 #landing {
-  height: 100dvh;
   h1,
   h3 {
     text-transform: uppercase;
@@ -7,7 +6,7 @@
   }
 
   h1 {
-    font-size: calc($h1-size + 2vw);
+    font-size: clamp(28px, calc(24px + 0.5vw), 44px);
     margin-block-end: calc($p-size * 0.5);
   }
 
