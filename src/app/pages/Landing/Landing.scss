@@ -1,2 +1,74 @@
 #landing {
+  height: 100dvh;
+  h1,
+  h3 {
+    text-transform: uppercase;
+    text-wrap: nowrap;
+  }
+
+  h1 {
+    font-size: calc($h1-size + 2vw);
+    margin-block-end: calc($p-size * 0.5);
+  }
+
+  h3 {
+    margin-block-start: calc($p-size * 0.5);
+  }
+
+  .mobile-header {
+    margin-block-start: calc($main-padding-mobile-block + 10px);
+    margin-inline: 10vw;
+  }
+
+  .breadcrumb {
+    display: none;
+  }
+
+  .landing-signature-container {
+    height: 80px;
+    margin-block: 1rem;
+    margin-inline: auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (min-width: $mobile-breakpoint) {
+      display: none;
+    }
+  }
+
+  .add-me-to-cart {
+    margin-inline: auto;
+    width: 80%;
+    max-width: 400px;
+    color: $primary-white;
+    background-color: $primary-black;
+    padding-block: 20px;
+    transition: background-color 0.3s;
+    border: 2px solid $primary-black;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(16px, 1vw, 22px);
+
+    &:is(:hover, :focus-visible) {
+      background-color: #fcfcfc;
+      color: #212121;
+    }
+  }
+
+  @media (min-width: $tablet-breakpoint) {
+    .mobile-header,
+    .add-me-to-cart {
+      display: none;
+    }
+
+    .breadcrumb {
+      display: block;
+    }
+  }
 }

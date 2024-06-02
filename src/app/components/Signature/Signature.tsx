@@ -8,6 +8,7 @@ import { handleHandwritingAnimation } from './util/handleHandwritingAnimation';
 type SignatureProps = {
   hoveringCart: boolean;
   navContainerRef: RefObject<HTMLDivElement>;
+  hideMobile: boolean;
 };
 
 const APPLY_CONFIG = {
@@ -27,7 +28,8 @@ const FUTURE_CONFIG = {
 
 export default function Signature({
   hoveringCart,
-  navContainerRef
+  navContainerRef,
+  hideMobile
 }: SignatureProps) {
   const xElementRef = useRef<HTMLSpanElement>(null);
   const applySVGRef = useRef<SVGSVGElement>(null);
@@ -52,7 +54,7 @@ export default function Signature({
   }, [hoveringCart, navContainerRef]);
 
   return (
-    <div className="signature">
+    <div className={`signature ${hideMobile ? 'hide-mobile' : ''}`}>
       <div className="signature-container">
         <span ref={xElementRef}>X</span>
         <div className="line" />

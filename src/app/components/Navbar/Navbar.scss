@@ -175,7 +175,7 @@ nav {
       margin-bottom: clamp(15px, calc(10px + 1.2vw), 40px);
     }
 
-    &:hover {
+    &:is(:hover, :focus-visible) {
       background-color: #fcfcfc;
       color: #212121;
     }
