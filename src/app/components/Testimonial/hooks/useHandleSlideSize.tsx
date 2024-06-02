@@ -35,7 +35,10 @@ export const useHandleSlideSize = ({
       modalButton.style.opacity = '1';
       return;
     }
-    if (
+    if (window.innerWidth < 550) {
+      newPerView = 1;
+      sliderContainer.classList.add('hide-both');
+    } else if (
       (sliderRect.height < 180 && sliderRect.width < 1200) ||
       (sliderRect.width < 650 && sliderRect.width > 550)
     ) {
@@ -46,8 +49,7 @@ export const useHandleSlideSize = ({
     } else if (sliderRect.width < 550) {
       newPerView = 1;
       currentSliderBg.style.width = `calc(${(1 / newPerView) * 100}% - 2rem)`;
-      sliderContainer.classList.add('hide-left');
-      sliderContainer.classList.add('hide-right');
+      sliderContainer.classList.add('hide-both');
     } else if (sliderRect.height < 180 || sliderRect.width < 800) {
       newPerView = 2;
       currentSliderBg.classList.add('not-center');

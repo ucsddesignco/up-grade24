@@ -8,6 +8,10 @@
   h1 {
     font-size: clamp(28px, calc(24px + 0.5vw), 44px);
     margin-block-end: calc($p-size * 0.5);
+
+    @media (min-width: 400px) {
+      font-size: clamp(30px, calc(27px + 0.9vw), 44px);
+    }
   }
 
   h3 {
