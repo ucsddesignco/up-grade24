@@ -156,8 +156,8 @@ export default function Fruits() {
       basketX = width / 2;
       basketY = height * .85;
       basketWidth = width;
-      basketHeight = height * .2;
-      spriteHeight = height * .3 / 385;
+      basketHeight = height * .15;
+      spriteHeight = height * .28 / 385;
       spriteWidth = width / 815;
 
     }
@@ -228,8 +228,8 @@ export default function Fruits() {
         // DESIGN
         textWidth: 220,
         textHeight: 80,
-        boxScale: .65,
-        spriteScale: 0.5,
+        boxScale: .5,
+        spriteScale: 0.4,
         svgPath: '/textures/wordFour.svg',
       },
       {
@@ -237,7 +237,7 @@ export default function Fruits() {
         textWidth: 220,
         textHeight: 120,
         boxScale: 0.3,
-        spriteScale: 0.5,
+        spriteScale: 0.4,
         svgPath: '/textures/wordTwo.svg'
       },
      
@@ -246,16 +246,16 @@ export default function Fruits() {
         // UP-GRADE
         textWidth: 200,
         textHeight: 40,
-        boxScale: 1,
-        spriteScale: 0.5,
+        boxScale: .9,
+        spriteScale: 0.4,
         svgPath: '/textures/wordOne.svg'
       },
       {
         // 2024
         textWidth: 220,
         textHeight: 60,
-        boxScale: .6,
-        spriteScale: 0.5,
+        boxScale: .5,
+        spriteScale: 0.4,
         svgPath: '/textures/wordThree.svg'
       },
     ];
@@ -267,7 +267,7 @@ export default function Fruits() {
         const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
         const posX = index * (scene.current?.clientWidth ?? 0) * 0.25 + 100;
         const posY = -300 - (index * (scene.current?.clientHeight ?? 0) * 0.4);
-        const rotationAngle = Math.random() * Math.PI;
+        const rotationAngle = Math.random() * 2 * Math.PI;
         const rotationSpeed = Math.random() * 0.1 - 0.05;
         let width = textWidth * boxScale;
         let height = textHeight * boxScale;
@@ -301,9 +301,9 @@ export default function Fruits() {
     else {
       wordsMobile.forEach((word, index) => {
         const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
-        const posX = index * (scene.current?.clientWidth ?? 0) * 0.25 + 100;
-        const posY = -300 - (index * (scene.current?.clientHeight ?? 0) * 0.4);
-        const rotationAngle = Math.random() * Math.PI;
+        const posX = index * (scene.current?.clientWidth ?? 0) * 0.20 + 100;
+        const posY = -10 - (index * (scene.current?.clientHeight ?? 0) * 0.6);
+        const rotationAngle = Math.random() * 2 * Math.PI;
         const rotationSpeed = Math.random() * 0.1 - 0.05;
         let width = textWidth * boxScale;
         let height = textHeight * boxScale;
@@ -414,31 +414,33 @@ export default function Fruits() {
     else {
 
     //Create Cherry
-    let cherryScale = 0.15;
+      let cherryScale = 0.15;
 
-    const cherryShape = createEllipseVertices({
-      cx: 0,
-      cy: 0,
-      ry: scene.current?.clientWidth * cherryScale* .8,
-      rx: scene.current?.clientWidth * cherryScale*.5,
-      steps: 20
-    });
-    const textureWidth = 150;
-    const cherry = Bodies.fromVertices(
-      scene.current?.clientWidth*.3, scene.current?.clientHeight * -0.2, 
-      [Vertices.hull(cherryShape)],
-      {
-      restitution: 0.6, //Bounciness
-      render: {
-        fillStyle: 'black',
-        sprite: {
-          texture: '/textures/cherry.png',
-          xScale: (cherryScale * scene.current?.clientWidth * 1.5) / textureWidth,
-          yScale: (cherryScale * scene.current?.clientWidth * 1.5 ) / textureWidth,
+      const cherryShape = createEllipseVertices({
+        cx: 0,
+        cy: 0,
+        ry: scene.current?.clientWidth * cherryScale* .8,
+        rx: scene.current?.clientWidth * cherryScale*.5,
+        steps: 20
+      });
+      const textureWidth = 150;
+      const cherry = Bodies.fromVertices(
+        scene.current?.clientWidth*.3, scene.current?.clientHeight * -0.2, 
+        [Vertices.hull(cherryShape)],
+        {
+        restitution: 0.6, //Bounciness
+        render: {
+          fillStyle: 'black',
+          sprite: {
+            texture: '/textures/cherry.png',
+            xScale: (cherryScale * scene.current?.clientWidth * 1.5) / textureWidth,
+            yScale: (cherryScale * scene.current?.clientWidth * 1.5 ) / textureWidth,
+          },
         },
-      },
-        });
-        Composite.add(engine.world, cherry);
+          });
+          Composite.add(engine.world, cherry);
+
+          
 
       const watermelonScale = 0.25;
       const watermelonShape = createEllipseVertices({
@@ -449,7 +451,7 @@ export default function Fruits() {
         steps: 16
       });
       const watermelon = Bodies.fromVertices(
-        scene.current?.clientWidth *.6, scene.current?.clientHeight * -0.2, 
+        scene.current?.clientWidth *.6, scene.current?.clientHeight * -0.4, 
         [Vertices.hull(watermelonShape)],
         {
         restitution: 0.6, //Bounciness
@@ -473,7 +475,7 @@ export default function Fruits() {
             steps: 20
           });
           const apricot = Bodies.fromVertices(
-            scene.current?.clientWidth*.2, scene.current?.clientHeight * -.8, 
+            scene.current?.clientWidth*.2, scene.current?.clientHeight * -1.5, 
             [Vertices.hull(apricotShape)],
             {
             restitution: 0.6, //Bounciness
