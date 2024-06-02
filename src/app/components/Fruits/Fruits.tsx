@@ -155,6 +155,21 @@ export default function Fruits() {
     spriteHeight = (height * 0.5) / 385;
     spriteWidth = width / 815;
 
+    let basketSprite = {
+      texture: '/textures/basket.png',
+      xScale: spriteWidth,
+      yScale: spriteHeight
+    };
+
+    if (!isDesktop) {
+      basketY = height * 0.85;
+      basketSprite = {
+        texture: '/textures/basket-mobile.png',
+        xScale: spriteWidth * 2.5,
+        yScale: spriteHeight * 1.5
+      };
+    }
+
     const basket = Bodies.rectangle(
       basketX,
       basketY,
@@ -164,21 +179,16 @@ export default function Fruits() {
         isStatic: true,
         restitution: 0.1,
         render: {
-          sprite: {
-            texture: '/textures/basket.png',
-            xScale: spriteWidth,
-            yScale: spriteHeight
-          }
+          sprite: basketSprite
         }
       }
     );
+
     basket.collisionFilter = {
       group: -1,
       category: 2,
       mask: 0
     };
-
-    Composite.add(engine.world, basket);
 
     /* ********************* define and add text ***************************** */
     const wordBoxScale = 1;
@@ -524,6 +534,8 @@ export default function Fruits() {
       );
       Composite.add(engine.world, apricot);
     }
+
+    Composite.add(engine.world, basket);
 
     // Get the canvas element
     const canvas = scene.current;
