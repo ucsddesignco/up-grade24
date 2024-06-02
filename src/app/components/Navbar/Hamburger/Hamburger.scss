@@ -1,6 +1,6 @@
 .hamburger {
   $hamburger-height: 10px;
-  $hamburger-width: 20px;
+  $hamburger-width: 16px;
   $line-height: 2px;
 
   position: absolute;
@@ -19,8 +19,8 @@
   z-index: 5;
 
   @media (min-width: $mobile-breakpoint) {
-    margin-block: $main-padding-desktop-block;
-    margin-inline: $main-padding-desktop-inline;
+    margin-block: $main-padding-tablet-block;
+    margin-inline: $main-padding-tablet-inline;
   }
 
   .line {
