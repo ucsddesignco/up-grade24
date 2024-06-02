@@ -2,15 +2,6 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-top: 0;
-
-  @media (min-width: 760px) {
-    padding-top: $main-padding-desktop-block;
-  }
-
-  @media (min-width: $tablet-breakpoint) {
-    padding-top: $main-padding-mobile-block;
-  }
 
   h2 {
     margin-bottom: 2rem;
@@ -43,7 +34,9 @@
     }
 
     @media (min-width: $tablet-breakpoint) {
-      display: none;
+      width: calc(130px + 6vw);
+      bottom: calc(10px - 5.5vw);
+      right: 20px;
     }
   }
 }

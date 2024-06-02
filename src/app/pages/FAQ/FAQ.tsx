@@ -49,6 +49,12 @@ export default function FAQ({ faqRef }: FAQProps) {
         id="apricot-2"
         className="apricot mobile"
       />
+
+      <div id="apricot-container">
+        <Image src={Apricot} alt="apricot" id="apricot-3" className="apricot" />
+        <Image src={Apricot} alt="apricot" id="apricot-4" className="apricot" />
+        <Image src={Apricot} alt="apricot" id="apricot-5" className="apricot" />
+      </div>
     </section>
   );
 }

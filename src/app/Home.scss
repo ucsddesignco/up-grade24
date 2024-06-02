@@ -5,6 +5,7 @@
 
   .main-content {
     overflow-y: scroll;
+    overflow-x: hidden;
     scroll-snap-type: none;
     width: 100%;
     position: relative;
@@ -39,11 +40,17 @@
       padding-inline: 24px;
       padding-block: $main-padding-mobile-block;
 
+      overflow-y: visible;
+
       @media (min-width: 350px) {
         padding-inline: $main-padding-mobile-inline;
       }
-      overflow: hidden;
+
       @media (min-width: $mobile-breakpoint) {
+        padding-block: $main-padding-tablet-block;
+        padding-inline: $main-padding-tablet-inline;
+      }
+      @media (min-width: $tablet-breakpoint) {
         padding-block: $main-padding-desktop-block;
         padding-inline: $main-padding-desktop-inline;
 
