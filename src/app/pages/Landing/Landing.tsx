@@ -1,8 +1,13 @@
 import './Landing.scss';
+import { PageRef } from '@/page';
 
-export default function Landing() {
+type LandingProps = {
+  landingRef: PageRef;
+};
+
+export default function Landing({ landingRef }: LandingProps) {
   return (
-    <section id="landing">
+    <section ref={landingRef} id="landing">
       <p className="breadcrumb">.01 / Home</p>
     </section>
   );
