@@ -1,11 +1,12 @@
 .hamburger {
-  $hamburger-height: 18px;
-  $hamburger-width: 30px;
+  $hamburger-height: 16px;
+  $hamburger-width: 25px;
   $line-height: 4px;
 
   position: absolute;
-  margin: $main-padding-mobile-block;
-  right: 0;
+  margin-block: $main-padding-mobile-block;
+  margin-inline: $main-padding-mobile-inline;
+  left: 0;
   background: none;
   outline-offset: 3px;
   border: none;
@@ -18,7 +19,8 @@
   z-index: 3;
 
   @media (min-width: $mobile-breakpoint) {
-    margin: $main-padding-desktop-block;
+    margin-block: $main-padding-desktop-block;
+    margin-inline: $main-padding-desktop-inline;
   }
 
   .line {

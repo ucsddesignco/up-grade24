@@ -1,8 +1,13 @@
 import './FAQ.scss';
+import { PageRef } from '@/page';
 
-export default function FAQ() {
+type FAQProps = {
+  faqRef: PageRef;
+};
+
+export default function FAQ({ faqRef }: FAQProps) {
   return (
-    <section id="faq">
+    <section ref={faqRef} id="faq">
       <p className="breadcrumb">.04 / FAQ</p>
       <h2>Commonly Asked Questions</h2>
     </section>
