@@ -122,8 +122,6 @@ export default function Fruits() {
     const basketBottomDistance = basketBottomRatio * basketRect.width + 5;
 
     const basketHeightTest = basketRect.height;
-    console.log({ basketRect, padding });
-    console.log(basketElement);
     const leftSlant = Bodies.rectangle(
       basketRect.left - navBarWidth,
       basketRect.top + basketHeightTest / 2,
@@ -587,7 +585,6 @@ export default function Fruits() {
     if (canvas) {
       // Add a mouse click event listener to the canvas
       canvas.addEventListener('click', () => {
-        console.log('Clicked');
         Composite.allBodies(engine.world).forEach(body => {
           // For each fruit
           if (body.isStatic) return; // Skip static bodies
@@ -673,8 +670,6 @@ export default function Fruits() {
     const handleResize = () => {
       if (!scene.current) return; // Add null check
 
-      console.log('resizing!');
-
       let newWidth = scene.current?.clientWidth ?? 0; // Provide default value of 0 if undefined
       let newHeight = scene.current?.clientHeight ?? 0; // Provide default value of 0 if undefined
 
@@ -687,8 +682,6 @@ export default function Fruits() {
       render.canvas.style.width = newWidth + 'px';
       render.canvas.style.height = newHeight + 'px';
 
-      console.log('Width:', newWidth, 'Height:', newHeight);
-      console.log(newWidth / 2, newHeight + barrierWidth / 2);
       Body.setPosition(ground, {
         x: newWidth / 2,
         y: newHeight + barrierWidth / 2 - 10
@@ -714,11 +707,6 @@ export default function Fruits() {
         x: newWidth / 2,
         y: newHeight * 0.75
       });
-
-      console.log(
-        ((newWidth - width) / width) * 10,
-        (newHeight - height) / height
-      );
 
       Body.scale(basket, newWidth / width, newHeight / height);
       if (basket.render.sprite) {
