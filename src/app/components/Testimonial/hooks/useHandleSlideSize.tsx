@@ -39,7 +39,7 @@ export const useHandleSlideSize = ({
       newPerView = 1;
       sliderContainer.classList.add('hide-both');
     } else if (
-      (sliderRect.height < 170 && sliderRect.width < 1200) ||
+      (sliderRect.height < 180 && sliderRect.width < 1200) ||
       (sliderRect.width < 650 && sliderRect.width > 550)
     ) {
       newPerView = 1.5;
