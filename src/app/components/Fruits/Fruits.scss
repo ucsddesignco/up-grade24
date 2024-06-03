@@ -18,7 +18,6 @@
     display: block;
     position: absolute;
     width: 100% !important;
-    margin-top: auto;
     align-self: flex-end;
 
     @media (min-width: $tablet-breakpoint) {
@@ -30,7 +29,7 @@
     display: none;
     position: absolute;
     width: 100%;
-
+    align-self: flex-end;
     path {
       stroke-width: 5;
     }
