@@ -36,7 +36,9 @@
     }
 
     @media (min-width: 760px) {
+      margin-inline: auto;
       width: 90%;
+      bottom: -6%;
       transform: rotate(0deg);
     }
 

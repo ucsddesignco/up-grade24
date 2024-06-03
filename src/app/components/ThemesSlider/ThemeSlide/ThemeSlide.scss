@@ -9,7 +9,9 @@
   flex-direction: column;
   justify-content: space-between;
   // max-height: 675px;
-  max-height: min(675px, 87%);
+  @media (min-width: $desktop-breakpoint) {
+    max-height: min(675px, 87%);
+  }
   height: 100%;
 
   .top-section {

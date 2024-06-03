@@ -33,7 +33,7 @@ export default function ThemesSlider({
     initial: 0,
     breakpoints: {
       '(min-width: 550px)': {
-        slides: { origin: 'center', perView: 1.5, spacing: 0 }
+        slides: { origin: 'center', perView: 1.5, spacing: 25 }
       },
       '(min-width: 979px)': {
         slides: { origin: 'center', perView: 1.5, spacing: 10 }

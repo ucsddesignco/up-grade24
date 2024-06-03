@@ -50,6 +50,7 @@ export const useHandleSquashSizing = ({
         // If there's too little space under list, make the squash aligned to the left
         if (spaceUnderList < SPACE_THRESHOLD) {
           squashContainer.style.justifyContent = 'flex-start';
+          squashContainer.style.left = '5%';
           squashWrapper.style.height = `${spaceUnderTitle / 1.5}px`;
         } else {
           const squashHeight =

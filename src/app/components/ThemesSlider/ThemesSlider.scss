@@ -19,10 +19,15 @@
   border: 1.5px solid $outline-gray;
 
   @media ($mobile-breakpoint < width < $desktop-breakpoint) {
-    padding-top: 2.5rem;
+    padding-block: 2.5rem;
+    height: 550px;
   }
 
   width: calc(100vw - 2 * $main-padding-mobile-inline);
+
+  .keen-slider {
+    height: 100%;
+  }
 
   .theme-slider-nav {
     display: grid;
