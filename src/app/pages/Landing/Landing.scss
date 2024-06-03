@@ -1,6 +1,10 @@
 #landing {
   height: calc(100dvh + calc(clamp(20px, 30px + 1.2vw, 40px)));
 
+  @media (min-width: $tablet-breakpoint) {
+    height: 100vh;
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;

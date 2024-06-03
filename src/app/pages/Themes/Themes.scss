@@ -34,9 +34,9 @@
     }
 
     @media (min-width: $tablet-breakpoint) {
-      width: calc(130px + 6vw);
-      bottom: calc(10px - 5.5vw);
-      right: 20px;
+      width: calc(145px + 6.5vw);
+      bottom: calc(10px - 6vw);
+      right: -50px;
     }
   }
 }

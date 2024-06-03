@@ -12,7 +12,7 @@
 
     //For extremely large screen sizes
 
-    @media (min-width: $tablet-breakpoint) {
+    @media (min-width: $desktop-breakpoint) {
       scroll-behavior: smooth;
       display: grid;
       scroll-snap-type: y mandatory;
@@ -54,6 +54,7 @@
       @media (min-width: $mobile-breakpoint) {
         padding-inline: $main-padding-tablet-inline;
       }
+
       @media (min-width: $tablet-breakpoint) {
         padding-block: $main-padding-desktop-block;
         padding-inline: $main-padding-desktop-inline;
@@ -63,7 +64,7 @@
         }
       }
 
-      @media (min-width: $tablet-breakpoint) {
+      @media (min-width: $desktop-breakpoint) {
         height: 100vh;
       }
     }

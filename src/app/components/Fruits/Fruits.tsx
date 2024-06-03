@@ -76,7 +76,7 @@ export default function Fruits() {
         friction: 0, // Adjust this value, 0 means no friction
         restitution: 0.1,
         render: {
-          fillStyle: 'red'
+          fillStyle: 'transparent'
         }
       }
     );
@@ -91,15 +91,18 @@ export default function Fruits() {
         friction: 0, // Adjust this value, 0 means no friction
         restitution: 0.1,
         render: {
-          fillStyle: 'red'
+          fillStyle: 'transparent'
         }
       }
     );
+
+    const desktopBasket = document.querySelector('.fruits-basket');
+    console.log(desktopBasket);
     const leftSlant = Bodies.rectangle(
       -5 - barrierWidth / 2,
       height / 2,
       barrierWidth,
-      height * 5,
+      height * 6,
       {
         isStatic: true,
         frictionStatic: 0,
@@ -114,7 +117,7 @@ export default function Fruits() {
       width + barrierWidth / 2 + 5,
       height / 2,
       barrierWidth,
-      height * 5,
+      height * 6,
       {
         isStatic: true,
         frictionStatic: 0,

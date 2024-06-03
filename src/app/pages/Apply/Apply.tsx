@@ -6,7 +6,6 @@ import './Apply.scss';
 import { applyInfo } from './apply-info';
 import Testimonial from '@/components/Testimonial/Testimonial';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import TestimonialModal from '@/components/TestimonialModal/TestimonialModal';
 import Grape from '@/assets/stickers/grape.svg';
 import Yuzu from '@/assets/stickers/yuzu.svg';
 import Sticker from '@/components/Sticker/Sticker';
@@ -76,11 +75,11 @@ export default function Apply({ applyRef }: ApplyProps) {
         <Testimonial setOpenModal={setOpenModal} />
         <Footer />
       </div>
-      <TestimonialModal
+      {/* <TestimonialModal
         openModal={openModal}
         setOpenModal={setOpenModal}
         topOffsetRef={topOffsetRef}
-      />
+      /> */}
     </section>
   );
 }

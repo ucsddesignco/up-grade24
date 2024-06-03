@@ -40,7 +40,9 @@ export default function TestimonialModal({
         onClick={() => setOpenModal(false)}
         className="modal-overlay"
         aria-hidden="true"
-        style={openModal ? { opacity: '1' } : {}}
+        style={
+          openModal ? { opacity: '1', display: 'block' } : { display: 'none' }
+        }
       ></div>
       <div
         ref={testimonialModalRef}

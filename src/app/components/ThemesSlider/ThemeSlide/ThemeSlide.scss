@@ -2,18 +2,15 @@
   /* variables */
   $slide-margin: 20px;
 
-  margin: $slide-margin;
+  padding: $slide-margin;
   border: none;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-height: 575px;
-  min-height: 420px;
-
-  @media ($mobile-breakpoint < width < $tablet-breakpoint) {
-    min-height: 500px;
-  }
+  // max-height: 675px;
+  max-height: min(675px, 87%);
+  height: 100%;
 
   .top-section {
     h3 {

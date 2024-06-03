@@ -19,7 +19,7 @@ export default function FAQ({ faqRef }: FAQProps) {
       <Sticker
         name="sustainability"
         image={<Sustainability />}
-        style={{ left: '35%', bottom: '30%' }}
+        style={{ right: '7%', top: '8%' }}
         hideMobile
       />
       <Sticker
