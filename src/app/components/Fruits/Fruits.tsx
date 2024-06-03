@@ -76,7 +76,7 @@ export default function Fruits() {
         friction: 0, // Adjust this value, 0 means no friction
         restitution: 0.1,
         render: {
-          fillStyle: 'transparent'
+          fillStyle: 'red'
         }
       }
     );
@@ -91,7 +91,7 @@ export default function Fruits() {
         friction: 0, // Adjust this value, 0 means no friction
         restitution: 0.1,
         render: {
-          fillStyle: 'transparent'
+          fillStyle: 'red'
         }
       }
     );
@@ -464,7 +464,7 @@ export default function Fruits() {
       const cherryShape = createEllipseVertices({
         cx: 0,
         cy: 0,
-        ry: scene.current?.clientWidth * cherryScale * 1,
+        ry: scene.current?.clientWidth * cherryScale * 1 + 20,
         rx: scene.current?.clientWidth * cherryScale * 1 * cherryRatio,
         steps: 20
       });

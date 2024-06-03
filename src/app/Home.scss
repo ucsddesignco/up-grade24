@@ -42,7 +42,7 @@
         border: 1px solid $outline-gray;
         margin-block: $main-padding-mobile-block;
 
-        @media (min-width: $mobile-breakpoint) {
+        @media (min-width: $tablet-breakpoint) {
           display: none;
         }
       }
@@ -52,7 +52,6 @@
       }
 
       @media (min-width: $mobile-breakpoint) {
-        padding-block: $main-padding-tablet-block;
         padding-inline: $main-padding-tablet-inline;
       }
       @media (min-width: $tablet-breakpoint) {

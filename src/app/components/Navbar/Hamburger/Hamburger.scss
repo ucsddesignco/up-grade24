@@ -9,8 +9,8 @@
   padding-inline: calc($main-padding-mobile-inline/2 - $hamburger-width/2);
 
   @media (min-width: $mobile-breakpoint) {
-    padding-block: $main-padding-tablet-block;
-    padding-right: calc($main-padding-tablet-inline/2 - $hamburger-width/2);
+    padding-block: calc($main-padding-tablet-block/2);
+    padding-inline: calc($main-padding-tablet-inline/2 - $hamburger-width/2);
   }
 
   .container {

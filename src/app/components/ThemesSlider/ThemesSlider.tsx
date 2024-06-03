@@ -7,7 +7,7 @@ import './ThemesSlider.scss';
 import ThemeSlide from './ThemeSlide/ThemeSlide';
 import SliderArrow from './SliderArrow/SliderArrow';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export type SlideContent = {
   theme: string;
@@ -26,13 +26,14 @@ export default function ThemesSlider({
 }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
     initial: 0,
     breakpoints: {
       '(min-width: 550px)': {
-        slides: { origin: 'center', perView: 1.5, spacing: 10 }
+        slides: { origin: 'center', perView: 1.5, spacing: 0 }
       },
       '(min-width: 979px)': {
         slides: { perView: 1.5, spacing: 10 }
@@ -55,10 +56,27 @@ export default function ThemesSlider({
     }
   });
 
+  useEffect(() => {
+    const checkTablet = () => {
+      if (window.innerWidth <= 979) {
+        setIsTablet(true);
+      } else {
+        setIsTablet(false);
+      }
+    };
+
+    checkTablet();
+    window.addEventListener('resize', checkTablet);
+    return () => window.removeEventListener('resize', checkTablet);
+  }, []);
+
   //TODO: add aria controls and labels to slide navigation
 
   return (
-    <div className="theme-slider-container">
+    <div
+      className="theme-slider-container"
+      style={isTablet ? { width: '100%' } : {}}
+    >
       <div ref={sliderRef} className="keen-slider">
         {slidesContent.map(slide => (
           <div className="keen-slider__slide" key={slide.theme}>

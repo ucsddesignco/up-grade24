@@ -27,6 +27,11 @@
     grid-template-columns: 1fr;
   }
 
+  .theme-slide {
+    margin-bottom: 0;
+    margin-top: 2.5rem;
+  }
+
   .arrows {
     display: none;
   }
@@ -83,7 +88,8 @@
       max-height: 575px;
       display: block;
       position: absolute;
-      background: $right-hide-slides-gradient;
+      // background: $right-hide-slides-gradient;
+      background: $hide-slides-gradient;
     }
   }
 

@@ -1,4 +1,10 @@
 #landing {
+  height: calc(100dvh + calc(clamp(20px, 30px + 1.2vw, 40px)));
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   h1,
   h3 {
     width: fit-content;
@@ -21,9 +27,13 @@
 
   .mobile-header {
     width: fit-content;
-    margin-inline: auto;
+    text-align: left;
     margin-block-start: calc($main-padding-mobile-inline + 25px);
+    margin-inline: auto;
 
+    @media (min-width: $mobile-breakpoint) {
+      margin-inline: 0;
+    }
     @media (min-width: $mobile-breakpoint) {
       margin-block-start: calc(50px);
     }

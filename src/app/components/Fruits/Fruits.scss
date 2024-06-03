@@ -2,7 +2,9 @@
   svg {
     display: none;
   }
-  height: min(60dvh, 340px);
+  // height: min(60dvh, 340px);
+  height: 100%;
+  margin-bottom: 1rem;
   // width: calc(80dvw - 2 * $main-padding-mobile-inline);
   // margin-inline: auto;
   // margin-block: 2.5dvh;
@@ -16,6 +18,8 @@
     display: block;
     position: absolute;
     width: 100% !important;
+    margin-top: auto;
+    align-self: flex-end;
 
     @media (min-width: $tablet-breakpoint) {
       display: none;
@@ -26,6 +30,10 @@
     display: none;
     position: absolute;
     width: 100%;
+
+    path {
+      stroke-width: 5;
+    }
 
     @media (min-width: $tablet-breakpoint) {
       display: block;

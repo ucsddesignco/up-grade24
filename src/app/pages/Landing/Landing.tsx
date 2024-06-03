@@ -47,17 +47,22 @@ export default function Landing({ landingRef }: LandingProps) {
 
       <Fruits />
 
-      <div ref={signatureContainerRef} className="landing-signature-container">
-        <Signature
-          hideMobile={false}
-          navContainerRef={signatureContainerRef}
-          hoveringCart={false}
-        />
+      <div>
+        <div
+          ref={signatureContainerRef}
+          className="landing-signature-container"
+        >
+          <Signature
+            hideMobile={false}
+            navContainerRef={signatureContainerRef}
+            hoveringCart={false}
+          />
+        </div>
+        <a className="add-me-to-cart">
+          <CartIcon className="svg-cart" />
+          <p>ADD ME TO CART</p>
+        </a>
       </div>
-      <a className="add-me-to-cart">
-        <CartIcon className="svg-cart" />
-        <p>ADD ME TO CART</p>
-      </a>
       <hr className="mobile-line" />
     </section>
   );
