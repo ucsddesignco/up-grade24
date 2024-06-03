@@ -10,7 +10,7 @@ export const ThemesContent = [
         link: 'https://www.mpacollaborative.org/'
       },
       {
-        text: 'SanDiego360',
+        text: 'SanDiego350',
         link: 'https://sandiego350.org/'
       }
     ]
