@@ -13,6 +13,9 @@ footer {
   @media (min-width: $mobile-breakpoint) {
     padding-top: 1rem;
     justify-content: start;
+  }
+
+  @media (min-width: $tablet-breakpoint) {
     padding-bottom: 0rem;
   }
 

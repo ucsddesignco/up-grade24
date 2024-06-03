@@ -432,7 +432,7 @@ export default function Fruits() {
       const apricotShape = createEllipseVertices({
         cx: 0,
         cy: 0,
-        ry: scene.current?.clientWidth * apricotScale * 1,
+        ry: scene.current?.clientWidth * apricotScale * 1 + 10,
         rx: scene.current?.clientWidth * apricotScale * apricotRatio,
         steps: 20
       });
