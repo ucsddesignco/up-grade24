@@ -37,11 +37,10 @@
     display: grid;
     gap: 1.5rem;
     padding-block: 0;
-    margin-block: 1.5rem;
 
     @media (min-width: 766px) {
+      margin-block: 1.5rem;
       grid-template-columns: repeat(2, 1fr);
-      // gap: 2.5rem;
       gap: clamp(1.5rem, calc(10px + 1vw), 2.5rem);
     }
 

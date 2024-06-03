@@ -21,8 +21,12 @@
 
   .mobile-header {
     width: fit-content;
-    margin-block-start: calc($main-padding-mobile-block + 50px);
     margin-inline: auto;
+    margin-block-start: calc($main-padding-mobile-inline + 25px);
+
+    @media (min-width: $mobile-breakpoint) {
+      margin-block-start: calc(50px);
+    }
 
     p {
       width: fit-content;
@@ -51,7 +55,7 @@
   .add-me-to-cart {
     color: $primary-white;
     background-color: $primary-black;
-    border: 2px solid $primary-black;
+    border: 1px solid $primary-black;
     border-radius: 5px;
 
     width: 80%;

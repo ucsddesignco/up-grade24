@@ -2,7 +2,7 @@ nav {
   border-right: none;
 
   @media (min-width: $mobile-breakpoint) {
-    border-right: 1px solid $outline-gray;
+    border-right: 1.5px solid $outline-gray;
   }
 
   a {

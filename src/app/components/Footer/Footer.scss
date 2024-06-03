@@ -8,10 +8,12 @@ footer {
   left: 0;
   width: 100%;
   padding-top: 2rem;
+  padding-bottom: 2rem;
 
   @media (min-width: $mobile-breakpoint) {
     padding-top: 1rem;
     justify-content: start;
+    padding-bottom: 0rem;
   }
 
   span {

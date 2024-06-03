@@ -6,6 +6,8 @@ import Matter, { Vertices, Body } from 'matter-js';
 
 import 'pathseg';
 import createEllipseVertices from './createEllipseVertices';
+import Basket from '@/assets/images/basket.svg';
+import WideBasket from '@/assets/images/wide-basket.svg';
 
 export default function Fruits() {
   const scene = useRef<HTMLDivElement>(null);
@@ -147,13 +149,25 @@ export default function Fruits() {
     let basketHeight;
     let spriteWidth;
     let spriteHeight;
-
+    let basketRealWidth = 815;
+    let basketRealHeight = 385;
+    if (!isDesktop) {
+      basketRealWidth = 296;
+      basketRealHeight = 130;
+    }
     basketX = width / 2;
     basketY = height * 0.75;
     basketWidth = width;
     basketHeight = height * 0.5;
-    spriteHeight = (height * 0.5) / 385;
-    spriteWidth = width / 815;
+
+    let scaleX = basketWidth / basketRealWidth;
+    let scaleY = basketHeight / basketRealHeight;
+    let scale = Math.min(scaleX, scaleY);
+
+    // spriteHeight = (height * 0.5) / 385;
+    // spriteWidth = width / 815;
+    spriteHeight = basketRealHeight * scale;
+    spriteWidth = basketRealWidth * scale;
 
     let basketSprite = {
       texture: '/textures/basket.png',
@@ -163,10 +177,13 @@ export default function Fruits() {
 
     if (!isDesktop) {
       basketY = height * 0.85;
+      spriteHeight = (height * 0.5) / 130 / 2.8;
+      spriteWidth = width / 296 / 2.8;
+
       basketSprite = {
         texture: '/textures/basket-mobile.png',
         xScale: spriteWidth * 2.5,
-        yScale: spriteHeight * 1.5
+        yScale: spriteHeight * 4
       };
     }
 
@@ -535,7 +552,8 @@ export default function Fruits() {
       Composite.add(engine.world, apricot);
     }
 
-    Composite.add(engine.world, basket);
+    // Temporarily don't render basket
+    // Composite.add(engine.world, basket);
 
     // Get the canvas element
     const canvas = scene.current;
@@ -711,7 +729,11 @@ export default function Fruits() {
 
   return (
     <>
-      <div ref={scene} className="fruit-container" />
+      <div ref={scene} className="fruit-container">
+        {/* <Image src={} /> */}
+        <Basket className="fruits-basket" />
+        <WideBasket className="wide-fruits-basket" />
+      </div>
     </>
   );
 }

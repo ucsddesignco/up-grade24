@@ -11,8 +11,6 @@
     position: relative;
 
     //For extremely large screen sizes
-    max-width: 1600px;
-    margin-inline: auto;
 
     @media (min-width: $tablet-breakpoint) {
       scroll-behavior: smooth;

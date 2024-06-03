@@ -95,13 +95,13 @@
   .slider-wrapper {
     position: relative;
     width: 100%;
-    border: 1.5px solid $outline-gray;
     overflow-y: hidden;
     height: 100%;
     overflow-y: hidden;
     padding: 1rem;
 
     @media (min-width: $mobile-breakpoint) {
+      border: 1.5px solid $outline-gray;
     }
 
     ul {
