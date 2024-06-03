@@ -58,7 +58,12 @@ export default function Landing({ landingRef }: LandingProps) {
             hoveringCart={false}
           />
         </div>
-        <a className="add-me-to-cart">
+        <a
+          className="add-me-to-cart"
+          href="https://forms.gle/o88jgQCt3iFFQ4wK6"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <CartIcon className="svg-cart" />
           <p>ADD ME TO CART</p>
         </a>
