@@ -16,14 +16,16 @@
     $primary-white 100%
   );
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1.5px solid $outline-gray;
 
-  @media ($mobile-breakpoint < width < $desktop-breakpoint) {
-    padding-block: 2.5rem;
-    height: 550px;
-  }
-
   width: calc(100vw - 2 * $main-padding-mobile-inline);
+
+  @media ($mobile-breakpoint < width < $desktop-breakpoint) {
+    padding-top: 2.5rem;
+  }
 
   .keen-slider {
     height: 100%;
@@ -73,13 +75,6 @@
       position: absolute;
       background: $hide-slides-gradient;
     }
-
-    // .arrows {
-    //   display: flex;
-    //   gap: 2px;
-    //   grid-area: 1 / 1 / 2 / 2;
-    //   padding: 10px;
-    // }
   }
 
   @media ($mobile-breakpoint < width < 1400px) {
@@ -97,8 +92,6 @@
   }
 
   @media (min-width: $tablet-breakpoint) {
-    height: 100%;
-
     & {
       width: calc(
         100vw - clamp(250px, 200px + 11vw, 470px) - 2 *
