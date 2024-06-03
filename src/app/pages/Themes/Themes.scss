@@ -25,6 +25,7 @@
     z-index: 1;
     height: fit-content;
     width: calc(160px + 8vw);
+    pointer-events: none;
 
     .pomegranate {
       transform: rotate(-20deg);
