@@ -1,6 +1,8 @@
-# UP-GRADE 2024: UCSD Design Co
+# UP-Grade 2024: UCSD Design Co
 
-UP-Grade is a 10-week online summer program where students will get the opportunity to work closely alongside a local, nonprofit organization to amplify and boost their exposure.
+https://upgrade24.ucsddesign.co/
+
+UP-Grade is a 10-week summer internship-style program where students will get the opportunity to work alongside a local, nonprofit organization to elevate their branding and boost their exposure within the community.
 
 ## Getting Started
 

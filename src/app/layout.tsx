@@ -6,12 +6,12 @@ import React from 'react';
 export const metadata: Metadata = {
   metadataBase: new URL('https://upgrade24.ucsddesign.co/'),
   title: 'UP-GRADE 2024: Design Co',
-  description: `UP-Grade is a 10-week online summer program where students will get the opportunity to work closely alongside a local, nonprofit organization to amplify and boost their exposure.`,
+  description: `UP-Grade is a 10-week summer internship-style program where students will get the opportunity to work alongside a local, nonprofit organization to elevate their branding and boost their exposure within the community.`,
   keywords:
     'Design Co, Design at UCSD, UCSD, UC San Diego, design, summer program, nonprofit',
   openGraph: {
     title: 'UP-GRADE 2024: Design Co',
-    description: `UP-Grade is a 10-week online summer program where students will get the opportunity to work closely alongside a local, nonprofit organization to amplify and boost their exposure.`,
+    description: `UP-Grade is a 10-week summer internship-style program where students will get the opportunity to work alongside a local, nonprofit organization to elevate their branding and boost their exposure within the community.`,
     images: '/opengraph-image.png',
     url: 'https://upgrade24.ucsddesign.co/',
     siteName: 'UP-GRADE 2024: Design Co',
