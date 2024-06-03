@@ -22,11 +22,9 @@ nav {
   }
 
   .nav-container {
-    @media (min-width: $mobile-breakpoint) {
-      border-right: 1.5px solid $outline-gray;
-    }
     padding-inline: $main-padding-mobile-inline;
     padding-block: $main-padding-mobile-block;
+    padding-top: 5rem;
     width: 100vw;
     max-width: 400px;
     background: $primary-white;
@@ -48,17 +46,15 @@ nav {
       transform: translateX(-100%);
     }
 
-    @media (max-width: $mobile-breakpoint) {
-      padding-inline: clamp(34px, 12px + 1.2vw, 40px);
-      padding-top: 5rem;
-    }
-
     @media (min-width: $mobile-breakpoint) {
+      border-right: 1.5px solid $outline-gray;
       padding-inline: $main-padding-desktop-inline;
       padding-block: $main-padding-desktop-block;
+      padding-top: $main-padding-tablet-block;
     }
 
     @media (min-width: $tablet-breakpoint) {
+      padding-top: $main-padding-desktop-block;
       max-width: 500px;
       width: $nav-width;
       visibility: visible;

@@ -7,6 +7,7 @@
   border: none;
   padding-block: calc($main-padding-mobile-block/2);
   padding-inline: calc($main-padding-mobile-inline/2 - $hamburger-width/2);
+  z-index: 5;
 
   @media (min-width: $mobile-breakpoint) {
     padding-block: calc($main-padding-tablet-block/2);
@@ -25,7 +26,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    z-index: 5;
   }
 
   .line {

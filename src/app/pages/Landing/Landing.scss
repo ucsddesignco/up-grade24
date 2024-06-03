@@ -102,6 +102,10 @@
     }
   }
 
+  .mobile-line {
+    margin-inline: $main-padding-mobile-inline;
+  }
+
   @media (min-width: $tablet-breakpoint) {
     .mobile-header,
     .add-me-to-cart {
