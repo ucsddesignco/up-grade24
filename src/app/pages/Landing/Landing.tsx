@@ -23,7 +23,7 @@ export default function Landing({ landingRef }: LandingProps) {
         image={
           <Image
             src={DCOSticker}
-            height="125"
+            height="150"
             alt="Design Co Sticker"
             draggable={false}
           />

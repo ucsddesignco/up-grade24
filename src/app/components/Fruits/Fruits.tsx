@@ -388,8 +388,8 @@ export default function Fruits() {
       });
       const textureWidth = 150;
       const cherry = Bodies.fromVertices(
-        scene.current?.clientWidth * (Math.random() * 0.5 + 0.3),
-        scene.current?.clientHeight * -0.5,
+        scene.current?.clientWidth * (Math.random() * 0.3 + 0.3),
+        scene.current?.clientHeight * -1.2,
         [Vertices.hull(cherryShape)],
         {
           restitution: 0.1, //Bounciness
@@ -409,8 +409,8 @@ export default function Fruits() {
         }
       );
       Composite.add(engine.world, cherry);
-      // const cherryDelay = 1;
-      // // Delay the falling of the cherry
+      // const cherryDelay = 0.5;
+      // Delay the falling of the cherry
       // setTimeout(() => {
       //   Body.setStatic(cherry, false);
       // }, cherryDelay * 1000);
@@ -425,8 +425,8 @@ export default function Fruits() {
         steps: 16
       });
       const watermelon = Bodies.fromVertices(
-        scene.current?.clientWidth * 1,
-        scene.current?.clientHeight * -0.4,
+        scene.current?.clientWidth * 0.67,
+        scene.current?.clientHeight * -0.2,
         [Vertices.hull(watermelonShape)],
         {
           restitution: 0.1, //Bounciness
@@ -458,7 +458,7 @@ export default function Fruits() {
         steps: 20
       });
       const apricot = Bodies.fromVertices(
-        scene.current?.clientWidth * 0.2,
+        scene.current?.clientWidth * 0.17,
         scene.current?.clientHeight * -0.45,
         [Vertices.hull(apricotShape)],
         {
