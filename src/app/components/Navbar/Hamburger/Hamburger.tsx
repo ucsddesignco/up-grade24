@@ -22,7 +22,9 @@ export default function Hamburger({
         aria-label={isHamburgerOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={isHamburgerOpen}
       >
-        <span ref={hamburgerInnerRef} className="line"></span>
+        <div className="container">
+          <span ref={hamburgerInnerRef} className="line"></span>
+        </div>
       </button>
     </>
   );

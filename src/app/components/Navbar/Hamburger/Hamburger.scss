@@ -2,25 +2,30 @@
   $hamburger-height: 10px;
   $hamburger-width: 16px;
   $line-height: 2px;
-
   position: absolute;
-  margin-block: $main-padding-mobile-block;
-  margin-inline: calc($main-padding-mobile-inline/2);
-  right: 0;
   background: none;
-  outline-offset: 3px;
   border: none;
-  width: $hamburger-width;
-  height: $hamburger-height;
-  padding-inline: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 5;
+  padding-block: $main-padding-mobile-block;
+  padding-inline: calc($main-padding-mobile-inline/2 - $hamburger-width/2);
 
   @media (min-width: $mobile-breakpoint) {
-    margin-block: $main-padding-tablet-block;
-    margin-right: calc($main-padding-tablet-inline/2);
+    padding-block: $main-padding-tablet-block;
+    padding-right: calc($main-padding-tablet-inline/2 - $hamburger-width/2);
+  }
+
+  .container {
+    position: relative;
+    inset: 0;
+    width: $hamburger-width;
+    height: $hamburger-height;
+    left: 0;
+    outline-offset: 3px;
+    border: none;
+    padding-inline: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 5;
   }
 
   .line {
