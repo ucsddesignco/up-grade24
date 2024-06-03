@@ -10,6 +10,7 @@ import Grape from '@/assets/stickers/grape.svg';
 import Yuzu from '@/assets/stickers/yuzu.svg';
 import Sticker from '@/components/Sticker/Sticker';
 import { PageRef } from '@/page';
+import TestimonialModal from '@/components/TestimonialModal/TestimonialModal';
 
 type ApplyProps = {
   applyRef: PageRef;
@@ -75,11 +76,11 @@ export default function Apply({ applyRef }: ApplyProps) {
         <Testimonial setOpenModal={setOpenModal} />
         <Footer />
       </div>
-      {/* <TestimonialModal
+      <TestimonialModal
         openModal={openModal}
         setOpenModal={setOpenModal}
         topOffsetRef={topOffsetRef}
-      /> */}
+      />
     </section>
   );
 }
