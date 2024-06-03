@@ -30,7 +30,7 @@ export default function FAQ({ faqRef }: FAQProps) {
       <Sticker
         name="orange"
         image={<Orange />}
-        style={{ left: '30%', bottom: '4%' }}
+        style={{ left: '38%', bottom: '12%' }}
         hideMobile
       />
       <p className="breadcrumb">.04 / FAQ</p>

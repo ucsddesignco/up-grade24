@@ -48,7 +48,7 @@ export default function Apply({ applyRef }: ApplyProps) {
       <Sticker
         name="grape"
         image={<Grape />}
-        style={{ right: '5%', top: '10%' }}
+        style={{ right: '5%', top: '6%' }}
         hideMobile
       />
       <Sticker
