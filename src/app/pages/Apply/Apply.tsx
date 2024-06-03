@@ -6,11 +6,12 @@ import './Apply.scss';
 import { applyInfo } from './apply-info';
 import Testimonial from '@/components/Testimonial/Testimonial';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Grape from '@/assets/stickers/grape.svg';
-import Yuzu from '@/assets/stickers/yuzu.svg';
+import GrapeSticker from '@/assets/stickers/grape.png';
+import YuzuSticker from '@/assets/stickers/yuzu.png';
 import Sticker from '@/components/Sticker/Sticker';
 import { PageRef } from '@/page';
 import TestimonialModal from '@/components/TestimonialModal/TestimonialModal';
+import Image from 'next/image';
 
 type ApplyProps = {
   applyRef: PageRef;
@@ -47,13 +48,27 @@ export default function Apply({ applyRef }: ApplyProps) {
     <section id="apply" ref={applyRef}>
       <Sticker
         name="grape"
-        image={<Grape />}
+        image={
+          <Image
+            src={GrapeSticker}
+            height="120"
+            alt="Grape Sticker"
+            draggable={false}
+          />
+        }
         style={{ right: '5%', top: '6%' }}
         hideMobile
       />
       <Sticker
         name="yuzu"
-        image={<Yuzu />}
+        image={
+          <Image
+            src={YuzuSticker}
+            height="125"
+            alt="Yuzu Sticker"
+            draggable={false}
+          />
+        }
         style={{ bottom: '-8px', left: '38%' }}
       />
       <div className="top-section">

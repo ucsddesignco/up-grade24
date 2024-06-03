@@ -13,9 +13,7 @@
     }
   }
 
-  &.dco-sticker {
-    filter: drop-shadow(0px 2.319px 2.473px rgba(0, 0, 0, 0.15));
-  }
+  filter: drop-shadow(0px 2.3px 2.5px rgba(0, 0, 0, 0.15));
 
   @media (min-width: 800px) {
     scale: 0.7;
@@ -45,11 +43,6 @@
       bottom: -20px !important;
       left: -55px !important;
     }
-
-    // &.orange-sticker {
-    //   bottom: -20px !important;
-    //   left: -55px !important;
-    // }
 
     &.melon-sticker {
       bottom: -50px !important;

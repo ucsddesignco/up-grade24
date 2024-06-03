@@ -5,9 +5,9 @@ import pomegranateImg from '@/assets/images/pomegranate.webp';
 import Image from 'next/image';
 import { PageRef } from '@/page';
 import Sticker from '@/components/Sticker/Sticker';
-import Capybara from '@/assets/stickers/capybara.svg';
-import Rooting from '@/assets/stickers/rooting.svg';
-import Figjam from '@/assets/stickers/figjam.svg';
+import CapybaraSticker from '@/assets/stickers/capybara.png';
+import RootingSticker from '@/assets/stickers/rooting.png';
+import FigjamSticker from '@/assets/stickers/figjam.png';
 
 type ThemesProps = {
   themesRef: PageRef;
@@ -16,16 +16,42 @@ type ThemesProps = {
 export default function Themes({ themesRef }: ThemesProps) {
   return (
     <section ref={themesRef} id="themes">
-      <Sticker name="capybara" image={<Capybara />} style={{ right: '50px' }} />
+      <Sticker
+        name="capybara"
+        image={
+          <Image
+            src={CapybaraSticker}
+            height="125"
+            alt="Capybara Sticker"
+            draggable={false}
+          />
+        }
+        style={{ right: '50px' }}
+      />
       <Sticker
         name="rooting"
-        image={<Rooting />}
+        image={
+          <Image
+            src={RootingSticker}
+            height="140"
+            alt="Rooting Sticker"
+            draggable={false}
+          />
+        }
         style={{ left: '10px', top: '55%' }}
         hideMobile
       />
       <Sticker
         name="figjam"
-        image={<Figjam />}
+        image={
+          <Image
+            src={FigjamSticker}
+            height="150"
+            alt="Figjam Sticker"
+            draggable={false}
+            priority
+          />
+        }
         style={{ right: '30%', bottom: '0%' }}
         hideMobile
       />

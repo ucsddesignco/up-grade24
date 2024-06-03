@@ -4,9 +4,9 @@ import { FAQContent } from './constants';
 import Image from 'next/image';
 import Apricot from '@/assets/images/Apricot.webp';
 import { PageRef } from '@/page';
-import Sustainability from '@/assets/stickers/sustainability.svg';
-import Melon from '@/assets/stickers/melon.svg';
-import Orange from '@/assets/stickers/orange.svg';
+import SustainabilitySticker from '@/assets/stickers/sustainability.png';
+import MelonSticker from '@/assets/stickers/melon.png';
+import OrangeSticker from '@/assets/stickers/orange.png';
 import Sticker from '@/components/Sticker/Sticker';
 
 type FAQProps = {
@@ -18,18 +18,39 @@ export default function FAQ({ faqRef }: FAQProps) {
     <section ref={faqRef} id="faq">
       <Sticker
         name="sustainability"
-        image={<Sustainability />}
+        image={
+          <Image
+            src={SustainabilitySticker}
+            height="125"
+            alt="Sustainability Sticker"
+            draggable={false}
+          />
+        }
         style={{ right: '7%', top: '8%' }}
         hideMobile
       />
       <Sticker
         name="melon"
-        image={<Melon />}
+        image={
+          <Image
+            src={MelonSticker}
+            height="125"
+            alt="Melon Sticker"
+            draggable={false}
+          />
+        }
         style={{ right: '7%', bottom: '15%' }}
       />
       <Sticker
         name="orange"
-        image={<Orange />}
+        image={
+          <Image
+            src={OrangeSticker}
+            height="100"
+            alt="Orange Sticker"
+            draggable={false}
+          />
+        }
         style={{ left: '38%', bottom: '12%' }}
         hideMobile
       />

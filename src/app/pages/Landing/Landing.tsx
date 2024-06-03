@@ -3,11 +3,11 @@ import Sticker from '@/components/Sticker/Sticker';
 import './Landing.scss';
 import Fruits from '@/components/Fruits/Fruits';
 import { PageRef } from '@/page';
-import Impact from '@/assets/stickers/impact.svg';
 import CartIcon from '@/assets/icons/cart.svg';
 import Signature from '@/components/Signature/Signature';
 import { useRef } from 'react';
 import DCOSticker from '@/assets/stickers/dco-sticker.png';
+import CoconutSticker from '@/assets/stickers/coconut.png';
 import Image from 'next/image';
 
 type LandingProps = {
@@ -33,8 +33,16 @@ export default function Landing({ landingRef }: LandingProps) {
         hideMobile
       />
       <Sticker
-        name="impact"
-        image={<Impact />}
+        name="coconut"
+        image={
+          <Image
+            src={CoconutSticker}
+            height="125"
+            alt="Coconut Sticker"
+            draggable={false}
+            priority
+          />
+        }
         style={{ left: '10px', top: '55%' }}
         hideMobile
       />
