@@ -14,7 +14,7 @@ export const FAQContent = [
     id: 'item-3',
     header: 'How many people will be accepted?',
     content:
-      'UP-Grade will have 7 student teams, with 6 participants in each team — 42 participants total.'
+      'UP-Grade will have 7 student teams, with 6 participants in each team; there are 42 participants total.'
   },
   {
     id: 'item-4',
@@ -38,7 +38,7 @@ export const FAQContent = [
     id: 'item-7',
     header: 'What roles are available?',
     content:
-      'Each team in Up-Grade may be comprised of a Web Builder/Developer, UX Designer, UX Researcher, Visual Designer, and Marketing + Content Strategist. Roles are flexible depending on the number of people working on the project, the deliverables, and the level of difficulty.'
+      'Each team in UP-Grade may be comprised of a Web Builder/Developer, UX Designer, UX Researcher, Visual Designer, and Marketing + Content Strategist. Roles are flexible depending on the number of people working on the project, the deliverables, and the level of difficulty.'
   },
   {
     id: 'item-8',
