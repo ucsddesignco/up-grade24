@@ -96,13 +96,39 @@ export default function Fruits() {
       }
     );
 
-    const desktopBasket = document.querySelector('.fruits-basket');
-    console.log(desktopBasket);
+    // Default values are for Desktop
+    let basketElement = document.querySelector(
+      '.wide-fruits-basket'
+    ) as HTMLDivElement;
+    let navBarWidth = Math.min(
+      470,
+      Math.max(250, 200 + (11 / 100) * window.innerWidth)
+    );
+    let basketBottomRatio = 0.115;
+    let slantHeightFactor = 3;
+
+    if (window.innerWidth < 979) {
+      basketElement = document.querySelector(
+        '.fruits-basket'
+      ) as HTMLDivElement;
+      navBarWidth = 0;
+      basketBottomRatio = 0.2;
+      slantHeightFactor = 7;
+    }
+    const basketRect = basketElement.getBoundingClientRect();
+    const padding = parseFloat(
+      window.getComputedStyle(basketElement).paddingLeft
+    );
+    const basketBottomDistance = basketBottomRatio * basketRect.width + 5;
+
+    const basketHeightTest = basketRect.height;
+    console.log({ basketRect, padding });
+    console.log(basketElement);
     const leftSlant = Bodies.rectangle(
-      -5 - barrierWidth / 2.1,
-      height / 2,
-      barrierWidth,
-      height * 6,
+      basketRect.left - navBarWidth,
+      basketRect.top + basketHeightTest / 2,
+      padding * 1 + basketBottomDistance,
+      basketHeightTest * slantHeightFactor,
       {
         isStatic: true,
         frictionStatic: 0,
@@ -114,10 +140,10 @@ export default function Fruits() {
       }
     );
     const rightSlant = Bodies.rectangle(
-      width + barrierWidth / 2.1 + 5,
-      height / 2,
-      barrierWidth,
-      height * 6,
+      basketRect.right - navBarWidth,
+      basketRect.top + basketHeightTest / 2,
+      padding * 1 + basketBottomDistance,
+      basketHeightTest * slantHeightFactor,
       {
         isStatic: true,
         frictionStatic: 0,
@@ -129,13 +155,8 @@ export default function Fruits() {
       }
     );
 
-    Body.rotate(leftSlant, -0.042 * Math.PI);
-    Body.rotate(rightSlant, 0.042 * Math.PI);
-
-    if (window.innerWidth > 550) {
-      Body.rotate(leftSlant, -0.03 * Math.PI);
-      Body.rotate(rightSlant, 0.03 * Math.PI);
-    }
+    Body.rotate(leftSlant, -0.0675 * Math.PI);
+    Body.rotate(rightSlant, 0.0675 * Math.PI);
 
     Composite.add(engine.world, [
       ground,
@@ -213,8 +234,8 @@ export default function Fruits() {
     /* ********************* define and add text ***************************** */
     const wordBoxScale = 1;
     const wordSpriteScale = 0.8;
-    const wordBoxScaleMobile = 0.6;
-    const wordSpriteScaleMobile = 0.5;
+    const wordBoxScaleMobile = 0.4;
+    const wordSpriteScaleMobile = 0.4;
     const wordsDesktop = [
       {
         // DESIGN
@@ -383,16 +404,16 @@ export default function Fruits() {
               yScale:
                 (cherryScale * scene.current?.clientWidth * 0.36) / textureWidth
             }
-          },
-          isStatic: true
+          }
+          // isStatic: true
         }
       );
       Composite.add(engine.world, cherry);
-      const cherryDelay = 1;
-      // Delay the falling of the cherry
-      setTimeout(() => {
-        Body.setStatic(cherry, false);
-      }, cherryDelay * 1000);
+      // const cherryDelay = 1;
+      // // Delay the falling of the cherry
+      // setTimeout(() => {
+      //   Body.setStatic(cherry, false);
+      // }, cherryDelay * 1000);
 
       // const watermelonRatio = 799/844;
       const watermelonScale = 0.2;
@@ -405,11 +426,11 @@ export default function Fruits() {
       });
       const watermelon = Bodies.fromVertices(
         scene.current?.clientWidth * 1,
-        scene.current?.clientHeight * -0.2,
+        scene.current?.clientHeight * -0.4,
         [Vertices.hull(watermelonShape)],
         {
           restitution: 0.1, //Bounciness
-          mass: 4,
+          mass: 3,
           render: {
             fillStyle: 'black',
             sprite: {
@@ -437,21 +458,21 @@ export default function Fruits() {
         steps: 20
       });
       const apricot = Bodies.fromVertices(
-        scene.current?.clientWidth * 0.1,
-        scene.current?.clientHeight * -0.4,
+        scene.current?.clientWidth * 0.2,
+        scene.current?.clientHeight * -0.45,
         [Vertices.hull(apricotShape)],
         {
           restitution: 0.1, //Bounciness
-          mass: 5,
+          mass: 2,
           render: {
             fillStyle: 'black',
             sprite: {
               texture: '/textures/apricot.webp',
               xScale:
-                (apricotScale * scene.current?.clientWidth * 0.75) /
+                (apricotScale * scene.current?.clientWidth * 0.65) /
                 textureWidth,
               yScale:
-                (apricotScale * scene.current?.clientWidth * 0.75) /
+                (apricotScale * scene.current?.clientWidth * 0.65) /
                 textureWidth
             }
           }
@@ -529,8 +550,8 @@ export default function Fruits() {
       const apricotShape = createEllipseVertices({
         cx: 0,
         cy: 0,
-        ry: scene.current?.clientHeight * apricotScale * 0.9,
-        rx: scene.current?.clientWidth * apricotScale * 0.8,
+        ry: scene.current?.clientHeight * apricotScale * 1,
+        rx: scene.current?.clientWidth * apricotScale * 0.77,
         steps: 20
       });
       const apricot = Bodies.fromVertices(
@@ -545,10 +566,11 @@ export default function Fruits() {
             sprite: {
               texture: '/textures/apricot.webp',
               xScale:
-                (apricotScale * scene.current?.clientWidth * 0.8) /
+                (apricotScale * scene.current?.clientWidth * 0.66) /
                 textureWidth,
               yScale:
-                (apricotScale * scene.current?.clientWidth * 0.8) / textureWidth
+                (apricotScale * scene.current?.clientWidth * 0.66) /
+                textureWidth
             }
           }
         }

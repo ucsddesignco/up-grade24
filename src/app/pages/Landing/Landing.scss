@@ -1,6 +1,7 @@
 #landing {
+  // This is to not show the horizontal line at the bottom of section
   height: calc(100dvh + calc(clamp(20px, 30px + 1.2vw, 40px)));
-
+  padding: 0;
   @media (min-width: $tablet-breakpoint) {
     height: 100vh;
   }
@@ -30,12 +31,19 @@
   }
 
   .mobile-header {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
     width: fit-content;
     text-align: left;
     margin-block-start: calc($main-padding-mobile-inline + 25px);
     margin-inline: auto;
 
     @media (min-width: $mobile-breakpoint) {
+      padding: $main-padding-mobile-inline;
+
       margin-inline: 0;
     }
     @media (min-width: $mobile-breakpoint) {
@@ -49,6 +57,8 @@
 
   .breadcrumb {
     display: none;
+    position: absolute;
+    padding: $main-padding-desktop-inline;
   }
 
   .landing-signature-container {

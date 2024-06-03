@@ -2,23 +2,18 @@
   svg {
     display: none;
   }
-  // height: min(60dvh, 340px);
   height: 100%;
-  margin-bottom: 1rem;
-  // width: calc(80dvw - 2 * $main-padding-mobile-inline);
-  // margin-inline: auto;
-  // margin-block: 2.5dvh;
   display: grid;
   align-items: flex-end;
   justify-items: center;
   position: relative;
-  //   border: 2px solid red;
 
   .fruits-basket {
     display: block;
     position: absolute;
-    width: 100% !important;
+    width: 100%;
     align-self: flex-end;
+    padding-inline: $main-padding-desktop-inline;
 
     @media (min-width: $tablet-breakpoint) {
       display: none;
@@ -35,6 +30,7 @@
     }
 
     @media (min-width: $tablet-breakpoint) {
+      padding-inline: $main-padding-desktop-inline;
       display: block;
     }
   }
@@ -42,7 +38,8 @@
 
 @media (min-width: $tablet-breakpoint) {
   .fruit-container {
-    height: 80dvh;
+    height: 100%;
     width: 100%;
+    margin-bottom: $main-padding-desktop-block;
   }
 }
