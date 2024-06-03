@@ -99,7 +99,7 @@ export default function Fruits() {
     const desktopBasket = document.querySelector('.fruits-basket');
     console.log(desktopBasket);
     const leftSlant = Bodies.rectangle(
-      -5 - barrierWidth / 2,
+      -5 - barrierWidth / 2.1,
       height / 2,
       barrierWidth,
       height * 6,
@@ -114,7 +114,7 @@ export default function Fruits() {
       }
     );
     const rightSlant = Bodies.rectangle(
-      width + barrierWidth / 2 + 5,
+      width + barrierWidth / 2.1 + 5,
       height / 2,
       barrierWidth,
       height * 6,
@@ -129,8 +129,8 @@ export default function Fruits() {
       }
     );
 
-    Body.rotate(leftSlant, -0.06 * Math.PI);
-    Body.rotate(rightSlant, 0.06 * Math.PI);
+    Body.rotate(leftSlant, -0.042 * Math.PI);
+    Body.rotate(rightSlant, 0.042 * Math.PI);
 
     if (window.innerWidth > 550) {
       Body.rotate(leftSlant, -0.03 * Math.PI);
@@ -362,7 +362,7 @@ export default function Fruits() {
         cx: 0,
         cy: 0,
         ry: scene.current?.clientWidth * cherryScale * 1,
-        rx: scene.current?.clientWidth * cherryScale * 0.6,
+        rx: scene.current?.clientWidth * cherryScale * 0.47,
         steps: 20
       });
       const textureWidth = 150;
@@ -372,15 +372,16 @@ export default function Fruits() {
         [Vertices.hull(cherryShape)],
         {
           restitution: 0.1, //Bounciness
-          mass: 0.0005,
+          mass: 2,
           render: {
             fillStyle: 'black',
             sprite: {
-              texture: '/textures/cherry.png',
+              texture: '/textures/cherry.webp',
               xScale:
-                (cherryScale * scene.current?.clientWidth * 1.5) / textureWidth,
+                (cherryScale * scene.current?.clientWidth * 0.36) /
+                textureWidth,
               yScale:
-                (cherryScale * scene.current?.clientWidth * 1.5) / textureWidth
+                (cherryScale * scene.current?.clientWidth * 0.36) / textureWidth
             }
           },
           isStatic: true
@@ -426,12 +427,12 @@ export default function Fruits() {
 
       Composite.add(engine.world, watermelon);
 
-      const apricotScale = 0.25;
+      const apricotScale = 0.15;
       const apricotRatio = 295 / 383;
       const apricotShape = createEllipseVertices({
         cx: 0,
         cy: 0,
-        ry: scene.current?.clientHeight * apricotScale * 1,
+        ry: scene.current?.clientWidth * apricotScale * 1,
         rx: scene.current?.clientWidth * apricotScale * apricotRatio,
         steps: 20
       });
@@ -441,16 +442,16 @@ export default function Fruits() {
         [Vertices.hull(apricotShape)],
         {
           restitution: 0.1, //Bounciness
-          mass: 4,
+          mass: 5,
           render: {
             fillStyle: 'black',
             sprite: {
               texture: '/textures/apricot.webp',
               xScale:
-                (apricotScale * scene.current?.clientWidth * 0.48) /
+                (apricotScale * scene.current?.clientWidth * 0.75) /
                 textureWidth,
               yScale:
-                (apricotScale * scene.current?.clientWidth * 0.48) /
+                (apricotScale * scene.current?.clientWidth * 0.75) /
                 textureWidth
             }
           }
@@ -461,14 +462,14 @@ export default function Fruits() {
       // MOBILE ---------------------------------------------
 
       //Create Cherry
-      let cherryScale = 0.13;
+      let cherryScale = 0.15;
       let cherryRatio = 68 / 179;
 
       const cherryShape = createEllipseVertices({
         cx: 0,
         cy: 0,
-        ry: scene.current?.clientWidth * cherryScale * 1 + 20,
-        rx: scene.current?.clientWidth * cherryScale * 1 * cherryRatio,
+        ry: scene.current?.clientWidth * cherryScale,
+        rx: scene.current?.clientWidth * cherryScale * cherryRatio,
         steps: 20
       });
       const textureWidth = 150;
@@ -482,11 +483,11 @@ export default function Fruits() {
           render: {
             fillStyle: 'black',
             sprite: {
-              texture: '/textures/cherry.png',
+              texture: '/textures/cherry.webp',
               xScale:
-                (cherryScale * scene.current?.clientWidth * 2) / textureWidth,
+                (cherryScale * scene.current?.clientWidth * 0.4) / textureWidth,
               yScale:
-                (cherryScale * scene.current?.clientWidth * 2) / textureWidth
+                (cherryScale * scene.current?.clientWidth * 0.4) / textureWidth
             }
           }
         }
