@@ -264,7 +264,7 @@ export default function Fruits() {
           isStatic: false,
           velocity: { x: 0, y: 0 },
           restitution: 0.1,
-          mass: 1,
+          mass: 3.5,
           render: {
             strokeStyle: 'black',
             fillStyle: 'black',
@@ -285,7 +285,6 @@ export default function Fruits() {
         const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
         const posX = index * (scene.current?.clientWidth ?? 0) * 0.2 + 100;
         const posY = -10 - index * (scene.current?.clientHeight ?? 0) * 0.6;
-        // const rotationAngle = Math.random() * 0 * Math.PI;
         const rotationAngle = 0.1 * Math.PI;
         const rotationSpeed = Math.random() * 0.1 - 0.05;
         let width = textWidth * boxScale;
@@ -296,7 +295,7 @@ export default function Fruits() {
           isStatic: false,
           velocity: { x: 0, y: 0 },
           restitution: 0.1,
-          mass: 1,
+          mass: 3.5,
           render: {
             strokeStyle: 'black',
             fillStyle: 'black',
@@ -363,7 +362,7 @@ export default function Fruits() {
       cy: 0,
       rx: apricotRx,
       ry: apricotRy,
-      steps: 20
+      steps: 30
     });
     const apricot = Bodies.fromVertices(
       scene.current?.clientWidth * 0.17,
@@ -399,7 +398,7 @@ export default function Fruits() {
       cy: 0,
       rx: cherryRx * cherryBallRatio,
       ry: cherryRx,
-      steps: 20
+      steps: 30
     });
     const cherry = Bodies.fromVertices(
       scene.current?.clientWidth * (Math.random() * 0.3 + 0.3),
