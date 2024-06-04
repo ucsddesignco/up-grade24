@@ -2,11 +2,6 @@
   position: relative;
   width: 100%;
   overflow-x: hidden;
-  height: fit-content;
-
-  @media (min-width: $tablet-breakpoint) {
-    height: 100vh;
-  }
 
   @media (min-width: $tablet-breakpoint) {
     display: flex;

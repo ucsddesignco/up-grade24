@@ -27,6 +27,11 @@
     padding-top: 2.5rem;
   }
 
+  @media (min-width: $desktop-breakpoint) {
+    height: 100%;
+    max-height: 675px;
+  }
+
   .keen-slider {
     height: 100%;
   }

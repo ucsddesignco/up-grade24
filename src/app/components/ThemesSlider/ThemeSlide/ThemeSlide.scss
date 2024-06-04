@@ -4,16 +4,12 @@
 
   padding: $slide-margin;
   border: none;
-  min-height: 450px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
   // max-height: 675px;
-  @media (min-width: $desktop-breakpoint) {
-    max-height: min(675px, 87%);
-  }
+
   height: 100%;
 
   .top-section {
@@ -82,14 +78,12 @@
   }
 
   @media (min-width: $mobile-breakpoint) {
-    min-height: 525px;
     padding: $slide-margin;
     border: 1.5px solid $outline-gray;
   }
 
   @media (min-width: $tablet-breakpoint) {
     margin: 0;
-    min-height: 625px;
     height: 100%;
   }
 }
