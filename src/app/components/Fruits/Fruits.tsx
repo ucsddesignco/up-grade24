@@ -66,6 +66,17 @@ export default function Fruits() {
         }
       }
     );
+
+    const topWall = Bodies.rectangle(width / 2, -height * 2, width, 100, {
+      isStatic: true,
+      frictionStatic: 0,
+      friction: 0,
+      restitution: 0.1,
+      render: {
+        fillStyle: 'transparent'
+      }
+    });
+
     const leftWall = Bodies.rectangle(
       -barrierWidth / 2,
       height / 2,
@@ -159,6 +170,7 @@ export default function Fruits() {
 
     Composite.add(engine.world, [
       ground,
+      topWall,
       leftWall,
       rightWall,
       leftSlant,
@@ -284,7 +296,7 @@ export default function Fruits() {
       wordsMobile.forEach((word, index) => {
         const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
         const posX = index * (scene.current?.clientWidth ?? 0) * 0.2 + 100;
-        const posY = -10 - index * (scene.current?.clientHeight ?? 0) * 0.6;
+        const posY = -10 - index * (scene.current?.clientHeight ?? 0) * 0.4;
         const rotationAngle = 0.1 * Math.PI;
         const rotationSpeed = Math.random() * 0.1 - 0.05;
         let width = textWidth * boxScale;
@@ -334,7 +346,7 @@ export default function Fruits() {
       [Vertices.hull(watermelonShape)],
       {
         restitution: 0.1, //Bounciness
-        mass: 3,
+        mass: 4,
         render: {
           fillStyle: 'black',
           sprite: {
@@ -370,7 +382,7 @@ export default function Fruits() {
       [Vertices.hull(apricotShape)],
       {
         restitution: 0.1, //Bounciness
-        mass: 1.5,
+        mass: 2,
         render: {
           fillStyle: 'black',
           sprite: {
@@ -401,12 +413,12 @@ export default function Fruits() {
       steps: 30
     });
     const cherry = Bodies.fromVertices(
-      scene.current?.clientWidth * (Math.random() * 0.3 + 0.3),
+      scene.current?.clientWidth * (Math.random() * 0.3 + 0.2),
       scene.current?.clientHeight * -1.2,
       [Vertices.hull(cherryShape)],
       {
         restitution: 0.1, //Bounciness
-        mass: 0.75,
+        mass: 1,
         render: {
           fillStyle: 'black',
           sprite: {
