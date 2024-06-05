@@ -63,9 +63,9 @@ export default function Navbar({ pageRefs }: NavbarProps) {
             <h1>UP-GRADE 2024</h1>
           </Link>
           <div className="event-logistics">
-            <h3>
+            <p className="event-location">
               UCSD Design Co <br /> San Diego, CA
-            </h3>
+            </p>
             <p className="event-date">JULY 1ST TO SEPT 6TH</p>
           </div>
           <span aria-hidden={true} ref={asterisksRef1} className="asterisk">
@@ -85,7 +85,7 @@ export default function Navbar({ pageRefs }: NavbarProps) {
                     }}
                   >
                     <div className="nav-link">
-                      <h3
+                      <p
                         className="nav-link-text"
                         style={{
                           backgroundColor:
@@ -93,7 +93,7 @@ export default function Navbar({ pageRefs }: NavbarProps) {
                         }}
                       >
                         {link.text.toUpperCase()}
-                      </h3>
+                      </p>
                       <h3 style={{ marginLeft: 'auto' }}>{`.0${index + 1}`}</h3>
                     </div>
                   </a>
@@ -122,6 +122,12 @@ export default function Navbar({ pageRefs }: NavbarProps) {
                 setHoveringCart(true);
               }}
               onMouseLeave={() => {
+                setHoveringCart(false);
+              }}
+              onFocus={() => {
+                setHoveringCart(true);
+              }}
+              onBlur={() => {
                 setHoveringCart(false);
               }}
             >

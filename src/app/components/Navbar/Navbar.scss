@@ -68,6 +68,13 @@ nav {
     .event-logistics {
       margin-bottom: 1rem;
 
+      .event-location {
+        font-size: 18px;
+        font-family: $subheading-font;
+        letter-spacing: normal;
+        line-height: 1.2;
+      }
+
       .event-date {
         padding-top: 7px;
         font-size: clamp(14px, calc(12px + 0.55vw), 20px);
@@ -114,6 +121,10 @@ nav {
       display: flex;
 
       .nav-link-text {
+        line-height: 1.2;
+        font-size: 18px;
+        font-family: $subheading-font;
+        letter-spacing: normal;
         position: relative;
 
         &:before {
@@ -126,11 +137,11 @@ nav {
           background-color: #212121;
           transition: width 0.25s;
         }
+      }
 
-        &:is(:hover, :focus-visible):before {
-          width: 100%;
-          left: 0;
-        }
+      &:is(:hover, :focus-visible) .nav-link-text:before {
+        width: 100%;
+        left: 0;
       }
     }
   }

@@ -26,7 +26,13 @@ export default function Fruits() {
       Composite = Matter.Composite;
 
     const engine = Engine.create();
-    engine.gravity.y = 1.5;
+
+    if (isDesktop) {
+      engine.gravity.y = 2;
+    } else {
+      engine.gravity.y = 1.3;
+    }
+
     const render = Render.create({
       element: scene.current,
       engine: engine,
@@ -48,15 +54,82 @@ export default function Fruits() {
     engine.velocityIterations = 10;
 
     /* ************** define and add container boundaries/walls ***************** */
+
+    // Default values are for Desktop
+    let basketElement = document.querySelector(
+      '.wide-fruits-basket'
+    ) as HTMLDivElement;
+    let navBarWidth = Math.min(
+      470,
+      Math.max(250, 200 + (11 / 100) * window.innerWidth)
+    );
+    let basketBottomRatio = 0.115;
+
+    if (!isDesktop) {
+      basketElement = document.querySelector(
+        '.fruits-basket'
+      ) as HTMLDivElement;
+      navBarWidth = 0;
+      basketBottomRatio = 0.2;
+    }
+    const basketRect = basketElement.getBoundingClientRect();
+    const basketPadding = parseFloat(
+      window.getComputedStyle(basketElement).paddingLeft
+    );
+    const basketBottomDistance = basketBottomRatio * basketRect.width + 5;
+
+    const basketHeightTest = basketRect.height;
+    const leftSlant = Bodies.rectangle(
+      basketRect.left - navBarWidth,
+      basketRect.top + basketHeightTest / 2,
+      basketPadding * 1 + basketBottomDistance,
+      basketHeightTest,
+      {
+        isStatic: true,
+        frictionStatic: 0,
+        friction: 0.01, // Adjust this value, 0 means no friction
+        restitution: 0.1,
+        render: {
+          fillStyle: 'transparent'
+        }
+      }
+    );
+    const rightSlant = Bodies.rectangle(
+      basketRect.right - navBarWidth,
+      basketRect.top + basketHeightTest / 2,
+      basketPadding * 1 + basketBottomDistance,
+      basketHeightTest,
+      {
+        isStatic: true,
+        frictionStatic: 0,
+        friction: 0.01, // Adjust this value, 0 means no friction
+        restitution: 0.1,
+        render: {
+          fillStyle: 'transparent'
+        }
+      }
+    );
+
+    Body.rotate(leftSlant, -0.0675 * Math.PI);
+    Body.rotate(rightSlant, 0.0675 * Math.PI);
+    Body.setPosition(leftSlant, {
+      x: leftSlant.position.x,
+      y: leftSlant.position.y + 15
+    });
+    Body.setPosition(rightSlant, {
+      x: rightSlant.position.x,
+      y: rightSlant.position.y + 15
+    });
+
     const barrierWidth = 500;
     let width = scene.current?.clientWidth ?? 0; // Provide default value of 0 if undefined
     let height = scene.current?.clientHeight ?? 0; // Provide default value of 0 if undefined
 
     const ground = Bodies.rectangle(
       width / 2,
-      height + barrierWidth / 2 - 10,
-      20000,
-      barrierWidth,
+      scene.current.clientHeight,
+      scene.current.clientWidth,
+      25,
       {
         isStatic: true,
         friction: 0.1, // Adjust this value, 0 means no friction
@@ -80,7 +153,7 @@ export default function Fruits() {
     const leftWall = Bodies.rectangle(
       -barrierWidth / 2,
       height / 2,
-      barrierWidth,
+      isDesktop ? barrierWidth : barrierWidth + (basketPadding * 2) / 2.5,
       height * 5,
       {
         isStatic: true,
@@ -95,7 +168,7 @@ export default function Fruits() {
     const rightWall = Bodies.rectangle(
       width + barrierWidth / 2,
       height / 2,
-      barrierWidth,
+      isDesktop ? barrierWidth : barrierWidth + (basketPadding * 2) / 2.5,
       height * 5,
       {
         isStatic: true,
@@ -108,66 +181,6 @@ export default function Fruits() {
       }
     );
 
-    // Default values are for Desktop
-    let basketElement = document.querySelector(
-      '.wide-fruits-basket'
-    ) as HTMLDivElement;
-    let navBarWidth = Math.min(
-      470,
-      Math.max(250, 200 + (11 / 100) * window.innerWidth)
-    );
-    let basketBottomRatio = 0.115;
-    let slantHeightFactor = 3;
-
-    if (window.innerWidth < 979) {
-      basketElement = document.querySelector(
-        '.fruits-basket'
-      ) as HTMLDivElement;
-      navBarWidth = 0;
-      basketBottomRatio = 0.2;
-      slantHeightFactor = 7;
-    }
-    const basketRect = basketElement.getBoundingClientRect();
-    const padding = parseFloat(
-      window.getComputedStyle(basketElement).paddingLeft
-    );
-    const basketBottomDistance = basketBottomRatio * basketRect.width + 5;
-
-    const basketHeightTest = basketRect.height;
-    const leftSlant = Bodies.rectangle(
-      basketRect.left - navBarWidth,
-      basketRect.top + basketHeightTest / 2,
-      padding * 1 + basketBottomDistance,
-      basketHeightTest * slantHeightFactor,
-      {
-        isStatic: true,
-        frictionStatic: 0,
-        friction: 0.01, // Adjust this value, 0 means no friction
-        restitution: 0.1,
-        render: {
-          fillStyle: 'transparent'
-        }
-      }
-    );
-    const rightSlant = Bodies.rectangle(
-      basketRect.right - navBarWidth,
-      basketRect.top + basketHeightTest / 2,
-      padding * 1 + basketBottomDistance,
-      basketHeightTest * slantHeightFactor,
-      {
-        isStatic: true,
-        frictionStatic: 0,
-        friction: 0.01, // Adjust this value, 0 means no friction
-        restitution: 0.1,
-        render: {
-          fillStyle: 'transparent'
-        }
-      }
-    );
-
-    Body.rotate(leftSlant, -0.0675 * Math.PI);
-    Body.rotate(rightSlant, 0.0675 * Math.PI);
-
     Composite.add(engine.world, [
       ground,
       topWall,
@@ -178,28 +191,28 @@ export default function Fruits() {
     ]);
 
     /* ********************* define and add text ***************************** */
-    const wordBoxScale = window.innerWidth / 1700;
-    const wordSpriteScale = wordBoxScale * 0.98;
-    const wordBoxScaleMobile =
-      0.2 +
-      (0.3 * window.innerWidth) / 1700 +
-      (0.35 * window.innerHeight) / 1700;
-    const wordSpriteScaleMobile = wordBoxScaleMobile * 0.98;
-    const wordsDesktop = [
+
+    let wordBoxScale = window.innerWidth / 1700;
+    let wordSpriteScale = wordBoxScale * 0.98;
+    if (!isDesktop) {
+      // Make the box scale on mobile depend on width and height
+      wordBoxScale =
+        0.2 +
+        (0.3 * window.innerWidth) / 1700 +
+        (0.35 * window.innerHeight) / 1700;
+      wordSpriteScale = wordBoxScale * 0.99;
+    }
+    const wordsList = [
       {
         // DESIGN
         textWidth: 256,
         textHeight: 55,
-        boxScale: wordBoxScale,
-        spriteScale: wordSpriteScale,
         svgPath: '/textures/wordFour.svg'
       },
       {
         // CO
         textWidth: 102,
         textHeight: 53,
-        boxScale: wordBoxScale,
-        spriteScale: wordSpriteScale,
         svgPath: '/textures/wordTwo.svg'
       },
 
@@ -208,123 +221,55 @@ export default function Fruits() {
         // 360 55
         textWidth: 360,
         textHeight: 55,
-        boxScale: wordBoxScale,
-        spriteScale: wordSpriteScale,
         svgPath: '/textures/wordOne.svg'
       },
       {
         // 2024
         textWidth: 181,
         textHeight: 55,
-        boxScale: wordBoxScale,
-        spriteScale: wordSpriteScale,
-        svgPath: '/textures/wordThree.svg'
-      }
-    ];
-    const wordsMobile = [
-      {
-        // DESIGN
-        textWidth: 200,
-        textHeight: 55,
-        boxScale: wordBoxScaleMobile,
-        spriteScale: wordSpriteScaleMobile,
-        svgPath: '/textures/wordFour.svg'
-      },
-      {
-        // CO
-        textWidth: 100,
-        textHeight: 55,
-        boxScale: wordBoxScaleMobile,
-        spriteScale: wordSpriteScaleMobile,
-        svgPath: '/textures/wordTwo.svg'
-      },
-
-      {
-        // UP-GRADE
-        textWidth: 360,
-        textHeight: 55,
-        boxScale: wordBoxScaleMobile,
-        spriteScale: wordSpriteScaleMobile,
-        svgPath: '/textures/wordOne.svg'
-      },
-      {
-        // 2024
-        textWidth: 180,
-        textHeight: 55,
-        boxScale: wordBoxScaleMobile,
-        spriteScale: wordSpriteScaleMobile,
         svgPath: '/textures/wordThree.svg'
       }
     ];
 
     const responsivenessValue =
       scene.current?.clientWidth * 0.8 + scene.current?.clientHeight * 0.3;
+    let initialXPercentage = 0.23;
+    if (!isDesktop) {
+      initialXPercentage = 0.18;
+    }
 
     // Create Words
-    if (isDesktop) {
-      wordsDesktop.forEach((word, index) => {
-        const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
-        const posX = index * (scene.current?.clientWidth ?? 0) * 0.25 + 100;
-        const posY = -200 - index * (scene.current?.clientHeight ?? 0) * 0.4;
-        const rotationAngle = Math.random() * 2 * Math.PI;
-        const rotationSpeed = Math.random() * 0.1 - 0.05;
-        let width = textWidth * boxScale;
-        let height = textHeight * boxScale;
+    wordsList.forEach((word, index) => {
+      const { textWidth, textHeight, svgPath } = word;
+      const posX =
+        index * (scene.current?.clientWidth ?? 0) * initialXPercentage + 100;
+      const posY = -200 - index * (scene.current?.clientHeight ?? 0) * 0.4;
+      const rotationAngle = Math.random() * 2 * Math.PI;
+      const rotationSpeed = Math.random() * 0.1 - 0.05;
+      let width = textWidth * wordBoxScale;
+      let height = textHeight * wordBoxScale;
 
-        // Create rectangle body
-        const rectangle = Bodies.rectangle(posX, posY, width, height, {
-          isStatic: false,
-          velocity: { x: 0, y: 0 },
-          restitution: 0.1,
-          mass: 3.5,
-          render: {
-            strokeStyle: 'black',
-            fillStyle: 'black',
-            lineWidth: 1,
-            sprite: {
-              texture: svgPath,
-              xScale: spriteScale,
-              yScale: spriteScale
-            }
+      // Create rectangle body
+      const rectangle = Bodies.rectangle(posX, posY, width, height, {
+        isStatic: false,
+        velocity: { x: 0, y: 0 },
+        restitution: 0.1,
+        mass: 3.5,
+        render: {
+          strokeStyle: 'black',
+          fillStyle: 'black',
+          lineWidth: 1,
+          sprite: {
+            texture: svgPath,
+            xScale: wordSpriteScale,
+            yScale: wordSpriteScale
           }
-        });
-        Body.rotate(rectangle, rotationAngle); // Rotate the rectangle
-        Body.setAngularSpeed(rectangle, rotationSpeed); // Set the angular speed of the rectangle
-        Composite.add(engine.world, rectangle);
+        }
       });
-    } else {
-      wordsMobile.forEach((word, index) => {
-        const { textWidth, textHeight, boxScale, spriteScale, svgPath } = word;
-        const posX = index * (scene.current?.clientWidth ?? 0) * 0.2 + 100;
-        const posY = -10 - index * (scene.current?.clientHeight ?? 0) * 0.4;
-        const rotationAngle = 0.1 * Math.PI;
-        const rotationSpeed = Math.random() * 0.1 - 0.05;
-        let width = textWidth * boxScale;
-        let height = textHeight * boxScale;
-
-        // Create rectangle body
-        const rectangle = Bodies.rectangle(posX, posY, width, height, {
-          isStatic: false,
-          velocity: { x: 0, y: 0 },
-          restitution: 0.1,
-          mass: 3.5,
-          render: {
-            strokeStyle: 'black',
-            fillStyle: 'black',
-            lineWidth: 1,
-
-            sprite: {
-              texture: svgPath,
-              xScale: spriteScale,
-              yScale: spriteScale
-            }
-          }
-        });
-        Body.rotate(rectangle, rotationAngle); // Rotate the rectangle
-        Body.setAngularSpeed(rectangle, rotationSpeed); // Set the angular speed of the rectangle
-        Composite.add(engine.world, rectangle);
-      });
-    }
+      Body.rotate(rectangle, rotationAngle); // Rotate the rectangle
+      Body.setAngularSpeed(rectangle, rotationSpeed); // Set the angular speed of the rectangle
+      Composite.add(engine.world, rectangle);
+    });
 
     const spritePaddingMultiplier = 0.98;
 
@@ -444,10 +389,17 @@ export default function Fruits() {
           if (body.isStatic) return; // Skip static bodies
 
           // Generate a stronger random force
-          const force = {
+          let force = {
             x: Math.round(Math.random()) * 10 - 5, // Random value between -50 and 50
             y: Math.round(Math.random()) * -100 - 100
           };
+
+          if (!isDesktop) {
+            force = {
+              x: Math.round(Math.random()) * 10 - 5, // Random value between -50 and 50
+              y: Math.round(Math.random()) * -30 - 5
+            };
+          }
 
           // Apply the force to the fruit
           Body.setVelocity(body, force);
