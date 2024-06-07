@@ -1,7 +1,6 @@
 #apply {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
 
   @media (min-width: $tablet-breakpoint) {
     display: flex;

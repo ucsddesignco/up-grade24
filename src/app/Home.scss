@@ -10,8 +10,6 @@
     width: 100%;
     position: relative;
 
-    //For extremely large screen sizes
-
     @media (min-width: $desktop-breakpoint) {
       scroll-behavior: smooth;
       display: grid;
@@ -32,6 +30,7 @@
     }
 
     section {
+      scroll-margin: $main-padding-mobile-block;
       position: relative;
       background-color: $primary-white;
       scroll-snap-align: center;

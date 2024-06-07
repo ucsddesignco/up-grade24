@@ -72,16 +72,18 @@ export default function Fruits() {
       navBarWidth = 0;
       basketBottomRatio = 0.2;
     }
+
     const basketRect = basketElement.getBoundingClientRect();
     const basketPadding = parseFloat(
       window.getComputedStyle(basketElement).paddingLeft
     );
     const basketBottomDistance = basketBottomRatio * basketRect.width + 5;
-
+    const landingSection = document.getElementById('landing') as HTMLDivElement;
+    const landingRect = landingSection.getBoundingClientRect();
     const basketHeightTest = basketRect.height;
     const leftSlant = Bodies.rectangle(
       basketRect.left - navBarWidth,
-      basketRect.top + basketHeightTest / 2,
+      basketRect.top - landingRect.top + basketHeightTest / 2,
       basketPadding * 1 + basketBottomDistance,
       basketHeightTest,
       {
@@ -96,7 +98,7 @@ export default function Fruits() {
     );
     const rightSlant = Bodies.rectangle(
       basketRect.right - navBarWidth,
-      basketRect.top + basketHeightTest / 2,
+      basketRect.top - landingRect.top + basketHeightTest / 2,
       basketPadding * 1 + basketBottomDistance,
       basketHeightTest,
       {
@@ -129,7 +131,7 @@ export default function Fruits() {
       width / 2,
       scene.current.clientHeight,
       scene.current.clientWidth,
-      25,
+      12,
       {
         isStatic: true,
         friction: 0.1, // Adjust this value, 0 means no friction
