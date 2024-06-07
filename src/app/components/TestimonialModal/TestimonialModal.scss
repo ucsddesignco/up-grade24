@@ -2,8 +2,9 @@
   display: none;
   position: absolute;
   top: 0;
-  height: 100%;
+  left: 0;
   width: 100%;
+  height: 100%;
 
   @media (min-width: $mobile-breakpoint) {
     display: block;
@@ -11,17 +12,18 @@
 
   .modal-overlay {
     position: absolute;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(236, 236, 236, 0.78);
-    transform: translate(calc(-1 * $main-padding-desktop-inline));
-    z-index: 0;
+    z-index: 3;
     opacity: 0;
     transition: opacity 0.3s;
   }
 
   .testimonial-modal {
     position: absolute;
+    left: $main-padding-desktop-inline;
     width: calc(100% - 2 * $main-padding-desktop-inline);
     height: calc(100% - 2 * $main-padding-desktop-block - var(--title-height));
     border: 1px solid $outline-gray;
